@@ -1,0 +1,84 @@
+@startuml
+
+abstract class Roll{
++ name
++ rights
+}
+
+
+class Employee{
++ id
+}
+
+class Organiser{
++ id
+}
+
+
+class User{
++ username
++ password
++ address
++ email
++ mobile
+}
+
+
+class Event{
++ date
++ seatReservationPossible
+}
+
+
+class Location{
++ building
++ address
++ room
++ seats
++ standingPlace
+}
+
+
+class Tournee{
++ description
++ category
+}
+
+
+class PlaceCategory{
++ name
++ category: ENUM
++ price
+}
+
+class Tickets{
++ number: optional
++ sold: available ENUM
+}
+
+
+class Client{
++ firstName
++ lastName
++ payment
++ address
+}
+
+
+class Artist{
++ name
++ genre
+}
+
+Roll <|-- Employee
+Roll <|-- Organiser
+Roll "0..*" -- "0..*" User: has
+User "1" -- "0..*" Tournee: manages
+Event "1..*" -- "1" Tournee: consists of
+Event "0..*" -- "1"  Location: takes place
+Event "1" -- "1..*" PlaceCategory: has
+Tournee "0..*" -- "1..*" Artist: goes on
+PlaceCategory "1" -- "1..*" Tickets: contains
+Tickets "1..*" -- "1" Client: buys
+
+@enduml
