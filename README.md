@@ -1,5 +1,11 @@
 # Culture Tickets
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=BakaBoing_itb5-culture-tickets&metric=alert_status)](https://sonarcloud.io/dashboard?id=BakaBoing_itb5-culture-tickets)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=BakaBoing_itb5-culture-tickets&metric=bugs)](https://sonarcloud.io/dashboard?id=BakaBoing_itb5-culture-tickets)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=BakaBoing_itb5-culture-tickets&metric=code_smells)](https://sonarcloud.io/dashboard?id=BakaBoing_itb5-culture-tickets)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=BakaBoing_itb5-culture-tickets&metric=coverage)](https://sonarcloud.io/dashboard?id=BakaBoing_itb5-culture-tickets)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=BakaBoing_itb5-culture-tickets&metric=security_rating)](https://sonarcloud.io/dashboard?id=BakaBoing_itb5-culture-tickets)
+
 Culture tickets is a software, to help event managers to sell tickets for their events.
 This repository represents the backend of the application.
 
