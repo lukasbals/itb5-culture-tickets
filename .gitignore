@@ -4,3 +4,6 @@ data
 itb5-culture-tickets.iml
 out
 classes
+.settings
+.classpath
+.project
