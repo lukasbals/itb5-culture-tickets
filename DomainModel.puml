@@ -51,7 +51,7 @@ class PlaceCategory{
 + price
 }
 
-class Tickets{
+class Ticket{
 + number: optional
 + sold: available ENUM
 }
@@ -70,15 +70,15 @@ class Artist{
 + genre
 }
 
-Roll <|-- Employee
-Roll <|-- Organiser
-Roll "0..*" -- "0..*" User: has
+Role <|-- Employee
+Role <|-- Organiser
+Role "0..*" -- "0..*" User: has
 User "1" -- "0..*" Tournee: manages
 Event "1..*" -- "1" Tournee: consists of
 Event "0..*" -- "1"  Location: takes place
-Event "1" -- "1..*" PlaceCategory: has
+Event "1..*" -- "1..*" PlaceCategory: has
 Tournee "0..*" -- "1..*" Artist: goes on
-PlaceCategory "1" -- "1..*" Tickets: contains
-Tickets "1..*" -- "1" Client: buys
+PlaceCategory "1" -- "1..*" Ticket: contains
+Ticket "1..*" -- "1" Client: buys
 
 @enduml
