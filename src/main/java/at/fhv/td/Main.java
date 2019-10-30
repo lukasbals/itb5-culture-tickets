@@ -1,26 +1,29 @@
 package at.fhv.td;
 
-import java.rmi.Naming;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
+import at.fhv.td.domain.Client;
+import at.fhv.td.persistence.DBConnection;
+import at.fhv.td.persistence.broker.ClientBroker;
 
 /**
  * @author Lukas Bals
  */
 public class Main {
-    private static String IP_ADDRESS = "10.0.51.93";
-
     public static void main(String[] args) {
-        try {
-            System.setProperty("java.rmi.server.hostname", IP_ADDRESS);
-            LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
-            CalculatorServant calculator = new CalculatorServant();
+        DBConnection.setupDBConnection();
 
-            Naming.rebind("rmi://" + IP_ADDRESS + "/calculator", calculator);
-            System.out.println("Calculator bound in registry");
-        } catch (Exception e) {
-            System.out.println("Calculator err: " + e.getMessage());
-            e.printStackTrace();
+        // The following code can be removed later
+        while (!DBConnection.connected()) {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+        Client client1 = new Client();
+        client1.setFirstname("Elisabeth");
+        client1.setLastname("Beer");
+        client1.setAddress("Hittisau");
+        ClientBroker.getInstance().save(client1);
+        System.out.println(ClientBroker.getInstance().getAll());
     }
 }

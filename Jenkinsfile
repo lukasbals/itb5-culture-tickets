@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'mvn clean test'
                 sh 'mvn sonar:sonar \
                       -Dsonar.projectKey=BakaBoing_itb5-culture-tickets \
                       -Dsonar.organization=bakaboing \
