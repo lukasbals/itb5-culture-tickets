@@ -71,9 +71,10 @@ public abstract class Broker<Model> implements BrokerInterface<Model> {
         return result;
     }
 
-    private Predicate getWhereClause(CriteriaBuilder builder, Root<Model> root, PersistenceFilter filter) {
-        Predicate condition = null;
+    Predicate getWhereClause(CriteriaBuilder builder, Root<Model> root, PersistenceFilter filter) {
+        Predicate condition;
         switch (filter.getFilterType()) {
+            default:
             case EQ:
                 condition = builder.equal(root.get(filter.getColumn()), filter.getValue());
                 break;

@@ -6,27 +6,27 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class PersistenceFilterTest {
-    private PersistenceFilter<String> testPersistenceFilter;
-    private String column = "column";
-    private String value = "value";
+    private PersistenceFilter<String> _testPersistenceFilter;
+    private String _column = "column";
+    private String _value = "value";
 
     @Before
     public void before() {
-        testPersistenceFilter = new PersistenceFilter<>(PersistenceFilter.FilterType.EQ, column, value);
+        _testPersistenceFilter = new PersistenceFilter<>(PersistenceFilter.FilterType.EQ, _column, _value);
     }
 
     @Test
     public void getValue() {
-        assertEquals(value, testPersistenceFilter.getValue());
+        assertEquals(_value, _testPersistenceFilter.getValue());
     }
 
     @Test
     public void getFilterType() {
-        assertEquals(PersistenceFilter.FilterType.EQ, testPersistenceFilter.getFilterType());
+        assertEquals(PersistenceFilter.FilterType.EQ, _testPersistenceFilter.getFilterType());
     }
 
     @Test
     public void getColumn() {
-        assertEquals(column, testPersistenceFilter.getColumn());
+        assertEquals(_column, _testPersistenceFilter.getColumn());
     }
 }

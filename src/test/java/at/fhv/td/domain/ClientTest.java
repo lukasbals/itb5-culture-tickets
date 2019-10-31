@@ -6,45 +6,45 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class ClientTest {
-    private Client testClient;
+    private Client _testClient;
 
     @Before
     public void before() {
-        testClient = new Client();
+        _testClient = new Client();
     }
 
     @Test
     public void getAndSetClientId() {
         Long id = 12L;
-        testClient.setClientId(id);
-        assertEquals(id, testClient.getClientId());
+        _testClient.setClientId(id);
+        assertEquals(id, _testClient.getClientId());
     }
 
     @Test
     public void getAndSetFirstname() {
         String firstname = "Firstname";
-        testClient.setFirstname(firstname);
-        assertEquals(firstname, testClient.getFirstname());
+        _testClient.setFirstname(firstname);
+        assertEquals(firstname, _testClient.getFirstname());
     }
 
     @Test
     public void getAndSetLastname() {
         String lastname = "Lastname";
-        testClient.setLastname(lastname);
-        assertEquals(lastname, testClient.getLastname());
+        _testClient.setLastname(lastname);
+        assertEquals(lastname, _testClient.getLastname());
     }
 
     @Test
     public void getAndSetAddress() {
         String address = "Address 1";
-        testClient.setAddress(address);
-        assertEquals(address, testClient.getAddress());
+        _testClient.setAddress(address);
+        assertEquals(address, _testClient.getAddress());
     }
 
     @Test
     public void testToString() {
-        testClient.setFirstname("Firstname");
-        testClient.setLastname("Lastname");
-        assertEquals("Firstname Lastname", testClient.toString());
+        _testClient.setFirstname("Firstname");
+        _testClient.setLastname("Lastname");
+        assertEquals("Firstname Lastname", _testClient.toString());
     }
 }

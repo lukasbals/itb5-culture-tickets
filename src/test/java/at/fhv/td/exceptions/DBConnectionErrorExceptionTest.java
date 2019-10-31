@@ -7,20 +7,20 @@ import static org.junit.Assert.assertEquals;
 
 public class DBConnectionErrorExceptionTest {
 
-    private DBConnectionErrorException testDBConnectionErrorException;
+    private DBConnectionErrorException _testDBConnectionErrorException;
 
     @Before
     public void before() {
-        testDBConnectionErrorException = new DBConnectionErrorException();
+        _testDBConnectionErrorException = new DBConnectionErrorException();
     }
 
     @Test
     public void getTitle() {
-        assertEquals("DB connection error", testDBConnectionErrorException.getTitle());
+        assertEquals("DB connection error", _testDBConnectionErrorException.getTitle());
     }
 
     @Test
     public void getMessage() {
-        assertEquals("Failed to connect to the database", testDBConnectionErrorException.getMessage());
+        assertEquals("Failed to connect to the database", _testDBConnectionErrorException.getMessage());
     }
 }
