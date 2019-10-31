@@ -60,7 +60,6 @@ class Ticket{
 class Client{
 + firstName
 + lastName
-+ payment
 + address
 }
 
