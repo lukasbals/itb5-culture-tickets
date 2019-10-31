@@ -1,21 +1,21 @@
 @startuml
 
-abstract class Role{
+abstract class Roles{
 + name
 + rights
 }
 
 
-class Employee{
+class Employees{
 + id
 }
 
-class Organiser{
+class Organisers{
 + id
 }
 
 
-class User{
+class Users{
 + username
 + password
 + address
@@ -24,13 +24,13 @@ class User{
 }
 
 
-class Event{
+class Events{
 + date
 + seatReservationPossible
 }
 
 
-class Location{
+class Locations{
 + building
 + address
 + room
@@ -39,45 +39,45 @@ class Location{
 }
 
 
-class Tournee{
+class Tours{
 + description
 + category
 }
 
 
-class PlaceCategory{
+class PlaceCategories{
 + name
 + category: ENUM
 + price
 }
 
-class Ticket{
+class Tickets{
 + number: optional
 + sold: available ENUM
 }
 
 
-class Client{
+class Clients{
 + firstName
 + lastName
 + address
 }
 
 
-class Artist{
+class Artists{
 + name
 + genre
 }
 
-Role <|-- Employee
-Role <|-- Organiser
-Role "0..*" -- "0..*" User: has
-User "1" -- "0..*" Tournee: manages
-Event "1..*" -- "1" Tournee: consists of
-Event "0..*" -- "1"  Location: takes place
-Event "1..*" -- "1..*" PlaceCategory: has
-Tournee "0..*" -- "1..*" Artist: goes on
-PlaceCategory "1" -- "1..*" Ticket: contains
-Ticket "1..*" -- "1" Client: buys
+Roles <|-- Employees
+Roles <|-- Organisers
+Roles "0..*" -- "0..*" Users: has
+Users "1" -- "0..*" Tours: manages
+Events "1..*" -- "1" Tours: consists of
+Events "0..*" -- "1"  Locations: takes place
+Events "1..*" -- "1..*" PlaceCategories: has
+Tours "0..*" -- "1..*" Artists: goes on
+PlaceCategories "1" -- "1..*" Tickets: contains
+Tickets "1..*" -- "1" Clients: buys
 
 @enduml
