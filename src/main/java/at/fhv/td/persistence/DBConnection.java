@@ -38,6 +38,10 @@ public class DBConnection extends Thread {
     private DBConnection() {
     }
 
+    static void setSessionFactory(SessionFactory sessionFactory) {
+        _sessionFactory = sessionFactory;
+    }
+
     public static void setupDBConnection() {
         DBConnection dbConnection = new DBConnection();
         dbConnection.start();
