@@ -19,27 +19,27 @@ insert into placecategories (categoryname, category, price) values ('Sitzplatzka
 insert into placecategories (categoryname, category, price) values ('Sitzplatzkategorie B', 'Sitzplatz', 7.50);
 insert into placecategories (categoryname, category, price) values ('Stehplatz', 'Stehplatz', 5.00);
 
-insert into tickets (ticket_number, sold, categoryname, client_id) values (1, 0, 'Sitzplatz', 1);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (2, 0, 'Sitzplatz', 1);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (3, 0, 'Sitzplatz', 1);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (4, 0, 'Sitzplatz', 1);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (5, 0, 'Sitzplatz', 2);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (6, 0, 'Sitzplatz', 2);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (7, 0, 'Sitzplatz', 2);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (8, 0, 'Sitzplatz', 2);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (9, 0, 'Sitzplatz', 3);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (10, 0, 'Sitzplatz', 3);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (11, 0, 'Sitzplatz', 3);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (12, 0, 'Sitzplatz', 4);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (13, 0, 'Stehplatz', 4);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (1, 0, 'Sitzplatzkategorie A', 1);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (2, 0, 'Sitzplatzkategorie A', 1);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (3, 0, 'Sitzplatzkategorie B', 1);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (4, 0, 'Sitzplatzkategorie B', 1);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (5, 0, 'Stehplatz', 2);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (6, 0, 'Sitzplatzkategorie A', 2);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (7, 0, 'Stehplatz', 2);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (8, 0, 'Sitzplatzkategorie B', 2);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (9, 0, 'Sitzplatzkategorie B', 3);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (10, 0, 'Stehplatz', 3);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (11, 0, 'Stehplatz', 3);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (12, 0, 'Sitzplatzkategorie A', 4);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (13, 0, 'Sitzplatzkategorie B', 4);
 insert into tickets (ticket_number, sold, categoryname, client_id) values (14, 0, 'Stehplatz', 4);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (15, 0, 'Stehplatz', 4);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (16, 0, 'Stehplatz', 1);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (17, 0, 'Stehplatz', 1);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (18, 0, 'Stehplatz', 1);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (15, 0, 'Sitzplatzkategorie A', 4);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (16, 0, 'Sitzplatzkategorie B', 1);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (17, 0, 'Sitzplatzkategorie A', 1);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (18, 0, 'Sitzplatzkategorie B', 1);
 insert into tickets (ticket_number, sold, categoryname, client_id) values (19, 0, 'Stehplatz', 2);
 insert into tickets (ticket_number, sold, categoryname, client_id) values (20, 0, 'Stehplatz', 2);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (21, 0, 'Stehplatz', 2);
+insert into tickets (ticket_number, sold, categoryname, client_id) values (21, 0, 'Sitzplatzkategorie A', 2);
 
 insert into users (username, password, address) values ('admin', 'WS2019+fhv', 'Hauptstraße 1, 6700 Bludenz');
 
