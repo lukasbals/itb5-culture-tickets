@@ -62,7 +62,7 @@ public class DBConnection extends Thread {
         return _sessionFactory != null;
     }
 
-    private SessionFactory createSessionFactory() throws ServiceException {
+    private SessionFactory createSessionFactory() {
         Configuration configuration = getConfiguration();
         StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
                 configuration.getProperties()
