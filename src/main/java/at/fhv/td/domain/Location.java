@@ -11,7 +11,7 @@ public class Location implements ILocation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "location_id", updatable = false, nullable = false)
-    private Long _locactionId;
+    private Long _locationId;
 
     @Column(name = "address")
     private String _address;
@@ -30,7 +30,7 @@ public class Location implements ILocation {
 
     @Override
     public Long getLocationId() {
-        return _locactionId;
+        return _locationId;
     }
 
     @Override
@@ -76,5 +76,10 @@ public class Location implements ILocation {
 
     public void setStandingPlaces(Integer standingPlaces) {
         _standingPlaces = standingPlaces;
+    }
+
+    @Override
+    public String toString() {
+        return "Location [_address=" + _address + ", _building=" + _building + "]";
     }
 }

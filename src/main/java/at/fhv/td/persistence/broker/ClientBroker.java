@@ -11,15 +11,15 @@ public class ClientBroker extends Broker<Client> {
     private ClientBroker() {
     }
 
-    @Override
-    protected Class<Client> getModelClass() {
-        return Client.class;
-    }
-
     public static ClientBroker getInstance() {
         if (_clientBroker == null) {
             _clientBroker = new ClientBroker();
         }
         return _clientBroker;
+    }
+
+    @Override
+    protected Class<Client> getModelClass() {
+        return Client.class;
     }
 }

@@ -4,6 +4,7 @@ import at.fhv.td.domain.interfaces.IEvent;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "events")
@@ -21,11 +22,16 @@ public class Event implements IEvent {
 
     @ManyToOne
     @JoinColumn(name = "tour_id")
-    private Tour _tourId;
+    private Tour _tour;
 
     @ManyToOne
     @JoinColumn(name = "location_id")
-    private Location _locationId;
+    private Location _location;
+
+    @ManyToMany
+    @JoinTable(name = "events_places_categories", joinColumns = {
+            @JoinColumn(name = "event_id")}, inverseJoinColumns = {@JoinColumn(name = "categoryname")})
+    private Set<PlaceCategory> _placeCategories;
 
     @Override
     public Long getEventId() {
@@ -51,20 +57,34 @@ public class Event implements IEvent {
     }
 
     @Override
-    public Tour getTourId() {
-        return _tourId;
+    public Tour getTour() {
+        return _tour;
     }
 
-    public void setTourId(Tour tourId) {
-        _tourId = tourId;
+    public void setTour(Tour tour) {
+        _tour = tour;
     }
 
     @Override
-    public Location getLocationId() {
-        return _locationId;
+    public Location getLocation() {
+        return _location;
     }
 
-    public void setLocationId(Location locationId) {
-        _locationId = locationId;
+    public void setLocation(Location locationId) {
+        _location = locationId;
+    }
+
+    @Override
+    public Set<PlaceCategory> getPlaceCategories() {
+        return _placeCategories;
+    }
+
+    public void setPlaceCategories(Set<PlaceCategory> placeCategories) {
+        _placeCategories = placeCategories;
+    }
+
+    @Override
+    public String getEventname() {
+        return _tour.getTourName();
     }
 }

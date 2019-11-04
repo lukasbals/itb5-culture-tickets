@@ -15,26 +15,15 @@ public class DBConnection extends Thread {
     private static SessionFactory _sessionFactory = null;
     private static String[] _hibernateClasses = {
             "at.fhv.td.domain.Client",
+            "at.fhv.td.domain.Event",
+            "at.fhv.td.domain.Tour",
+            "at.fhv.td.domain.Location",
+            "at.fhv.td.domain.Artist",
+            "at.fhv.td.domain.User",
+            "at.fhv.td.domain.Role",
+            "at.fhv.td.domain.Ticket",
+            "at.fhv.td.domain.PlaceCategory",
     };
-
-    @Override
-    public void run() {
-        while (_sessionFactory == null) {
-            try {
-                _sessionFactory = createSessionFactory();
-                System.out.println("Connected!");
-            } catch (ServiceException e) {
-                System.err.println(e.getMessage());
-            }
-            try {
-                sleep(5000);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                e.printStackTrace();
-            }
-
-        }
-    }
 
     private DBConnection() {
     }
@@ -60,6 +49,25 @@ public class DBConnection extends Thread {
 
     public static boolean connected() {
         return _sessionFactory != null;
+    }
+
+    @Override
+    public void run() {
+        while (_sessionFactory == null) {
+            try {
+                _sessionFactory = createSessionFactory();
+                System.out.println("Connected!");
+            } catch (ServiceException e) {
+                System.err.println(e.getMessage());
+            }
+            try {
+                sleep(5000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                e.printStackTrace();
+            }
+
+        }
     }
 
     private SessionFactory createSessionFactory() {

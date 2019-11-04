@@ -2,12 +2,22 @@ package at.fhv.td.domain;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.powermock.modules.junit4.PowerMockRunner;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+@RunWith(PowerMockRunner.class)
 public class RoleTest {
     private Role _testRole;
 
+    @Mock
+    private User _user;
 
     @Before
     public void before() {
@@ -27,6 +37,14 @@ public class RoleTest {
         String rights = "rwx";
         _testRole.setRights(rights);
         assertEquals(rights, _testRole.getRights());
+    }
+
+    @Test
+    public void getAndSetUsers() {
+        Set<User> users = new HashSet<>();
+        users.add(_user);
+        _testRole.setUsers(users);
+        assertTrue(_testRole.getUsers().size() == 1);
     }
 }
 
