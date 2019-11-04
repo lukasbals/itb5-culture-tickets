@@ -5,19 +5,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+
 public class ClientTest {
     private Client _testClient;
 
     @Before
     public void before() {
         _testClient = new Client();
-    }
-
-    @Test
-    public void getAndSetClientId() {
-        Long id = 12L;
-        _testClient.setClientId(id);
-        assertEquals(id, _testClient.getClientId());
     }
 
     @Test
@@ -39,12 +33,5 @@ public class ClientTest {
         String address = "Address 1";
         _testClient.setAddress(address);
         assertEquals(address, _testClient.getAddress());
-    }
-
-    @Test
-    public void testToString() {
-        _testClient.setFirstname("Firstname");
-        _testClient.setLastname("Lastname");
-        assertEquals("Firstname Lastname", _testClient.toString());
     }
 }

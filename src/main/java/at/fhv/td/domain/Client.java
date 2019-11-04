@@ -1,13 +1,13 @@
 package at.fhv.td.domain;
 
+import at.fhv.td.domain.interfaces.IClient;
+
 import javax.persistence.*;
 
-/**
- * @author Lukas Bals
- */
 @Entity
-@Table(name = "client")
-public class Client {
+@Table(name = "clients")
+public class Client implements IClient {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "client_id", updatable = false, nullable = false)
@@ -22,40 +22,35 @@ public class Client {
     @Column(name = "address")
     private String _address;
 
+    @Override
     public Long getClientId() {
         return _clientId;
     }
 
-    public void setClientId(Long clientId) {
-        this._clientId = clientId;
-    }
-
+    @Override
     public String getFirstname() {
         return _firstname;
     }
 
     public void setFirstname(String firstname) {
-        this._firstname = firstname;
+        _firstname = firstname;
     }
 
+    @Override
     public String getLastname() {
         return _lastname;
     }
 
     public void setLastname(String lastname) {
-        this._lastname = lastname;
+        _lastname = lastname;
     }
 
+    @Override
     public String getAddress() {
         return _address;
     }
 
     public void setAddress(String address) {
-        this._address = address;
-    }
-
-    @Override
-    public String toString() {
-        return getFirstname() + " " + getLastname();
+        _address = address;
     }
 }

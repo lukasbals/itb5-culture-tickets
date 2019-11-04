@@ -29,6 +29,7 @@ public class DBConnection extends Thread {
             try {
                 sleep(5000);
             } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
                 e.printStackTrace();
             }
 
