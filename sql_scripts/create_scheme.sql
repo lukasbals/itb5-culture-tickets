@@ -21,9 +21,10 @@ create table if not exists clients (
 );
 
 create table if not exists artists (
+									  artist_id serial,
                                       artistname varchar(255) not null,
                                       genre varchar (255),
-                                      primary key (artistname)
+                                      primary key (artist_id)
 );
 
 create table if not exists roles (
@@ -72,6 +73,7 @@ create table if not exists tickets (
 
 create table if not exists tours (
                                     tour_id serial,
+                                    tourname varchar(255) not null,
                                     description varchar (255),
                                     category varchar (255),
                                     username varchar (255) not null,
@@ -102,9 +104,9 @@ create table if not exists has_roles (
 create table if not exists going_on (
                                        going_on_id serial,
                                        tour_id integer not null,
-                                       artistname varchar (255) not null,
+                                       artist_id integer not null,
                                        foreign key (tour_id) references tours(tour_id),
-                                       foreign key (artistname) references artists(artistname),
+                                       foreign key (artist_id) references artists(artist_id),
                                        primary key (going_on_id)
 );
 

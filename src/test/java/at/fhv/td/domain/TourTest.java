@@ -3,6 +3,9 @@ package at.fhv.td.domain;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.junit.Assert.assertEquals;
 
 public class TourTest {
@@ -39,5 +42,15 @@ public class TourTest {
         _testTour.setCategory(category);
         assertEquals(category, _testTour.getCategory());
     }
-}
 
+    @Test
+    public void getAndSetArtists() {
+        Artist newArtist = new Artist();
+        newArtist.setArtistName("BakaBoing");
+        Set<Artist> artists = new HashSet<>();
+        artists.add(newArtist);
+
+        _testTour.setArtists(artists);
+        assertEquals(artists, _testTour.getArtists());
+    }
+}

@@ -2,17 +2,30 @@ package at.fhv.td.domain;
 
 import org.junit.Before;
 import org.junit.Test;
-
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+@RunWith(PowerMockRunner.class)
 public class EventTest {
     private Event _testEvent;
     private Tour _testTour;
     private User _testUser;
     private Location _testLocation;
+
+    @Mock
+    private Event _testEventMock;
+    @Mock
+    private Tour _testTourMock;
+    @Mock
+    private PlaceCategory _placeCategory;
 
     @Before
     public void before() {
@@ -46,8 +59,8 @@ public class EventTest {
         _testTour.setDescription("it is an amazing play");
         _testTour.setUsername(_testUser);
         _testEvent.setSeatReservationPossible(true);
-        _testEvent.setTourId(_testTour);
-        assertEquals(_testTour, _testEvent.getTourId());
+        _testEvent.setTour(_testTour);
+        assertEquals(_testTour, _testEvent.getTour());
     }
 
     @Test
@@ -58,8 +71,24 @@ public class EventTest {
         _testLocation.setRoom("210");
         _testLocation.setSeats(120);
         _testLocation.setStandingPlaces(200);
-        _testEvent.setLocationId(_testLocation);
-        assertEquals(_testLocation, _testEvent.getLocationId());
+        _testEvent.setLocation(_testLocation);
+        assertEquals(_testLocation, _testEvent.getLocation());
+    }
+
+    @Test
+    public void getEventname() {
+        String name = "Boohya";
+        _testTour = new Tour();
+        _testTour.setTourName(name);
+        _testEvent.setTour(_testTour);
+        assertEquals(name, _testEvent.getEventname());
+    }
+
+    @Test
+    public void getAndSetPlaceCategories() {
+        Set<PlaceCategory> categories = new HashSet<>();
+        categories.add(_placeCategory);
+        _testEvent.setPlaceCategories(categories);
+        assertTrue(_testEvent.getPlaceCategories().size() == 1);
     }
 }
-

@@ -47,4 +47,14 @@ public class LocationTest {
         _testLocation.setStandingPlaces(standingPlaces);
         assertEquals(standingPlaces, _testLocation.getStandingPlaces());
     }
+
+    @Test
+    public void toStringTest() {
+        String address = "boingweg 9";
+        String building = "boingtower";
+        String expected = "Location [_address=" + address + ", _building=" + building + "]";
+        _testLocation.setAddress(address);
+        _testLocation.setBuilding(building);
+        assertEquals(expected, _testLocation.toString());
+    }
 }

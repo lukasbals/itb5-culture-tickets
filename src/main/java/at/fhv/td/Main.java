@@ -1,30 +1,35 @@
 package at.fhv.td;
 
-import at.fhv.td.domain.Client;
 import at.fhv.td.persistence.DBConnection;
-import at.fhv.td.persistence.broker.ClientBroker;
+import at.fhv.td.rmi.ClientSessionFactoryImpl;
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 /**
  * @author Lukas Bals
  */
 public class Main {
+    private static final String IP_ADDRESS = "localhost";
+
     public static void main(String[] args) {
         DBConnection.setupDBConnection();
+        setupRmiRegistry();
+    }
 
-        // The following code can be removed later
-        while (!DBConnection.connected()) {
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                e.printStackTrace();
-            }
+    private static void setupRmiRegistry() {
+        try {
+            System.setProperty("java.rmi.server.hostname", IP_ADDRESS);
+            LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
+
+            ClientSessionFactoryImpl clientFactory = new ClientSessionFactoryImpl();
+
+            Naming.rebind("rmi://" + IP_ADDRESS + "/clientFactory", clientFactory);
+        } catch (RemoteException | MalformedURLException e) {
+            e.printStackTrace();
         }
-        Client client1 = new Client();
-        client1.setFirstname("Elisabeth");
-        client1.setLastname("Beer");
-        client1.setAddress("Hittisau");
-        ClientBroker.getInstance().save(client1);
-        System.out.println(ClientBroker.getInstance().getAll());
     }
 }

@@ -29,36 +29,6 @@ import static org.powermock.api.mockito.PowerMockito.verifyStatic;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(DBConnection.class)
 public class BrokerTest {
-    static class TestModel {
-        private Long _id;
-        private String _name;
-        private Integer _age;
-
-        private TestModel(Long id, String name, Integer age) {
-            this._id = id;
-            this._name = name;
-            this._age = age;
-        }
-
-        private Long getId() {
-            return _id;
-        }
-
-        public String getName() {
-            return _name;
-        }
-
-        public Integer getAge() {
-            return _age;
-        }
-    }
-
-    private TestModel _mockModel = new TestModel(1L, "Name", 12);
-    private ArrayList<TestModel> _mockModelList = new ArrayList<>();
-    private Class<TestModel> _exampleClass = TestModel.class;
-    private Broker<TestModel> _broker;
-    private String _column = "name";
-    private Integer _value = 12;
     @Mock
     Session _session;
     @Mock
@@ -71,6 +41,12 @@ public class BrokerTest {
     Root _root;
     @Mock
     Query _query;
+    private TestModel _mockModel = new TestModel(1L, "Name", 12);
+    private ArrayList<TestModel> _mockModelList = new ArrayList<>();
+    private Class<TestModel> _exampleClass = TestModel.class;
+    private Broker<TestModel> _broker;
+    private String _column = "name";
+    private Integer _value = 12;
 
     @Before
     public void before() throws DBConnectionErrorException {
@@ -191,5 +167,29 @@ public class BrokerTest {
         _broker.delete(_mockModel);
         verifyStatic(DBConnection.class, times(5));
         DBConnection.getSession();
+    }
+
+    static class TestModel {
+        private Long _id;
+        private String _name;
+        private Integer _age;
+
+        private TestModel(Long id, String name, Integer age) {
+            this._id = id;
+            this._name = name;
+            this._age = age;
+        }
+
+        private Long getId() {
+            return _id;
+        }
+
+        public String getName() {
+            return _name;
+        }
+
+        public Integer getAge() {
+            return _age;
+        }
     }
 }

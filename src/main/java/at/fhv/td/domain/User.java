@@ -3,6 +3,7 @@ package at.fhv.td.domain;
 import at.fhv.td.domain.interfaces.IUser;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -22,6 +23,11 @@ public class User implements IUser {
 
     @Column(name = "email")
     private String _email;
+
+    @ManyToMany
+    @JoinTable(name = "has_roles", joinColumns = {@JoinColumn(name = "username")}, inverseJoinColumns = {
+            @JoinColumn(name = "role_id")})
+    private Set<Role> _roles;
 
     @Override
     public String getUsername() {
@@ -67,5 +73,13 @@ public class User implements IUser {
     public void setEmail(String email) {
         _email = email;
     }
-}
 
+    @Override
+    public Set<Role> getRoles() {
+        return _roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        _roles = roles;
+    }
+}
