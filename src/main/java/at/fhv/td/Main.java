@@ -16,6 +16,7 @@ public class Main {
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
                 e.printStackTrace();
             }
         }
