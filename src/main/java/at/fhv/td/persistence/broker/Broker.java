@@ -16,12 +16,12 @@ import java.util.List;
 /**
  * @author Lukas Bals
  */
-public abstract class Broker<Model> implements BrokerInterface<Model> {
-    protected abstract Class<Model> getModelClass();
+public abstract class Broker<T> implements BrokerInterface<T> {
+    protected abstract Class<T> getModelClass();
 
     @Override
-    public Model get(Long id) {
-        Model result = null;
+    public T get(Long id) {
+        T result = null;
         Session session;
         try {
             session = DBConnection.getSession();
@@ -36,21 +36,21 @@ public abstract class Broker<Model> implements BrokerInterface<Model> {
     }
 
     @Override
-    public List<Model> getAll() {
+    public List<T> getAll() {
         return getAll(new LinkedList<>());
     }
 
     @Override
-    public List<Model> getAll(List<PersistenceFilter> filters) {
-        List<Model> result = null;
+    public List<T> getAll(List<PersistenceFilter> filters) {
+        List<T> result = null;
         Session session;
         try {
             session = DBConnection.getSession();
             Transaction transaction = session.beginTransaction();
 
             CriteriaBuilder builder = session.getCriteriaBuilder();
-            CriteriaQuery<Model> criteria = builder.createQuery(getModelClass());
-            Root<Model> root = criteria.from(getModelClass());
+            CriteriaQuery<T> criteria = builder.createQuery(getModelClass());
+            Root<T> root = criteria.from(getModelClass());
             criteria.select(root);
 
             // If filters exist add them to the query
@@ -71,7 +71,7 @@ public abstract class Broker<Model> implements BrokerInterface<Model> {
         return result;
     }
 
-    Predicate getWhereClause(CriteriaBuilder builder, Root<Model> root, PersistenceFilter filter) {
+    Predicate getWhereClause(CriteriaBuilder builder, Root<T> root, PersistenceFilter filter) {
         Predicate condition;
         switch (filter.getFilterType()) {
             default:
@@ -89,7 +89,7 @@ public abstract class Broker<Model> implements BrokerInterface<Model> {
     }
 
     @Override
-    public Long save(Model item) {
+    public Long save(T item) {
         Long result = null;
         Session session;
         try {
@@ -106,7 +106,7 @@ public abstract class Broker<Model> implements BrokerInterface<Model> {
     }
 
     @Override
-    public void update(Model item) {
+    public void update(T item) {
         Session session;
         try {
             session = DBConnection.getSession();
@@ -121,7 +121,7 @@ public abstract class Broker<Model> implements BrokerInterface<Model> {
     }
 
     @Override
-    public void delete(Model item) {
+    public void delete(T item) {
         Session session;
         try {
             session = DBConnection.getSession();
