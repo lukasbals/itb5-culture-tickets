@@ -5,15 +5,16 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class DTOClientTest {
-    private DTOClient _testClient;
+public class ClientDTOTest {
+    private ClientDTO _testClient;
     private String _fname = "Patrick";
     private String _lname = "Poiger";
     private String _address = "Zuhause 1";
+    private Long _id = 1l;
 
     @Before
     public void before() {
-        _testClient = new DTOClient(_fname, _lname, _address);
+        _testClient = new ClientDTO(_fname, _lname, _address, _id);
     }
 
     @Test
@@ -50,5 +51,17 @@ public class DTOClientTest {
         String newAdd = "Bludenzerweg 1";
         _testClient.setAddress(newAdd);
         assertEquals(newAdd, _testClient.getAddress());
+    }
+
+    @Test
+    public void getId() {
+        assertEquals(_id, _testClient.getId());
+    }
+
+    @Test
+    public void setId() {
+        Long newId = 2l;
+        _testClient.setId(newId);
+        assertEquals(newId, _testClient.getId());
     }
 }

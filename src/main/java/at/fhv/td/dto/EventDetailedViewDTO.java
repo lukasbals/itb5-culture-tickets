@@ -1,26 +1,33 @@
 package at.fhv.td.dto;
 
-public class DTOEventDescription {
+public class EventDetailedViewDTO {
     private String _artistname;
     private String _description;
+    private String _genre;
     private String _location;
-    private float _price;
-    private boolean _isSeatReservationPossible;
+    private Float _price;
+    private Boolean _isSeatReservationPossible;
     private String _categoryName;
     private String _category;
-    private int[] _notSoldTicketNumbers;
+    private String _date;
+    private TicketDTO[] _ticket;
+    private Long _id;
 
-    public DTOEventDescription(String artistname, String description, String location, float price,
-                               boolean isSeatReservationPossible, String categoryName, String category,
-                               int[] notSoldTicketNumbers) {
+
+    public EventDetailedViewDTO(String artistname, String description, String genre, String location, Float price,
+                                Boolean isSeatReservationPossible, String categoryName, String category, String date,
+                                TicketDTO[] tickets, Long id) {
         _artistname = artistname;
         _description = description;
+        _genre = genre;
         _location = location;
         _price = price;
         _isSeatReservationPossible = isSeatReservationPossible;
         _categoryName = categoryName;
         _category = category;
-        _notSoldTicketNumbers = notSoldTicketNumbers;
+        _date = date;
+        _ticket = tickets;
+        _id = id;
     }
 
     public String getArtistname() {
@@ -39,6 +46,14 @@ public class DTOEventDescription {
         _description = description;
     }
 
+    public String getGenre() {
+        return _genre;
+    }
+
+    public void setGenre(String genre) {
+        _genre = genre;
+    }
+
     public String getLocation() {
         return _location;
     }
@@ -47,19 +62,19 @@ public class DTOEventDescription {
         _location = location;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return _price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         _price = price;
     }
 
-    public boolean isSeatReservationPossible() {
+    public Boolean isSeatReservationPossible() {
         return _isSeatReservationPossible;
     }
 
-    public void setSeatReservationPossible(boolean seatReservationPossible) {
+    public void setSeatReservationPossible(Boolean seatReservationPossible) {
         _isSeatReservationPossible = seatReservationPossible;
     }
 
@@ -79,11 +94,27 @@ public class DTOEventDescription {
         _category = category;
     }
 
-    public int[] getNotSoldTicketNumbers() {
-        return _notSoldTicketNumbers;
+    public String getDate() {
+        return _date;
     }
 
-    public void setNotSoldTicketNumbers(int[] notSoldTicketNumbers) {
-        _notSoldTicketNumbers = notSoldTicketNumbers;
+    public void setDate(String date) {
+        _date = date;
+    }
+
+    public TicketDTO[] getTicket() {
+        return _ticket;
+    }
+
+    public void setTicket(TicketDTO[] tickets) {
+        _ticket = tickets;
+    }
+
+    public Long getId() {
+        return _id;
+    }
+
+    public void setId(Long id) {
+        _id = id;
     }
 }

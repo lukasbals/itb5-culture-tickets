@@ -1,14 +1,16 @@
 package at.fhv.td.dto;
 
-public class DTOClient {
+public class ClientDTO {
     private String _firstName;
     private String _lastName;
     private String _address;
+    private Long _id;
 
-    public DTOClient(String firstName, String lastName, String address) {
+    public ClientDTO(String firstName, String lastName, String address, Long id) {
         _firstName = firstName;
         _lastName = lastName;
         _address = address;
+        _id = id;
     }
 
     public String getFirstName() {
@@ -33,5 +35,13 @@ public class DTOClient {
 
     public void setAddress(String address) {
         _address = address;
+    }
+
+    public Long getId() {
+        return _id;
+    }
+
+    public void setId(Long id) {
+        _id = id;
     }
 }
