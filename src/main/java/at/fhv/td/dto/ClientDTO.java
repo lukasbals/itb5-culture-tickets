@@ -1,10 +1,10 @@
 package at.fhv.td.dto;
 
 import at.fhv.td.rmi.interfaces.IClientDTO;
-import at.fhv.td.rmi.interfaces.ITicketDTO;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Objects;
 
 public class ClientDTO extends UnicastRemoteObject implements IClientDTO {
     private String _firstName;
@@ -12,15 +12,8 @@ public class ClientDTO extends UnicastRemoteObject implements IClientDTO {
     private String _address;
     private Long _id;
 
-    public ClientDTO () throws RemoteException {
-
-    }
-
-    public ClientDTO(String firstName, String lastName, String address, Long id) throws RemoteException {
-        _firstName = firstName;
-        _lastName = lastName;
-        _address = address;
-        _id = id;
+    public ClientDTO() throws RemoteException {
+        super();
     }
 
     public String getFirstName() {
@@ -53,5 +46,18 @@ public class ClientDTO extends UnicastRemoteObject implements IClientDTO {
 
     public void setId(Long id) {
         _id = id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof ClientDTO) {
+            return getId().equals(((ClientDTO) obj).getId());
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(_id);
     }
 }

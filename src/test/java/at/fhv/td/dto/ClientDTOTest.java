@@ -16,7 +16,11 @@ public class ClientDTOTest {
 
     @Before
     public void before() throws RemoteException {
-        _testClient = new ClientDTO(_fname, _lname, _address, _id);
+        _testClient = new ClientDTO();
+        _testClient.setFirstName(_fname);
+        _testClient.setLastName(_lname);
+        _testClient.setAddress(_address);
+        _testClient.setId(_id);
     }
 
     @Test

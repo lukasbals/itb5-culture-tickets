@@ -28,11 +28,11 @@ public class EventDetailedViewDTO extends UnicastRemoteObject implements IEventD
     }
 
     @Override
-    public String getEventName() throws RemoteException{
+    public String getEventName() throws RemoteException {
         return _eventName;
     }
 
-    public void setEventName(String eventName) throws RemoteException{
+    public void setEventName(String eventName) throws RemoteException {
         _eventName = eventName;
     }
 
@@ -145,7 +145,7 @@ public class EventDetailedViewDTO extends UnicastRemoteObject implements IEventD
     public boolean equals(Object obj) {
         if (obj instanceof EventDetailedViewDTO) {
             try {
-                return _eventId == ((EventDetailedViewDTO) obj).getEventId();
+                return getEventId().equals(((EventDetailedViewDTO) obj).getEventId());
             } catch (RemoteException e) {
                 e.printStackTrace();
             }

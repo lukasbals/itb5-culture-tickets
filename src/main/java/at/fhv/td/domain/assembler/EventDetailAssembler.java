@@ -1,5 +1,7 @@
-package at.fhv.td.domain;
+package at.fhv.td.domain.assembler;
 
+import at.fhv.td.domain.Artist;
+import at.fhv.td.domain.PlaceCategory;
 import at.fhv.td.domain.interfaces.IEvent;
 import at.fhv.td.dto.EventDetailedViewDTO;
 import at.fhv.td.rmi.interfaces.IEventDetailedViewDTO;
@@ -9,7 +11,10 @@ import java.time.LocalDate;
 import java.util.stream.Collectors;
 
 public class EventDetailAssembler {
-    public IEventDetailedViewDTO toEventDetailedViewDTO(IEvent event) {
+    private EventDetailAssembler() {
+    }
+
+    public static IEventDetailedViewDTO toEventDetailedViewDTO(IEvent event) {
         String eventName = event.getEventname();
         String artists = event.getTour().getArtists().stream().map(Artist::getArtistname).collect(Collectors.joining(", "));
         String description = event.getTour().getDescription();
@@ -39,7 +44,6 @@ public class EventDetailAssembler {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-
         return newDto;
     }
 }

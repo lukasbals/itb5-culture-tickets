@@ -1,8 +1,7 @@
-package at.fhv.td.application;
+package at.fhv.td.rmi;
 
-import at.fhv.td.domain.ClientAssembler;
-import at.fhv.td.domain.EventDetailAssembler;
-import at.fhv.td.persistence.broker.ClientBroker;
+import at.fhv.td.application.ClientController;
+import at.fhv.td.domain.assembler.ClientAssembler;
 import at.fhv.td.rmi.interfaces.IClientDTO;
 import at.fhv.td.rmi.interfaces.ILoadClient;
 
@@ -18,10 +17,9 @@ public class LoadClientImpl extends UnicastRemoteObject implements ILoadClient {
     public LoadClientImpl() throws RemoteException {
         super();
     }
+
     @Override
-    public List<IClientDTO> loadClients() throws RemoteException {
-        return ClientBroker.getInstance().getAll().stream()
-                .map(e -> new ClientAssembler().toClientDTO(e))
-                .collect(Collectors.toList());
+    public List<IClientDTO> loadClients() {
+        return ClientController.getClients().stream().map(ClientAssembler::toClientDTO).collect(Collectors.toList());
     }
 }

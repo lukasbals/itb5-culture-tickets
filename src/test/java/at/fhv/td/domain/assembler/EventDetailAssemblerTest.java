@@ -1,5 +1,9 @@
-package at.fhv.td.domain;
+package at.fhv.td.domain.assembler;
 
+import at.fhv.td.domain.Artist;
+import at.fhv.td.domain.Location;
+import at.fhv.td.domain.PlaceCategory;
+import at.fhv.td.domain.Tour;
 import at.fhv.td.domain.interfaces.IEvent;
 import at.fhv.td.dto.EventDetailedViewDTO;
 import at.fhv.td.rmi.interfaces.IEventDetailedViewDTO;
@@ -21,7 +25,6 @@ import static org.mockito.Mockito.when;
 
 @RunWith(PowerMockRunner.class)
 public class EventDetailAssemblerTest {
-    private EventDetailAssembler _testAssembler;
     private Set<Artist> _artists;
     private Set<PlaceCategory> _placeCats;
     private String _desc = "MMMMMMonster";
@@ -40,8 +43,6 @@ public class EventDetailAssemblerTest {
 
     @Before
     public void setup() {
-        _testAssembler = new EventDetailAssembler();
-
         _artists = new HashSet<Artist>();
         Artist artist1 = new Artist();
         artist1.setArtistName(_artist1);
@@ -83,7 +84,7 @@ public class EventDetailAssemblerTest {
         expected.setPrices(new Float[]{20f});
         expected.setSeatReservationPossible(true);
 
-        IEventDetailedViewDTO dto = _testAssembler.toEventDetailedViewDTO(_event);
+        IEventDetailedViewDTO dto = EventDetailAssembler.toEventDetailedViewDTO(_event);
 
         assertEquals(expected.getArtists(), dto.getArtists());
         assertEquals(expected.getCategory(), dto.getCategory());

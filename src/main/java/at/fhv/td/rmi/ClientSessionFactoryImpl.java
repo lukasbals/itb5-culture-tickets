@@ -1,7 +1,5 @@
 package at.fhv.td.rmi;
 
-import at.fhv.td.application.LoadClientImpl;
-import at.fhv.td.application.SearchEventImpl;
 import at.fhv.td.rmi.interfaces.IClientSessionFactory;
 import at.fhv.td.rmi.interfaces.ILoadClient;
 import at.fhv.td.rmi.interfaces.ISearchEvent;
