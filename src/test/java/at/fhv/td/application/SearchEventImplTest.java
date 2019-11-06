@@ -63,8 +63,8 @@ public class SearchEventImplTest {
             when(EventBroker.getInstance()).thenReturn(_eventBroker);
             when(EventBroker.getInstance().getAll()).thenReturn(_events);
 
-            when(_artist1.toString()).thenReturn("Sondaschule");
-            when(_artist2.toString()).thenReturn("WhiteStripes");
+            when(_artist1.getArtistname()).thenReturn("Sondaschule");
+            when(_artist2.getArtistname()).thenReturn("WhiteStripes");
 
             when(_event1.getDate()).thenReturn(LocalDate.of(2020, 11, 14));
             when(_event1.getEventname()).thenReturn("PPPPPPPoetry");
@@ -76,7 +76,7 @@ public class SearchEventImplTest {
             when(_event2.getDate()).thenReturn(LocalDate.of(2020, 11, 14));
             when(_event2.getEventname()).thenReturn("Masters of Disaster on Tour");
             when(_event2.getLocation()).thenReturn(_location);
-            when(_event2.getLocation().toString()).thenReturn("Montforthaus");
+            when(_event2.getLocation().getLocationString()).thenReturn("Montforthaus");
             when(_event2.getTour()).thenReturn(_tour2);
             when(_event2.getTour().getArtists()).thenReturn(_artists2);
 

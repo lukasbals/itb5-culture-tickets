@@ -10,10 +10,11 @@ import java.util.stream.Collectors;
 
 public class EventDetailAssembler {
     public IEventDetailedViewDTO toEventDetailedViewDTO(IEvent event) {
+        String eventName = event.getEventname();
         String artists = event.getTour().getArtists().stream().map(Artist::getArtistname).collect(Collectors.joining(", "));
         String description = event.getTour().getDescription();
         String[] genres = event.getTour().getArtists().stream().map(Artist::getGenre).distinct().toArray(String[]::new);
-        String location = String.join(", ", event.getLocation().getAddress(), event.getLocation().getBuilding());
+        String location = event.getLocation().getLocationString();
         String category = event.getTour().getCategory();
         boolean isSeatReservationPossible = event.getSeatReservationPossible();
         LocalDate date = event.getDate();
@@ -24,6 +25,7 @@ public class EventDetailAssembler {
         EventDetailedViewDTO newDto = null;
         try {
             newDto = new EventDetailedViewDTO();
+            newDto.setEventName(eventName);
             newDto.setArtists(artists);
             newDto.setDescription(description);
             newDto.setCategory(category);

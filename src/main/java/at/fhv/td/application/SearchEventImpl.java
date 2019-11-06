@@ -46,13 +46,13 @@ public class SearchEventImpl extends UnicastRemoteObject implements ISearchEvent
         }
 
         if (searchingLocation != null && !searchingLocation.equals("")) {
-            checksPassed &= actualEvent.getLocation().toString().toLowerCase()
+            checksPassed &= actualEvent.getLocation().getLocationString().toLowerCase()
                     .contains(searchingLocation.toLowerCase());
         }
 
         if (searchingArtist != null && !searchingArtist.equals("") && actualEvent.getTour() != null) {
             checksPassed &= actualEvent.getTour().getArtists().stream()
-                    .anyMatch(a -> a.toString().toLowerCase().contains(searchingArtist.toLowerCase()));
+                    .anyMatch(a -> a.getArtistname().toLowerCase().contains(searchingArtist.toLowerCase()));
         }
 
         return checksPassed;

@@ -1,7 +1,7 @@
 insert into clients (firstname, lastname, address) values ('Patrick', 'Poiger', 'Zuhauseweg 1, Bludenz 6700');
 insert into clients (firstname, lastname, address) values ('Lukas', 'Bals', 'Hittisau 3, Wald 6989');
 insert into clients (firstname, lastname, address) values ('Vanessa', 'Durig', 'Gaschurnstra√üe 14, Gaschurn 6793');
-insert into clients (firstname, lastname, address) values ('Pia-Maria', 'Weiﬂ', 'Dornbirnstra√üe 3, Dornbirn 6850');
+insert into clients (firstname, lastname, address) values ('Pia-Maria', 'WeiÔøΩ', 'Dornbirnstra√üe 3, Dornbirn 6850');
 
 insert into artists (artistname, genre) values ('Baka Boing', 'Heavy Metal');
 insert into artists (artistname, genre) values ('Hofrat Dr.-Med. Dr. DI. BalsiBals', 'Sachvortrag');
@@ -44,7 +44,7 @@ insert into tickets (ticket_number, sold, categoryname, client_id) values (21, 0
 insert into users (username, password, address) values ('admin', 'WS2019+fhv', 'Hauptstra√üe 1, 6700 Bludenz');
 
 insert into tours (tourname, description, category, username) values ('V-Tour', 'Vorarlberg Tour', 'Musik', 'admin');
-insert into tours (tourname, description, category, username) values ('÷sis', '÷sterreich Tour', 'Vortrag', 'admin');
+insert into tours (tourname, description, category, username) values ('ÔøΩsis', 'ÔøΩsterreich Tour', 'Vortrag', 'admin');
 insert into tours (tourname, description, category, username) values ('PPPPPoetry', 'Einmaliger Auftritt in Vorarlberg', 'Poetry Slam', 'admin');
 
 insert into events (date, seat_reservation_possible, tour_id, location_id) values ('2019-12-23', true, 1, 1);
@@ -68,6 +68,9 @@ insert into events_places_categories (event_id, categoryname) values (5, 'Sitzpl
 insert into events_places_categories (event_id, categoryname) values (6, 'Sitzplatzkategorie A');
 insert into events_places_categories (event_id, categoryname) values (6, 'Sitzplatzkategorie B');
 insert into events_places_categories (event_id, categoryname) values (6, 'Stehplatz');
+insert into events_places_categories (event_id, categoryname) values (7, 'Stehplatz');
+insert into events_places_categories (event_id, categoryname) values (8, 'Stehplatz');
+insert into events_places_categories (event_id, categoryname) values (9, 'Stehplatz');
 
 insert into going_on (tour_id, artist_id) values (1, 1);
 insert into going_on (tour_id, artist_id) values (2, 3);

@@ -26,6 +26,13 @@ public class EventDetailedViewDTOTest {
     }
 
     @Test
+    public void getEventNameTest() throws RemoteException{
+        String eventName = "MMMMMonsert";
+        _testEventDto.setEventName(eventName);
+        assertEquals(eventName, _testEventDto.getEventName());
+    }
+
+    @Test
     public void getAndSetArtists() throws RemoteException {
         String artists = "BakaBoing, Vani";
         _testEventDto.setArtists(artists);
