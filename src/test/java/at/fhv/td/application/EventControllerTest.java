@@ -62,14 +62,14 @@ public class EventControllerTest {
         when(_artist2.getArtistname()).thenReturn("WhiteStripes");
 
         when(_event1.getDate()).thenReturn(LocalDate.of(2020, 11, 14));
-        when(_event1.getEventname()).thenReturn("PPPPPPPoetry");
+        when(_event1.getEventName()).thenReturn("PPPPPPPoetry");
         when(_event1.getLocation()).thenReturn(_location);
         when(_event1.getLocation().toString()).thenReturn("Spielboden");
         when(_event1.getTour()).thenReturn(_tour1);
         when(_event1.getTour().getArtists()).thenReturn(_artists);
 
         when(_event2.getDate()).thenReturn(LocalDate.of(2020, 11, 14));
-        when(_event2.getEventname()).thenReturn("Masters of Disaster on Tour");
+        when(_event2.getEventName()).thenReturn("Masters of Disaster on Tour");
         when(_event2.getLocation()).thenReturn(_location);
         when(_event2.getLocation().getLocationString()).thenReturn("Montforthaus");
         when(_event2.getTour()).thenReturn(_tour2);

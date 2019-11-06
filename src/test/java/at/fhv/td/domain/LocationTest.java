@@ -35,20 +35,6 @@ public class LocationTest {
     }
 
     @Test
-    public void getAndSetSeats() {
-        Integer seats = 230;
-        _testLocation.setSeats(seats);
-        assertEquals(seats, _testLocation.getSeats());
-    }
-
-    @Test
-    public void getAndSetStandingPlaces() {
-        Integer standingPlaces = 100;
-        _testLocation.setStandingPlaces(standingPlaces);
-        assertEquals(standingPlaces, _testLocation.getStandingPlaces());
-    }
-
-    @Test
     public void toStringTest() {
         String address = "boingweg 9";
         String building = "boingtower";

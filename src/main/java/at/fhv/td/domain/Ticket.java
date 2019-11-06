@@ -19,16 +19,24 @@ public class Ticket implements ITicket {
     private Integer _sold;
 
     @ManyToOne
-    @JoinColumn(name = "categoryname")
-    private PlaceCategory _categoryname;
+    @JoinColumn(name = "category_id")
+    private PlaceCategory _placeCategory;
 
     @ManyToOne
     @JoinColumn(name = "client_id")
-    private Client _clientId;
+    private Client _client;
+
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    private Event _event;
 
     @Override
     public Long getTicketId() {
         return _ticketId;
+    }
+
+    public void setTicketId(Long id) {
+        _ticketId = id;
     }
 
     @Override
@@ -50,20 +58,47 @@ public class Ticket implements ITicket {
     }
 
     @Override
-    public PlaceCategory getCategoryname() {
-        return _categoryname;
+    public PlaceCategory getPlaceCategory() {
+        return _placeCategory;
     }
 
-    public void setCategoryname(PlaceCategory categoryname) {
-        _categoryname = categoryname;
+    public void setPlaceCategory(PlaceCategory categoryName) {
+        _placeCategory = categoryName;
     }
 
     @Override
-    public Client getClientId() {
-        return _clientId;
+    public Client getClient() {
+        return _client;
     }
 
-    public void setClientId(Client clientId) {
-        _clientId = clientId;
+    public void setClient(Client clientId) {
+        _client = clientId;
+    }
+
+    @Override
+    public Event getEvent() {
+        return _event;
+    }
+
+    public void setEvent(Event event) {
+        _event = event;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Ticket) {
+            Ticket comparingTicket = (Ticket) obj;
+            boolean eventId = getEvent().getEventId().equals(comparingTicket.getEvent().getEventId());
+            boolean ticketNumber = getTicketNumber().equals(comparingTicket.getTicketNumber());
+            boolean placeCategory = getPlaceCategory().getCategoryId().equals(comparingTicket.getPlaceCategory().getCategoryId());
+            return eventId && ticketNumber && placeCategory;
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return getEvent().hashCode() ^ getTicketNumber().hashCode() ^ getPlaceCategory().hashCode();
     }
 }

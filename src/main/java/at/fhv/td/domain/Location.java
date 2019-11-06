@@ -17,10 +17,6 @@ public class Location implements ILocation {
     private String _room;
     @Column(name = "building")
     private String _building;
-    @Column(name = "seats")
-    private Integer _seats;
-    @Column(name = "standing_places")
-    private Integer _standingPlaces;
 
     @Override
     public Long getLocationId() {
@@ -52,24 +48,6 @@ public class Location implements ILocation {
 
     public void setBuilding(String building) {
         _building = building;
-    }
-
-    @Override
-    public Integer getSeats() {
-        return _seats;
-    }
-
-    public void setSeats(Integer seats) {
-        _seats = seats;
-    }
-
-    @Override
-    public Integer getStandingPlaces() {
-        return _standingPlaces;
-    }
-
-    public void setStandingPlaces(Integer standingPlaces) {
-        _standingPlaces = standingPlaces;
     }
 
     @Transient

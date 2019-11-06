@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.rmi.RemoteException;
+import java.util.Objects;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,50 +25,57 @@ public class ClientDTOTest {
     }
 
     @Test
-    public void getFirstName() {
+    public void getFirstName() throws RemoteException {
         assertEquals(_fname, _testClient.getFirstName());
     }
 
     @Test
-    public void setFirstName() {
+    public void setFirstName() throws RemoteException {
         String newFname = "Gudrun";
         _testClient.setFirstName(newFname);
         assertEquals(newFname, _testClient.getFirstName());
     }
 
     @Test
-    public void getLastName() {
+    public void getLastName() throws RemoteException {
         assertEquals(_lname, _testClient.getLastName());
     }
 
     @Test
-    public void setLastName() {
+    public void setLastName() throws RemoteException {
         String newLname = "Hofer";
         _testClient.setLastName(newLname);
         assertEquals(newLname, _testClient.getLastName());
     }
 
     @Test
-    public void getAddress() {
+    public void getAddress() throws RemoteException {
         assertEquals(_address, _testClient.getAddress());
     }
 
     @Test
-    public void setAddress() {
+    public void setAddress() throws RemoteException {
         String newAdd = "Bludenzerweg 1";
         _testClient.setAddress(newAdd);
         assertEquals(newAdd, _testClient.getAddress());
     }
 
     @Test
-    public void getId() {
+    public void getId() throws RemoteException {
         assertEquals(_id, _testClient.getId());
     }
 
     @Test
-    public void setId() {
+    public void setId() throws RemoteException {
         Long newId = 2l;
         _testClient.setId(newId);
         assertEquals(newId, _testClient.getId());
+    }
+
+    @Test
+    public void hashCodeTest() throws RemoteException {
+        Long newId = 2l;
+        _testClient.setId(newId);
+        assertEquals(Objects.hash(newId), _testClient.hashCode());
     }
 }

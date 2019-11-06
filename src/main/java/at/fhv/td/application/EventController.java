@@ -45,7 +45,7 @@ public class EventController {
         }
 
         if (searchingEventname != null && !searchingEventname.equals("")) {
-            checksPassed &= actualEvent.getEventname().toLowerCase().contains(searchingEventname.toLowerCase());
+            checksPassed &= actualEvent.getEventName().toLowerCase().contains(searchingEventname.toLowerCase());
         }
 
         if (searchingLocation != null && !searchingLocation.equals("")) {

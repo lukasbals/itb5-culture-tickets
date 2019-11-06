@@ -9,13 +9,36 @@ import java.util.Objects;
 public class TicketDTO extends UnicastRemoteObject implements ITicketDTO {
     private static final long serialVersionUID = 9213181597647725759L;
     private int _ticketNumber;
-    private String _categoryname;
-    private String _client;
+    private Long _categoryId;
+    private String _categoryName;
+    private Long _clientId;
     private Float _price;
     private Long _id;
+    private Long _eventId;
+    private int _sold;
 
     public TicketDTO() throws RemoteException {
         super();
+    }
+
+    @Override
+    public Long getCategoryId() throws RemoteException {
+        return _categoryId;
+    }
+
+    @Override
+    public void setCategoryId(Long categoryId) throws RemoteException {
+        _categoryId = categoryId;
+    }
+
+    @Override
+    public Long getEventId() throws RemoteException {
+        return _eventId;
+    }
+
+    @Override
+    public void setEventId(Long eventId) throws RemoteException {
+        _eventId = eventId;
     }
 
     @Override
@@ -29,23 +52,22 @@ public class TicketDTO extends UnicastRemoteObject implements ITicketDTO {
     }
 
     @Override
-    public String getCategoryname() throws RemoteException {
-        return _categoryname;
+    public String getCategoryName() throws RemoteException {
+        return _categoryName;
     }
 
     @Override
-    public void setCategoryname(String categoryname) throws RemoteException {
-        _categoryname = categoryname;
+    public void setCategoryName(String categoryname) throws RemoteException {
+        _categoryName = categoryname;
     }
 
     @Override
-    public String getClient() throws RemoteException {
-        return _client;
+    public Long getClientId() throws RemoteException {
+        return _clientId;
     }
 
-    @Override
-    public void setClient(String client) throws RemoteException {
-        _client = client;
+    public void setClientId(Long clientId) throws RemoteException {
+        _clientId = clientId;
     }
 
     @Override
@@ -69,11 +91,21 @@ public class TicketDTO extends UnicastRemoteObject implements ITicketDTO {
     }
 
     @Override
+    public int getSold() throws RemoteException {
+        return _sold;
+    }
+
+    @Override
+    public void setSold(int sold) throws RemoteException {
+        _sold = sold;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj instanceof TicketDTO) {
             TicketDTO comparing = (TicketDTO) obj;
             try {
-                return _id == comparing.getId() && _ticketNumber == comparing.getTicketNumber();
+                return getId().equals(comparing.getId()) && getTicketNumber() == comparing.getTicketNumber();
             } catch (RemoteException e) {
                 e.printStackTrace();
             }

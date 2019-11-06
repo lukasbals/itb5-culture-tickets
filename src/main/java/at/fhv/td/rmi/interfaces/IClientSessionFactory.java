@@ -4,7 +4,11 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface IClientSessionFactory extends Remote {
-    public abstract ISearchEvent createConnection() throws RemoteException;
+    public ISearchEvent createSearchEvent() throws RemoteException;
 
-    public abstract ILoadClient createClient() throws RemoteException;
+    public IBuyTicket createBuyTicket() throws RemoteException;
+
+    public ILoadClient createClient() throws RemoteException;
+
+    public ITicketDTO createTicketDTO() throws RemoteException;
 }

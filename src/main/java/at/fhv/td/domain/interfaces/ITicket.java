@@ -1,8 +1,5 @@
 package at.fhv.td.domain.interfaces;
 
-import at.fhv.td.domain.Client;
-import at.fhv.td.domain.PlaceCategory;
-
 public interface ITicket {
     Long getTicketId();
 
@@ -10,7 +7,9 @@ public interface ITicket {
 
     Integer getSold();
 
-    PlaceCategory getCategoryname();
+    IPlaceCategory getPlaceCategory();
 
-    Client getClientId();
+    IClient getClient();
+
+    IEvent getEvent();
 }

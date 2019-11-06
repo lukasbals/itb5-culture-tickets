@@ -19,6 +19,7 @@ public class EventDetailedViewDTO extends UnicastRemoteObject implements IEventD
     private Float[] _prices;
     private Boolean _isSeatReservationPossible;
     private String[] _placeCategories;
+    private Integer[] _placeCategoriesAmount;
     private String _category;
     private LocalDate _date;
     private Long _eventId;
@@ -109,6 +110,16 @@ public class EventDetailedViewDTO extends UnicastRemoteObject implements IEventD
     @Override
     public void setPlaceCategories(String[] placeCategories) throws RemoteException {
         _placeCategories = placeCategories;
+    }
+
+    @Override
+    public Integer[] getPlaceCategoriesAmount() throws RemoteException {
+        return _placeCategoriesAmount;
+    }
+
+    @Override
+    public void setPlaceCategoriesAmount(Integer[] amounts) throws RemoteException {
+        _placeCategoriesAmount = amounts;
     }
 
     @Override

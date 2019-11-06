@@ -16,42 +16,45 @@ public class ClientDTO extends UnicastRemoteObject implements IClientDTO {
         super();
     }
 
-    public String getFirstName() {
+    public String getFirstName() throws RemoteException {
         return _firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(String firstName) throws RemoteException {
         _firstName = firstName;
     }
 
-    public String getLastName() {
+    public String getLastName() throws RemoteException {
         return _lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(String lastName) throws RemoteException {
         _lastName = lastName;
     }
 
-    public String getAddress() {
+    public String getAddress() throws RemoteException {
         return _address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(String address) throws RemoteException {
         _address = address;
     }
 
-    public Long getId() {
+    public Long getId() throws RemoteException {
         return _id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id) throws RemoteException {
         _id = id;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof ClientDTO) {
-            return getId().equals(((ClientDTO) obj).getId());
+            try {
+                return getId().equals(((ClientDTO) obj).getId());
+            } catch (RemoteException ignored) {
+            }
         }
         return false;
     }
