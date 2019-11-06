@@ -40,6 +40,10 @@ public interface IEventDetailedViewDTO extends Remote {
 
     void setPlaceCategories(String[] placeCategories) throws RemoteException;
 
+    Integer[] getPlaceCategoriesAmount() throws RemoteException;
+
+    void setPlaceCategoriesAmount(Integer[] amounts) throws RemoteException;
+
     String getCategory() throws RemoteException;
 
     void setCategory(String category) throws RemoteException;

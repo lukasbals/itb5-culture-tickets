@@ -8,8 +8,4 @@ public interface ILocation {
     String getRoom();
 
     String getBuilding();
-
-    Integer getSeats();
-
-    Integer getStandingPlaces();
 }

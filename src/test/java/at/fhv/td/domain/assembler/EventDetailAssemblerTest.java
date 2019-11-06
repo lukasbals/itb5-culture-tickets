@@ -85,7 +85,6 @@ public class EventDetailAssemblerTest {
         expected.setSeatReservationPossible(true);
 
         IEventDetailedViewDTO dto = EventDetailAssembler.toEventDetailedViewDTO(_event);
-
         assertEquals(expected.getArtists(), dto.getArtists());
         assertEquals(expected.getCategory(), dto.getCategory());
         assertEquals(expected.getDate(), dto.getDate());

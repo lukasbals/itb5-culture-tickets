@@ -1,5 +1,6 @@
 package at.fhv.td.rmi;
 
+import at.fhv.td.dto.TicketDTO;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,12 +17,22 @@ public class ClientSessionFactoryImplTest {
     }
 
     @Test
-    public void createConnection() throws RemoteException {
-        assertTrue(_clientSessionFactory.createConnection() instanceof SearchEventImpl);
+    public void createClient() throws RemoteException {
+        assertTrue(_clientSessionFactory.createClient() instanceof LoadClientImpl);
     }
 
     @Test
-    public void createClient() throws RemoteException {
-        assertTrue(_clientSessionFactory.createClient() instanceof LoadClientImpl);
+    public void createBuyTicket() throws RemoteException {
+        assertTrue(_clientSessionFactory.createBuyTicket() instanceof BuyTicketImpl);
+    }
+
+    @Test
+    public void createSearchEvent() throws RemoteException {
+        assertTrue(_clientSessionFactory.createSearchEvent() instanceof SearchEventImpl);
+    }
+
+    @Test
+    public void createTicketDTO() throws RemoteException {
+        assertTrue(_clientSessionFactory.createTicketDTO() instanceof TicketDTO);
     }
 }

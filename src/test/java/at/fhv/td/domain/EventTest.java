@@ -8,10 +8,11 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotEquals;
 
 @RunWith(PowerMockRunner.class)
 public class EventTest {
@@ -26,6 +27,8 @@ public class EventTest {
     private Tour _testTourMock;
     @Mock
     private PlaceCategory _placeCategory;
+    @Mock
+    private List<Ticket> _tickets;
 
     @Before
     public void before() {
@@ -69,8 +72,6 @@ public class EventTest {
         _testLocation.setAddress("Boden 11");
         _testLocation.setBuilding("Westflügel");
         _testLocation.setRoom("210");
-        _testLocation.setSeats(120);
-        _testLocation.setStandingPlaces(200);
         _testEvent.setLocation(_testLocation);
         assertEquals(_testLocation, _testEvent.getLocation());
     }
@@ -81,7 +82,7 @@ public class EventTest {
         _testTour = new Tour();
         _testTour.setTourName(name);
         _testEvent.setTour(_testTour);
-        assertEquals(name, _testEvent.getEventname());
+        assertEquals(name, _testEvent.getEventName());
     }
 
     @Test
@@ -89,6 +90,30 @@ public class EventTest {
         Set<PlaceCategory> categories = new HashSet<>();
         categories.add(_placeCategory);
         _testEvent.setPlaceCategories(categories);
-        assertTrue(_testEvent.getPlaceCategories().size() == 1);
+        assertEquals(1, _testEvent.getPlaceCategories().size());
+    }
+
+    @Test
+    public void getAndSetTickets() {
+        _testEvent.setTickets(_tickets);
+        assertEquals(_tickets, _testEvent.getTickets());
+    }
+
+    @Test
+    public void getEventId() {
+        Long testId = 3L;
+        _testEvent.setEventId(testId);
+        assertEquals(testId, _testEvent.getEventId());
+    }
+
+    @Test
+    public void equalsAndHashCode() {
+        Long testId = 3L;
+        _testEvent.setEventId(testId);
+        Event testEvent = new Event();
+        testEvent.setEventId(testId);
+        assertEquals(testEvent, _testEvent);
+        assertEquals(testEvent.hashCode(), _testEvent.hashCode());
+        assertNotEquals("", _testEvent);
     }
 }

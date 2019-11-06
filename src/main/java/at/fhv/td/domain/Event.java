@@ -4,6 +4,7 @@ import at.fhv.td.domain.interfaces.IEvent;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,18 +25,26 @@ public class Event implements IEvent {
     @JoinColumn(name = "tour_id")
     private Tour _tour;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "_event", fetch = FetchType.LAZY)
+    private List<Ticket> _tickets;
+
     @ManyToOne
     @JoinColumn(name = "location_id")
     private Location _location;
 
     @ManyToMany
-    @JoinTable(name = "events_places_categories", joinColumns = {
-            @JoinColumn(name = "event_id")}, inverseJoinColumns = {@JoinColumn(name = "categoryname")})
+    @JoinTable(name = "events_places_categories",
+            joinColumns = {@JoinColumn(name = "event_id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id")})
     private Set<PlaceCategory> _placeCategories;
 
     @Override
     public Long getEventId() {
         return _eventId;
+    }
+
+    void setEventId(Long eventId) {
+        _eventId = eventId;
     }
 
     @Override
@@ -84,7 +93,30 @@ public class Event implements IEvent {
     }
 
     @Override
-    public String getEventname() {
+    public String getEventName() {
         return _tour.getTourName();
+    }
+
+    @Override
+    public List<Ticket> getTickets() {
+        return _tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        _tickets = tickets;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Event) {
+            return getEventId().equals(((Event) obj).getEventId());
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return getEventId().hashCode();
     }
 }

@@ -16,9 +16,10 @@ public class TicketDTOTest {
     private TicketDTO _testTicketDTO;
     private int _ticketNumber = 23;
     private String _categoryname = "Sitzplatz A";
-    private String _client = "Vani Durig";
+    private Long _client = 2L;
     private Float _price = 23.0f;
     private Long _id = 2l;
+    private Long _eventId = 4L;
 
     @Mock
     private TicketDTO _anotherTestTicketDTO;
@@ -28,8 +29,8 @@ public class TicketDTOTest {
         try {
             _testTicketDTO = new TicketDTO();
             _testTicketDTO.setTicketNumber(_ticketNumber);
-            _testTicketDTO.setCategoryname(_categoryname);
-            _testTicketDTO.setClient(_client);
+            _testTicketDTO.setCategoryName(_categoryname);
+            _testTicketDTO.setClientId(_client);
             _testTicketDTO.setPrice(_price);
             _testTicketDTO.setId(_id);
         } catch (RemoteException e) {
@@ -50,27 +51,27 @@ public class TicketDTOTest {
     }
 
     @Test
-    public void getCategoryname() throws RemoteException {
-        assertEquals(_categoryname, _testTicketDTO.getCategoryname());
+    public void getCategoryName() throws RemoteException {
+        assertEquals(_categoryname, _testTicketDTO.getCategoryName());
     }
 
     @Test
-    public void setCategoryname() throws RemoteException {
+    public void setCategoryName() throws RemoteException {
         String categoryName = "Sitzplatz B";
-        _testTicketDTO.setCategoryname(categoryName);
-        assertEquals(categoryName, _testTicketDTO.getCategoryname());
+        _testTicketDTO.setCategoryName(categoryName);
+        assertEquals(categoryName, _testTicketDTO.getCategoryName());
     }
 
     @Test
     public void getClient() throws RemoteException {
-        assertEquals(_client, _testTicketDTO.getClient());
+        assertEquals(_client, _testTicketDTO.getClientId());
     }
 
     @Test
     public void setClient() throws RemoteException {
-        String newClient = "Lukas Bals";
-        _testTicketDTO.setClient(newClient);
-        assertEquals(newClient, _testTicketDTO.getClient());
+        Long newClient = 2L;
+        _testTicketDTO.setClientId(newClient);
+        assertEquals(newClient, _testTicketDTO.getClientId());
     }
 
     @Test
@@ -95,6 +96,20 @@ public class TicketDTOTest {
         Long newId = 4l;
         _testTicketDTO.setId(newId);
         assertEquals(newId, _testTicketDTO.getId(), 0);
+    }
+
+    @Test
+    public void getAndSetEventId() throws RemoteException {
+        Long eventId = 4L;
+        _testTicketDTO.setEventId(eventId);
+        assertEquals(eventId, _testTicketDTO.getEventId());
+    }
+
+    @Test
+    public void getAndSetCategoryId() throws RemoteException {
+        Long catId = 5L;
+        _testTicketDTO.setCategoryId(catId);
+        assertEquals(catId, _testTicketDTO.getCategoryId());
     }
 
     @Test

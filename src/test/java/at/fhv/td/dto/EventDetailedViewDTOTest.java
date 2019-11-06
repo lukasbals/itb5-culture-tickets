@@ -26,7 +26,7 @@ public class EventDetailedViewDTOTest {
     }
 
     @Test
-    public void getEventNameTest() throws RemoteException{
+    public void getEventNameTest() throws RemoteException {
         String eventName = "MMMMMonsert";
         _testEventDto.setEventName(eventName);
         assertEquals(eventName, _testEventDto.getEventName());
@@ -88,6 +88,13 @@ public class EventDetailedViewDTOTest {
         String category = "Konzert";
         _testEventDto.setCategory(category);
         assertEquals(category, _testEventDto.getCategory());
+    }
+
+    @Test
+    public void getAndSetCategoryAmount() throws RemoteException {
+        Integer[] amounts = new Integer[]{1, 10, 8};
+        _testEventDto.setPlaceCategoriesAmount(amounts);
+        Assert.assertArrayEquals(amounts, _testEventDto.getPlaceCategoriesAmount());
     }
 
     @Test

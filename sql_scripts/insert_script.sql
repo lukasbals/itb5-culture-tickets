@@ -10,36 +10,14 @@ insert into artists (artistname, genre) values ('Pia-Maria', 'Poetry Slam');
 
 insert into roles (role_name, rights) values ('admin', 'fullcontroll');
 
-insert into locations (address, room, building, seats, standing_places) values ('Spielboden 2, Dornbirn 6850', 'Kantine', 'A', 30, 50);
-insert into locations (address, room, building, seats, standing_places) values ('Festspielhaus, Bregenz 6900', 'Festsaal', 'Hauptgebäude', 150, 100);
-insert into locations (address, building, seats, standing_places) values ('Montforthaus, Feltkirch 6600', 'Einhang A', 100, 50);
-insert into locations (address, building, seats, standing_places) values ('Villa K, Bludenz 6700', 'Hauptgebäude', 20, 30);
+insert into locations (address, room, building) values ('Spielboden 2, Dornbirn 6850', 'Kantine', 'A');
+insert into locations (address, room, building) values ('Festspielhaus, Bregenz 6900', 'Festsaal', 'Hauptgebäude');
+insert into locations (address, building) values ('Montforthaus, Feltkirch 6600', 'Einhang A');
+insert into locations (address, building) values ('Villa K, Bludenz 6700', 'Hauptgebäude');
 
-insert into placecategories (categoryname, category, price) values ('Sitzplatzkategorie A', 'Sitzplatz', 12.50);
-insert into placecategories (categoryname, category, price) values ('Sitzplatzkategorie B', 'Sitzplatz', 7.50);
-insert into placecategories (categoryname, category, price) values ('Stehplatz', 'Stehplatz', 5.00);
-
-insert into tickets (ticket_number, sold, categoryname, client_id) values (1, 0, 'Sitzplatzkategorie A', 1);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (2, 0, 'Sitzplatzkategorie A', 1);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (3, 0, 'Sitzplatzkategorie B', 1);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (4, 0, 'Sitzplatzkategorie B', 1);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (5, 0, 'Stehplatz', 2);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (6, 0, 'Sitzplatzkategorie A', 2);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (7, 0, 'Stehplatz', 2);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (8, 0, 'Sitzplatzkategorie B', 2);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (9, 0, 'Sitzplatzkategorie B', 3);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (10, 0, 'Stehplatz', 3);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (11, 0, 'Stehplatz', 3);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (12, 0, 'Sitzplatzkategorie A', 4);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (13, 0, 'Sitzplatzkategorie B', 4);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (14, 0, 'Stehplatz', 4);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (15, 0, 'Sitzplatzkategorie A', 4);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (16, 0, 'Sitzplatzkategorie B', 1);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (17, 0, 'Sitzplatzkategorie A', 1);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (18, 0, 'Sitzplatzkategorie B', 1);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (19, 0, 'Stehplatz', 2);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (20, 0, 'Stehplatz', 2);
-insert into tickets (ticket_number, sold, categoryname, client_id) values (21, 0, 'Sitzplatzkategorie A', 2);
+insert into placecategories (categoryname, category, price, amount) values ('Sitzplatzkategorie A', 'Sitzplatz', 12.50, 30);
+insert into placecategories (categoryname, category, price, amount) values ('Sitzplatzkategorie B', 'Sitzplatz', 7.50, 50);
+insert into placecategories (categoryname, category, price, amount) values ('Stehplatz', 'Stehplatz', 5.00, 100);
 
 insert into users (username, password, address) values ('admin', 'WS2019+fhv', 'Hauptstraße 1, 6700 Bludenz');
 
@@ -48,29 +26,51 @@ insert into tours (tourname, description, category, username) values ('�sis', 
 insert into tours (tourname, description, category, username) values ('PPPPPoetry', 'Einmaliger Auftritt in Vorarlberg', 'Poetry Slam', 'admin');
 
 insert into events (date, seat_reservation_possible, tour_id, location_id) values ('2019-12-23', true, 1, 1);
-insert into events (date, seat_reservation_possible, tour_id, location_id) values ('2019-07-15', false , 1, 2);
-insert into events (date, seat_reservation_possible, tour_id, location_id) values ('2019-06-28', true, 1, 3);
-insert into events (date, seat_reservation_possible, tour_id, location_id) values ('2019-07-27', false , 1, 4);
+insert into events (date, seat_reservation_possible, tour_id, location_id) values ('2020-07-15', false , 1, 2);
+insert into events (date, seat_reservation_possible, tour_id, location_id) values ('2020-06-28', true, 1, 3);
+insert into events (date, seat_reservation_possible, tour_id, location_id) values ('2020-07-27', false , 1, 4);
 insert into events (date, seat_reservation_possible, tour_id, location_id) values ('2019-12-23', true, 2, 1);
-insert into events (date, seat_reservation_possible, tour_id, location_id) values ('2019-07-15', false , 2, 2);
+insert into events (date, seat_reservation_possible, tour_id, location_id) values ('2020-07-15', false , 2, 2);
 insert into events (date, seat_reservation_possible, tour_id, location_id) values ('2019-06-28', true, 2, 3);
 insert into events (date, seat_reservation_possible, tour_id, location_id) values ('2019-07-27', false , 2, 4);
 insert into events (date, seat_reservation_possible, tour_id, location_id) values ('2019-07-27', true , 3, 1);
 
-insert into events_places_categories (event_id, categoryname) values (1, 'Sitzplatzkategorie A');
-insert into events_places_categories (event_id, categoryname) values (1, 'Sitzplatzkategorie B');
-insert into events_places_categories (event_id, categoryname) values (1, 'Stehplatz');
-insert into events_places_categories (event_id, categoryname) values (2, 'Stehplatz');
-insert into events_places_categories (event_id, categoryname) values (3, 'Sitzplatzkategorie A');
-insert into events_places_categories (event_id, categoryname) values (3, 'Stehplatz');
-insert into events_places_categories (event_id, categoryname) values (4, 'Stehplatz');
-insert into events_places_categories (event_id, categoryname) values (5, 'Sitzplatzkategorie A');
-insert into events_places_categories (event_id, categoryname) values (6, 'Sitzplatzkategorie A');
-insert into events_places_categories (event_id, categoryname) values (6, 'Sitzplatzkategorie B');
-insert into events_places_categories (event_id, categoryname) values (6, 'Stehplatz');
-insert into events_places_categories (event_id, categoryname) values (7, 'Stehplatz');
-insert into events_places_categories (event_id, categoryname) values (8, 'Stehplatz');
-insert into events_places_categories (event_id, categoryname) values (9, 'Stehplatz');
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (1, 0, 1, 1, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (2, 0, 1, 1, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (3, 0, 2, 1, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (4, 0, 2, 1, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (5, 0, 3, 2, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (6, 0, 1, 2, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (7, 0, 3, 2, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (8, 0, 2, 2, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (9, 0, 2, 3, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (10, 0, 3, 3, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (11, 0, 3, 3, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (12, 0, 1, 4, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (13, 0, 2, 4, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (14, 0, 3, 4, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (15, 0, 1, 4, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (16, 0, 2, 1, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (17, 0, 1, 1, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (18, 0, 2, 1, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (19, 0, 3, 2, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (20, 0, 3, 2, 1);
+insert into tickets (ticket_number, sold, category_id, client_id, event_id) values (21, 0, 1, 2, 1);
+
+insert into events_places_categories (event_id, category_id) values (1, 1);
+insert into events_places_categories (event_id, category_id) values (1, 2);
+insert into events_places_categories (event_id, category_id) values (1, 3);
+insert into events_places_categories (event_id, category_id) values (2, 3);
+insert into events_places_categories (event_id, category_id) values (3, 1);
+insert into events_places_categories (event_id, category_id) values (3, 3);
+insert into events_places_categories (event_id, category_id) values (4, 3);
+insert into events_places_categories (event_id, category_id) values (5, 1);
+insert into events_places_categories (event_id, category_id) values (6, 1);
+insert into events_places_categories (event_id, category_id) values (6, 2);
+insert into events_places_categories (event_id, category_id) values (6, 3);
+insert into events_places_categories (event_id, category_id) values (7, 3);
+insert into events_places_categories (event_id, category_id) values (8, 3);
+insert into events_places_categories (event_id, category_id) values (9, 3);
 
 insert into going_on (tour_id, artist_id) values (1, 1);
 insert into going_on (tour_id, artist_id) values (2, 3);
