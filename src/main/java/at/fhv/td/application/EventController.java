@@ -1,35 +1,38 @@
 package at.fhv.td.application;
 
-import at.fhv.td.domain.EventDetailAssembler;
+import at.fhv.td.domain.Event;
 import at.fhv.td.domain.interfaces.IEvent;
 import at.fhv.td.persistence.broker.EventBroker;
-import at.fhv.td.rmi.interfaces.IEventDetailedViewDTO;
-import at.fhv.td.rmi.interfaces.ISearchEvent;
 
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SearchEventImpl extends UnicastRemoteObject implements ISearchEvent {
-
-    private static final long serialVersionUID = 2682440981477041481L;
-
-    public SearchEventImpl() throws RemoteException {
-        super();
+/**
+ * @author Lukas Bals
+ */
+public class EventController {
+    private EventController() {
     }
 
-    public List<IEventDetailedViewDTO> searchForEvents(String searchingEventname, String searchingArtist,
-                                                       String searchingLocation, LocalDate searchingDate) throws RemoteException {
+    public static List<Event> searchForEvents(
+            String searchingEventname,
+            String searchingArtist,
+            String searchingLocation,
+            LocalDate searchingDate
+    ) {
         return EventBroker.getInstance().getAll().stream()
                 .filter(e -> checkEvent(e, searchingEventname, searchingArtist, searchingLocation, searchingDate))
-                .map(e -> new EventDetailAssembler().toEventDetailedViewDTO(e))
                 .collect(Collectors.toList());
     }
 
-    boolean checkEvent(IEvent actualEvent, String searchingEventname, String searchingArtist, String searchingLocation,
-                       LocalDate searchingDate) {
+    static boolean checkEvent(
+            IEvent actualEvent,
+            String searchingEventname,
+            String searchingArtist,
+            String searchingLocation,
+            LocalDate searchingDate
+    ) {
         boolean checksPassed = true;
 
         if (searchingDate == null) {
