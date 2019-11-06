@@ -3,6 +3,8 @@ package at.fhv.td.dto;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.rmi.RemoteException;
+
 import static org.junit.Assert.assertEquals;
 
 public class ClientDTOTest {
@@ -13,7 +15,7 @@ public class ClientDTOTest {
     private Long _id = 1l;
 
     @Before
-    public void before() {
+    public void before() throws RemoteException {
         _testClient = new ClientDTO(_fname, _lname, _address, _id);
     }
 

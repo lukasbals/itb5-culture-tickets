@@ -5,4 +5,6 @@ import java.rmi.RemoteException;
 
 public interface IClientSessionFactory extends Remote {
     public abstract ISearchEvent createConnection() throws RemoteException;
+
+    public abstract ILoadClient createClient() throws RemoteException;
 }
