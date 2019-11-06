@@ -24,7 +24,7 @@ public class PlaceCategoryTest {
     public void getAndSetCategoryName() {
         String name = "14B";
         _testPlaceCategory.setCategoryname(name);
-        assertEquals(name, _testPlaceCategory.getCategoryname());
+        assertEquals(name, _testPlaceCategory.getCategoryName());
     }
 
     @Test

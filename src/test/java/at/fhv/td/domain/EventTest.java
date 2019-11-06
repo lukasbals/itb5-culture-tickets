@@ -69,8 +69,6 @@ public class EventTest {
         _testLocation.setAddress("Boden 11");
         _testLocation.setBuilding("Westflügel");
         _testLocation.setRoom("210");
-        _testLocation.setSeats(120);
-        _testLocation.setStandingPlaces(200);
         _testEvent.setLocation(_testLocation);
         assertEquals(_testLocation, _testEvent.getLocation());
     }

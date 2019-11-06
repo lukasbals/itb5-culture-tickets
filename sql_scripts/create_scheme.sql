@@ -1,10 +1,10 @@
 drop table if exists has_roles;
 drop table if exists going_on;
 drop table if exists events_places_categories;
-drop table if exists events;
-drop table if exists tours;
 drop table if exists tickets;
 drop table if exists placecategories;
+drop table if exists events;
+drop table if exists tours;
 drop table if exists users;
 drop table if exists locations;
 drop table if exists roles;
@@ -39,8 +39,6 @@ create table if not exists locations (
                                         address varchar (255) not null,
                                         room varchar (255),
                                         building varchar (255),
-                                        seats integer not null,
-                                        standing_places integer not null,
                                         primary key (location_id)
 );
 
@@ -54,21 +52,12 @@ create table if not exists users (
 );
 
 create table if not exists placecategories (
+                                             category_id serial,
                                              categoryname varchar (255) not null,
                                              category varchar (255) not null,
                                              price numeric(12,2) not null,
-                                             primary key (categoryname)
-);
-
-create table if not exists tickets (
-                                      ticket_id serial,
-                                      ticket_number integer not null,
-                                      sold integer not null,
-                                      categoryname varchar (255) not null,
-                                      client_id integer,
-                                      foreign key (categoryname) references placecategories(categoryname),
-                                      foreign key (client_id) references clients(client_id),
-                                      primary key (ticket_id)
+                                             amount integer not null,
+                                             primary key (category_id)
 );
 
 create table if not exists tours (
@@ -92,6 +81,19 @@ create table if not exists events (
                                      primary key (event_id)
 );
 
+create table if not exists tickets (
+                                      ticket_id serial,
+                                      ticket_number integer not null,
+                                      sold integer not null,
+                                      category_id integer not null,
+                                      client_id integer,
+                                      event_id integer,
+                                      foreign key (category_id) references placecategories(category_id),
+                                      foreign key (client_id) references clients(client_id),
+                                      foreign key (event_id) references events(event_id),
+                                      primary key (ticket_id)
+);
+
 create table if not exists has_roles (
                                         has_role_id serial,
                                         role_id integer not null,
@@ -113,8 +115,8 @@ create table if not exists going_on (
 create table if not exists events_places_categories (
                                                     events_places_categories_id serial,
                                                     event_id integer not null,
-                                                    categoryname varchar (255) not null,
+                                                    category_id integer not null,
                                                     foreign key (event_id) references events(event_id),
-                                                    foreign key (categoryname) references placecategories(categoryname),
+                                                    foreign key (category_id) references placecategories(category_id),
                                                     primary key (events_places_categories_id)
 );

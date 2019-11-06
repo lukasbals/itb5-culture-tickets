@@ -2,9 +2,13 @@ package at.fhv.td.domain.interfaces;
 
 public interface IPlaceCategory {
 
-    String getCategoryname();
+    Long getCategoryId();
+
+    String getCategoryName();
 
     String getCategory();
 
     Float getPrice();
+
+    int getAmount();
 }

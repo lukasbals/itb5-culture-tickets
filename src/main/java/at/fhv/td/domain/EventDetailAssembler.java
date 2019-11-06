@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.stream.Collectors;
 
 public class EventDetailAssembler {
-    public IEventDetailedViewDTO toEventDetailedViewDTO(IEvent event) {
+    public IEventDetailedViewDTO EventToEventDetailedViewDTO(IEvent event) {
         String eventName = event.getEventname();
         String artists = event.getTour().getArtists().stream().map(Artist::getArtistname).collect(Collectors.joining(", "));
         String description = event.getTour().getDescription();
@@ -19,8 +19,9 @@ public class EventDetailAssembler {
         boolean isSeatReservationPossible = event.getSeatReservationPossible();
         LocalDate date = event.getDate();
         Long eventId = event.getEventId();
-        String[] placeCategories = event.getPlaceCategories().stream().map(PlaceCategory::getCategoryname).toArray(String[]::new);
+        String[] placeCategories = event.getPlaceCategories().stream().map(PlaceCategory::getCategoryName).toArray(String[]::new);
         Float[] prices = event.getPlaceCategories().stream().map(PlaceCategory::getPrice).toArray(Float[]::new);
+        Integer[] placeCategoriesAmounts = event.getPlaceCategories().stream().map(PlaceCategory::getAmount).toArray(Integer[]::new);
 
         EventDetailedViewDTO newDto = null;
         try {
@@ -30,6 +31,7 @@ public class EventDetailAssembler {
             newDto.setDescription(description);
             newDto.setCategory(category);
             newDto.setPlaceCategories(placeCategories);
+            newDto.setPlaceCategoriesAmount(placeCategoriesAmounts);
             newDto.setDate(date);
             newDto.setEventId(eventId);
             newDto.setGenres(genres);

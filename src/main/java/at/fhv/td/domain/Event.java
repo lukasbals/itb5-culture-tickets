@@ -24,13 +24,16 @@ public class Event implements IEvent {
     @JoinColumn(name = "tour_id")
     private Tour _tour;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "_event", fetch = FetchType.LAZY)
+    private Set<Ticket> _tickets;
+
     @ManyToOne
     @JoinColumn(name = "location_id")
     private Location _location;
 
     @ManyToMany
     @JoinTable(name = "events_places_categories", joinColumns = {
-            @JoinColumn(name = "event_id")}, inverseJoinColumns = {@JoinColumn(name = "categoryname")})
+            @JoinColumn(name = "event_id")}, inverseJoinColumns = {@JoinColumn(name = "category_id")})
     private Set<PlaceCategory> _placeCategories;
 
     @Override
@@ -86,5 +89,28 @@ public class Event implements IEvent {
     @Override
     public String getEventname() {
         return _tour.getTourName();
+    }
+
+    @Override
+    public Set<Ticket> getTickets(){
+        return _tickets;
+    }
+
+    public void setTickets(Set<Ticket> tickets){
+        _tickets = tickets;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Event){
+            return _eventId == ((Event)obj).getEventId();
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return _eventId.hashCode();
     }
 }

@@ -24,7 +24,7 @@ public class SearchEventImpl extends UnicastRemoteObject implements ISearchEvent
                                                        String searchingLocation, LocalDate searchingDate) throws RemoteException {
         return EventBroker.getInstance().getAll().stream()
                 .filter(e -> checkEvent(e, searchingEventname, searchingArtist, searchingLocation, searchingDate))
-                .map(e -> new EventDetailAssembler().toEventDetailedViewDTO(e))
+                .map(e -> new EventDetailAssembler().EventToEventDetailedViewDTO(e))
                 .collect(Collectors.toList());
     }
 

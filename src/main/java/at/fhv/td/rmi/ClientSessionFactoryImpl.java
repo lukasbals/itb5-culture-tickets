@@ -1,10 +1,10 @@
 package at.fhv.td.rmi;
 
+import at.fhv.td.application.BuyTicketImpl;
 import at.fhv.td.application.LoadClientImpl;
 import at.fhv.td.application.SearchEventImpl;
-import at.fhv.td.rmi.interfaces.IClientSessionFactory;
-import at.fhv.td.rmi.interfaces.ILoadClient;
-import at.fhv.td.rmi.interfaces.ISearchEvent;
+import at.fhv.td.dto.TicketDTO;
+import at.fhv.td.rmi.interfaces.*;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -18,12 +18,22 @@ public class ClientSessionFactoryImpl extends UnicastRemoteObject implements ICl
     }
 
     @Override
-    public ISearchEvent createConnection() throws RemoteException {
+    public ISearchEvent createSearchEvent() throws RemoteException {
         return new SearchEventImpl();
+    }
+
+    @Override
+    public IBuyTicket createBuyTicket() throws RemoteException {
+        return new BuyTicketImpl();
     }
 
     @Override
     public ILoadClient createClient() throws RemoteException {
         return new LoadClientImpl();
+    }
+
+    @Override
+    public ITicketDTO createTicketDTO() throws RemoteException {
+        return new TicketDTO();
     }
 }

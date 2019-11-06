@@ -36,8 +36,8 @@ public class TicketTest {
         _testCategory.setCategory("Standingplace 2");
         _testCategory.setCategoryname("Standingplace");
         _testCategory.setPrice(23.6f);
-        _testTicket.setCategoryname(_testCategory);
-        assertEquals(_testCategory, _testTicket.getCategoryname());
+        _testTicket.setPlaceCategory(_testCategory);
+        assertEquals(_testCategory, _testTicket.getPlaceCategory());
     }
 
     @Test
@@ -46,8 +46,8 @@ public class TicketTest {
         _testClient.setFirstname("Firstname");
         _testClient.setLastname("Lastname");
         _testClient.setAddress("Address 1");
-        _testTicket.setClientId(_testClient);
-        assertEquals(_testClient, _testTicket.getClientId());
+        _testTicket.setClient(_testClient);
+        assertEquals(_testClient, _testTicket.getClient());
     }
 }
 

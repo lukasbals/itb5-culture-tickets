@@ -83,7 +83,7 @@ public class EventDetailAssemblerTest {
         expected.setPrices(new Float[]{20f});
         expected.setSeatReservationPossible(true);
 
-        IEventDetailedViewDTO dto = _testAssembler.toEventDetailedViewDTO(_event);
+        IEventDetailedViewDTO dto = _testAssembler.EventToEventDetailedViewDTO(_event);
 
         assertEquals(expected.getArtists(), dto.getArtists());
         assertEquals(expected.getCategory(), dto.getCategory());

@@ -2,16 +2,17 @@ package at.fhv.td.domain;
 
 import at.fhv.td.domain.interfaces.IPlaceCategory;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "placeCategories")
 public class PlaceCategory implements IPlaceCategory {
     @Id
-    @Column(name = "categoryname", updatable = false, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="category_id", updatable = false, nullable = false)
+    private Long _categoryId;
+
+    @Column(name = "categoryname", nullable = false)
     private String _categoryname;
 
     @Column(name = "category")
@@ -20,8 +21,14 @@ public class PlaceCategory implements IPlaceCategory {
     @Column(name = "price")
     private Float _price;
 
+    @Column(name="amount")
+    private int _amount;
+
     @Override
-    public String getCategoryname() {
+    public Long getCategoryId() { return _categoryId; }
+
+    @Override
+    public String getCategoryName() {
         return _categoryname;
     }
 
@@ -46,4 +53,9 @@ public class PlaceCategory implements IPlaceCategory {
     public void setPrice(Float price) {
         _price = price;
     }
+
+    @Override
+    public int getAmount() { return _amount; }
+
+    public void setAmount(int amount) { _amount = amount; }
 }
