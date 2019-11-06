@@ -1,12 +1,22 @@
 package at.fhv.td.dto;
 
-public class ClientDTO {
+import at.fhv.td.rmi.interfaces.IClientDTO;
+import at.fhv.td.rmi.interfaces.ITicketDTO;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class ClientDTO extends UnicastRemoteObject implements IClientDTO {
     private String _firstName;
     private String _lastName;
     private String _address;
     private Long _id;
 
-    public ClientDTO(String firstName, String lastName, String address, Long id) {
+    public ClientDTO () throws RemoteException {
+
+    }
+
+    public ClientDTO(String firstName, String lastName, String address, Long id) throws RemoteException {
         _firstName = firstName;
         _lastName = lastName;
         _address = address;
