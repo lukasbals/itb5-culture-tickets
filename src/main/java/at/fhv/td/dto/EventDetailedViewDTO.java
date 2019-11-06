@@ -12,6 +12,7 @@ import java.util.Objects;
 public class EventDetailedViewDTO extends UnicastRemoteObject implements IEventDetailedViewDTO {
     private static final long serialVersionUID = 7761986907619195612L;
     private String _artists;
+    private String _eventName;
     private String _description;
     private String[] _genres;
     private String _location;
@@ -24,6 +25,15 @@ public class EventDetailedViewDTO extends UnicastRemoteObject implements IEventD
 
     public EventDetailedViewDTO() throws RemoteException {
         super();
+    }
+
+    @Override
+    public String getEventName() throws RemoteException{
+        return _eventName;
+    }
+
+    public void setEventName(String eventName) throws RemoteException{
+        _eventName = eventName;
     }
 
     @Override

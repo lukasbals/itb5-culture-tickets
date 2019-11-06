@@ -1,6 +1,5 @@
 package at.fhv.td.domain;
 
-
 import at.fhv.td.domain.interfaces.ILocation;
 
 import javax.persistence.*;
@@ -12,19 +11,14 @@ public class Location implements ILocation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "location_id", updatable = false, nullable = false)
     private Long _locationId;
-
     @Column(name = "address")
     private String _address;
-
     @Column(name = "room")
     private String _room;
-
     @Column(name = "building")
     private String _building;
-
     @Column(name = "seats")
     private Integer _seats;
-
     @Column(name = "standing_places")
     private Integer _standingPlaces;
 
@@ -76,6 +70,11 @@ public class Location implements ILocation {
 
     public void setStandingPlaces(Integer standingPlaces) {
         _standingPlaces = standingPlaces;
+    }
+
+    @Transient
+    public String getLocationString() {
+        return String.join(", ", _address, _building);
     }
 
     @Override

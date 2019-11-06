@@ -6,6 +6,10 @@ import java.time.LocalDate;
 
 public interface IEventDetailedViewDTO extends Remote {
 
+    String getEventName() throws RemoteException;
+
+    void setEventName(String eventName) throws RemoteException;
+
     String getArtists() throws RemoteException;
 
     void setArtists(String artists) throws RemoteException;

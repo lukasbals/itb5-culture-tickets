@@ -20,7 +20,7 @@ public class Main {
         setupRmiRegistry();
     }
 
-    private static void setupRmiRegistry() {
+    static void setupRmiRegistry() {
         try {
             System.setProperty("java.rmi.server.hostname", IP_ADDRESS);
             LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
