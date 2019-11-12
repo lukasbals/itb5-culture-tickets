@@ -25,6 +25,13 @@ public class ArtistTest {
     }
 
     @Test
+    public void getAndSetArtistId(){
+        Long id = 10L;
+        _testArtist.setId(id);
+        assertEquals(id, _testArtist.getId());
+    }
+
+    @Test
     public void getAndSetGenre() {
         String genre = "Theater";
         _testArtist.setGenre(genre);

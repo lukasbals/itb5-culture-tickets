@@ -5,7 +5,7 @@ import at.fhv.td.domain.User;
 import java.util.Set;
 
 public interface IRole {
-    Long getRoleId();
+    Long getId();
 
     String getRoleName();
 

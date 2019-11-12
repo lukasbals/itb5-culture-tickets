@@ -20,7 +20,12 @@ public class TicketController {
 
     public static TicketAnswer buyTicket(ITicket basicTicket, Map<Long, Integer[]> seatPlaceReservations) {
         TicketController controller = new TicketController();
-        return controller.buyTickets(basicTicket, seatPlaceReservations);
+        return controller.processRequest(basicTicket, seatPlaceReservations, InteractionType.BUY);
+    }
+
+    public static TicketAnswer reserveTicket(ITicket basicTicket, Map<Long, Integer[]> seatPlaceReservations) {
+        TicketController controller = new TicketController();
+        return controller.processRequest(basicTicket, seatPlaceReservations, InteractionType.RESERVE);
     }
 
     public static List<Ticket> getUnavailableTickets(long eventId) {
@@ -29,19 +34,44 @@ public class TicketController {
         return TicketBroker.getInstance().getAll(filters);
     }
 
-    TicketAnswer buyTickets(ITicket basicTicket, Map<Long, Integer[]> seatPlaceReservations) {
-        LinkedList<Ticket> tickets;
+    TicketAnswer processRequest(ITicket basicTicket, Map<Long, Integer[]> seatPlaceReservations, InteractionType type) {
         _ticketAnswer = new TicketAnswer();
+        _ticketAnswer.setTickets(new LinkedList<>());
 
-        tickets = createTickets((Ticket) basicTicket, seatPlaceReservations, 1);
+        if (basicTicket != null && seatPlaceReservations != null) {
+            List<Ticket> tickets = new LinkedList<>();
 
-        if (_ticketAnswer.getMessage() == null) {
-            tickets.forEach(ticket -> ticket.setTicketId(TicketBroker.getInstance().save(ticket)));
-            _ticketAnswer.setTickets(tickets);
-            _ticketAnswer.setMessage("Tickets successfully bought");
+            switch (type) {
+                default:
+                case BUY:
+                    tickets = createTickets((Ticket) basicTicket, seatPlaceReservations, 1);
+                    break;
+                case RESERVE:
+                    if (basicTicket.getClient() == null) {
+                        _ticketAnswer.setMessage("Ticket generation failed: no client set");
+                    } else {
+                        tickets = createTickets((Ticket) basicTicket, seatPlaceReservations, 0);
+                    }
+                    break;
+            }
+
+            _ticketAnswer.setTickets(saveTickets(tickets));
         }
 
         return _ticketAnswer;
+    }
+
+    List<Ticket> saveTickets(List<Ticket> tickets) {
+        if (_ticketAnswer.getMessage() == null) {
+            tickets = TicketBroker.getInstance().saveMultiple(tickets);
+            if (tickets == null) {
+                _ticketAnswer.setMessage("Tickets generation failed: database error");
+            } else {
+                _ticketAnswer.setMessage("Tickets successfully reserved");
+            }
+        }
+
+        return tickets;
     }
 
     LinkedList<Ticket> createTickets(Ticket basicTicket, Map<Long, Integer[]> seatPlaceReservations, int sold) {
@@ -56,9 +86,9 @@ public class TicketController {
                                 tickets.add(newTicket);
                             }
                         }
-                    }
-                    else {
+                    } else {
                         _ticketAnswer.setMessage("Ticket generation failed: place category not found");
+                        tickets.clear();
                     }
                 }
         );
@@ -76,10 +106,9 @@ public class TicketController {
 
         List<Ticket> eventTickets = newTicket.getEvent().getTickets();
         if (eventTickets.contains(newTicket)) {
-            if(_ticketAnswer.getMessage() == null) {
+            if (_ticketAnswer.getMessage() == null) {
                 _ticketAnswer.setMessage("Ticket generation failed: Place already taken:" + seat);
-            }
-            else{
+            } else {
                 _ticketAnswer.setMessage(_ticketAnswer.getMessage() + ", " + seat);
             }
         } else {
@@ -87,5 +116,9 @@ public class TicketController {
         }
 
         return null;
+    }
+
+    enum InteractionType {
+        BUY, RESERVE;
     }
 }

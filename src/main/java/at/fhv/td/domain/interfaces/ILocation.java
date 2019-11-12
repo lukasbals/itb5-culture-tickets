@@ -1,7 +1,7 @@
 package at.fhv.td.domain.interfaces;
 
 public interface ILocation {
-    Long getLocationId();
+    Long getId();
 
     String getAddress();
 

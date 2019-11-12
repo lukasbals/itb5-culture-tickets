@@ -15,6 +15,13 @@ public class ClientTest {
     }
 
     @Test
+    public void getAndSetId(){
+        Long id = 10L;
+        _testClient.setId(id);
+        assertEquals(id, _testClient.getId());
+    }
+
+    @Test
     public void getAndSetFirstname() {
         String firstname = "Firstname";
         _testClient.setFirstname(firstname);

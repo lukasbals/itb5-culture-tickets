@@ -13,6 +13,8 @@ public interface BrokerInterface<T> {
 
     Long save(T item);
 
+    List<T> saveMultiple(List<T> items);
+
     void update(T item);
 
     void delete(T item);

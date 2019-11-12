@@ -1,6 +1,7 @@
 package at.fhv.td.domain;
 
 import at.fhv.td.domain.interfaces.IEvent;
+import at.fhv.td.persistence.broker.IModelId;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -9,7 +10,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "events")
-public class Event implements IEvent {
+public class Event implements IEvent, IModelId {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "event_id", updatable = false, nullable = false)
@@ -39,11 +40,12 @@ public class Event implements IEvent {
     private Set<PlaceCategory> _placeCategories;
 
     @Override
-    public Long getEventId() {
+    public Long getId() {
         return _eventId;
     }
 
-    void setEventId(Long eventId) {
+    @Override
+    public void setId(Long eventId) {
         _eventId = eventId;
     }
 
@@ -109,7 +111,7 @@ public class Event implements IEvent {
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Event) {
-            return getEventId().equals(((Event) obj).getEventId());
+            return getId().equals(((Event) obj).getId());
         }
 
         return false;
@@ -117,6 +119,6 @@ public class Event implements IEvent {
 
     @Override
     public int hashCode() {
-        return getEventId().hashCode();
+        return getId().hashCode();
     }
 }

@@ -102,16 +102,16 @@ public class EventTest {
     @Test
     public void getEventId() {
         Long testId = 3L;
-        _testEvent.setEventId(testId);
-        assertEquals(testId, _testEvent.getEventId());
+        _testEvent.setId(testId);
+        assertEquals(testId, _testEvent.getId());
     }
 
     @Test
     public void equalsAndHashCode() {
         Long testId = 3L;
-        _testEvent.setEventId(testId);
+        _testEvent.setId(testId);
         Event testEvent = new Event();
-        testEvent.setEventId(testId);
+        testEvent.setId(testId);
         assertEquals(testEvent, _testEvent);
         assertEquals(testEvent.hashCode(), _testEvent.hashCode());
         assertNotEquals("", _testEvent);

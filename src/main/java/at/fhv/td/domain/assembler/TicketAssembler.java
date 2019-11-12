@@ -54,13 +54,13 @@ public class TicketAssembler {
         try {
             newTicketDto = new TicketDTO();
             newTicketDto.setPrice(ticket.getPlaceCategory().getPrice());
-            newTicketDto.setEventId(ticket.getEvent().getEventId());
+            newTicketDto.setEventId(ticket.getEvent().getId());
             newTicketDto.setCategoryName(ticket.getPlaceCategory().getCategoryName());
-            newTicketDto.setCategoryId(ticket.getPlaceCategory().getCategoryId());
+            newTicketDto.setCategoryId(ticket.getPlaceCategory().getId());
             newTicketDto.setTicketNumber(ticket.getTicketNumber());
-            newTicketDto.setId(ticket.getTicketId());
+            newTicketDto.setId(ticket.getId());
             if (ticket.getClient() != null) {
-                newTicketDto.setClientId(ticket.getClient().getClientId());
+                newTicketDto.setClientId(ticket.getClient().getId());
             }
         } catch (RemoteException e) {
             e.printStackTrace();

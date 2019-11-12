@@ -1,7 +1,7 @@
 package at.fhv.td.domain.interfaces;
 
 public interface ITicket {
-    Long getTicketId();
+    Long getId();
 
     Integer getTicketNumber();
 

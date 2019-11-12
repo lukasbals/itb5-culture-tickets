@@ -6,7 +6,7 @@ import at.fhv.td.domain.User;
 import java.util.Set;
 
 public interface ITour {
-    Long getTourId();
+    Long getId();
 
     String getDescription();
 

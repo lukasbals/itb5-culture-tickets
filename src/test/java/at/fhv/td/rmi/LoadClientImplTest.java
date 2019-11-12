@@ -52,11 +52,11 @@ public class LoadClientImplTest {
         when(_client1.getFirstname()).thenReturn(_fname1);
         when(_client1.getLastname()).thenReturn(_lname1);
         when(_client1.getAddress()).thenReturn(_address1);
-        when(_client1.getClientId()).thenReturn(_id1);
+        when(_client1.getId()).thenReturn(_id1);
         when(_client2.getFirstname()).thenReturn(_fname2);
         when(_client2.getLastname()).thenReturn(_lname2);
         when(_client2.getAddress()).thenReturn(_address2);
-        when(_client2.getClientId()).thenReturn(_id2);
+        when(_client2.getId()).thenReturn(_id2);
     }
 
     @Test

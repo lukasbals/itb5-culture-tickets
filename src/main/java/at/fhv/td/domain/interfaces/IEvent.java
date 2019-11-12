@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface IEvent {
-    Long getEventId();
+    Long getId();
 
     LocalDate getDate();
 

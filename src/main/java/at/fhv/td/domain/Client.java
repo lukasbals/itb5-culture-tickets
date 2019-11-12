@@ -1,12 +1,13 @@
 package at.fhv.td.domain;
 
 import at.fhv.td.domain.interfaces.IClient;
+import at.fhv.td.persistence.broker.IModelId;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "clients")
-public class Client implements IClient {
+public class Client implements IClient, IModelId {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +24,13 @@ public class Client implements IClient {
     private String _address;
 
     @Override
-    public Long getClientId() {
+    public Long getId() {
         return _clientId;
+    }
+
+    @Override
+    public void setId(Long id) {
+        _clientId = id;
     }
 
     @Override

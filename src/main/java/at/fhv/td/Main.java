@@ -20,7 +20,9 @@ public class Main {
         setupRmiRegistry();
     }
 
-    private static void setupRmiRegistry() {
+    static boolean setupRmiRegistry() {
+        boolean success = false;
+
         try {
             System.setProperty("java.rmi.server.hostname", IP_ADDRESS);
             LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
@@ -28,8 +30,11 @@ public class Main {
             ClientSessionFactoryImpl clientFactory = new ClientSessionFactoryImpl();
 
             Naming.rebind("rmi://" + IP_ADDRESS + "/clientFactory", clientFactory);
+            success = true;
         } catch (RemoteException | MalformedURLException e) {
             e.printStackTrace();
         }
+
+        return success;
     }
 }

@@ -1,13 +1,14 @@
 package at.fhv.td.domain;
 
 import at.fhv.td.domain.interfaces.ITour;
+import at.fhv.td.persistence.broker.IModelId;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "tours")
-public class Tour implements ITour {
+public class Tour implements ITour, IModelId {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,8 +34,13 @@ public class Tour implements ITour {
     private Set<Artist> _artists;
 
     @Override
-    public Long getTourId() {
+    public Long getId() {
         return _tourId;
+    }
+
+    @Override
+    public void setId(Long id){
+        _tourId = id;
     }
 
     @Override

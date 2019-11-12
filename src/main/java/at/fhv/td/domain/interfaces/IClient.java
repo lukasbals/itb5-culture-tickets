@@ -1,7 +1,7 @@
 package at.fhv.td.domain.interfaces;
 
 public interface IClient {
-    Long getClientId();
+    Long getId();
 
     String getFirstname();
 

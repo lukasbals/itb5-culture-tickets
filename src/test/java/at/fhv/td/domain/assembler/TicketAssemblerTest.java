@@ -52,13 +52,13 @@ public class TicketAssemblerTest {
         _expectedTicketDto.setEventId(1L);
         _expectedTicketDto.setTicketNumber(10);
         _expectedTicketDto.setClientId(1L);
-        when(_ticket.getTicketId()).thenReturn(1L);
+        when(_ticket.getId()).thenReturn(1L);
         when(_ticket.getClient()).thenReturn(_mockClient);
-        when(_ticket.getClient().getClientId()).thenReturn(1L);
+        when(_ticket.getClient().getId()).thenReturn(1L);
         when(_ticket.getPlaceCategory()).thenReturn(_mockCategory);
-        when(_ticket.getPlaceCategory().getCategoryId()).thenReturn(1L);
+        when(_ticket.getPlaceCategory().getId()).thenReturn(1L);
         when(_ticket.getEvent()).thenReturn(_mockEvent);
-        when(_ticket.getEvent().getEventId()).thenReturn(1L);
+        when(_ticket.getEvent().getId()).thenReturn(1L);
         when(_ticket.getTicketNumber()).thenReturn(10);
 
         _expectedTicket = new Ticket();

@@ -1,13 +1,14 @@
 package at.fhv.td.domain;
 
 import at.fhv.td.domain.interfaces.IRole;
+import at.fhv.td.persistence.broker.IModelId;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "roles")
-public class Role implements IRole {
+public class Role implements IRole, IModelId {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id", updatable = false, nullable = false)
@@ -23,8 +24,13 @@ public class Role implements IRole {
     private Set<User> _users;
 
     @Override
-    public Long getRoleId() {
+    public Long getId() {
         return _roleId;
+    }
+
+    @Override
+    public void setId(Long id) {
+        _roleId = id;
     }
 
     @Override

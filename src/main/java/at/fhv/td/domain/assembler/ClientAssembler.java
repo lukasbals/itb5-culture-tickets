@@ -10,7 +10,7 @@ public class ClientAssembler {
     }
 
     public static ClientDTO toClientDTO(IClient client) {
-        Long clientID = client.getClientId();
+        Long clientID = client.getId();
         String firstname = client.getFirstname();
         String lastname = client.getLastname();
         String address = client.getAddress();
