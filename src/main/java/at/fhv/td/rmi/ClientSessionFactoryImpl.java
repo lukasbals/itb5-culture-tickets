@@ -3,6 +3,7 @@ package at.fhv.td.rmi;
 import at.fhv.td.dto.TicketDTO;
 import at.fhv.td.rmi.interfaces.*;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
@@ -32,5 +33,10 @@ public class ClientSessionFactoryImpl extends UnicastRemoteObject implements ICl
     @Override
     public ITicketDTO createTicketDTO() throws RemoteException {
         return new TicketDTO();
+    }
+
+    @Override
+    public ILoadTicket createLoadTicket() throws RemoteException {
+        return new LoadTicketImpl();
     }
 }

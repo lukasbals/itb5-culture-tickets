@@ -11,4 +11,6 @@ public interface IClientSessionFactory extends Remote {
     public ILoadClient createClient() throws RemoteException;
 
     public ITicketDTO createTicketDTO() throws RemoteException;
+
+    ILoadTicket createLoadTicket() throws RemoteException;
 }

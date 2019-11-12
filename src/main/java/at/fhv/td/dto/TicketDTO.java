@@ -66,6 +66,7 @@ public class TicketDTO extends UnicastRemoteObject implements ITicketDTO {
         return _clientId;
     }
 
+    @Override
     public void setClientId(Long clientId) throws RemoteException {
         _clientId = clientId;
     }

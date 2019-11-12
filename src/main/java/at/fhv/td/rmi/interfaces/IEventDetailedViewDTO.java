@@ -36,6 +36,10 @@ public interface IEventDetailedViewDTO extends Remote {
 
     void setSeatReservationPossible(Boolean seatReservationPossible) throws RemoteException;
 
+    Long[] getPlaceCategoriesId() throws RemoteException;
+
+    void setPlaceCategoriesId(Long[] placeCategoriesId) throws RemoteException;
+
     String[] getPlaceCategories() throws RemoteException;
 
     void setPlaceCategories(String[] placeCategories) throws RemoteException;

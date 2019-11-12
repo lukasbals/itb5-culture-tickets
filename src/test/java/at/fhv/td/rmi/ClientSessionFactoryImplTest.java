@@ -1,6 +1,7 @@
 package at.fhv.td.rmi;
 
 import at.fhv.td.dto.TicketDTO;
+import at.fhv.td.rmi.interfaces.ILoadTicket;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,5 +35,10 @@ public class ClientSessionFactoryImplTest {
     @Test
     public void createTicketDTO() throws RemoteException {
         assertTrue(_clientSessionFactory.createTicketDTO() instanceof TicketDTO);
+    }
+
+    @Test
+    public void CreateLoadTicket() throws RemoteException {
+        assertTrue(_clientSessionFactory.createLoadTicket() instanceof LoadTicketImpl);
     }
 }

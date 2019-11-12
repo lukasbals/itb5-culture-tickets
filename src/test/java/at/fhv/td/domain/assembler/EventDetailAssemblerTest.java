@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.rmi.RemoteException;
@@ -21,7 +22,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 @RunWith(PowerMockRunner.class)
 public class EventDetailAssemblerTest {
@@ -55,6 +58,7 @@ public class EventDetailAssemblerTest {
 
         _placeCats = new HashSet<PlaceCategory>();
         PlaceCategory placeCat = new PlaceCategory();
+        placeCat.setCategoryId(1L);
         placeCat.setCategoryname(_cat1);
         placeCat.setPrice(20f);
         _placeCats.add(placeCat);
