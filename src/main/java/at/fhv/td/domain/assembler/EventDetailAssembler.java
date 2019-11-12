@@ -22,8 +22,8 @@ public class EventDetailAssembler {
         String category = event.getTour().getCategory();
         boolean isSeatReservationPossible = event.getSeatReservationPossible();
         LocalDate date = event.getDate();
-        Long eventId = event.getEventId();
-        Long[] placeCategoriesId = event.getPlaceCategories().stream().map(PlaceCategory::getCategoryId).toArray(Long[]::new);
+        Long eventId = event.getId();
+        Long[] placeCategoriesId = event.getPlaceCategories().stream().map(PlaceCategory::getId).toArray(Long[]::new);
         String[] placeCategories = event.getPlaceCategories().stream().map(PlaceCategory::getCategoryName).toArray(String[]::new);
         Integer[] placeCategoriesAmounts = event.getPlaceCategories().stream().map(PlaceCategory::getAmount).toArray(Integer[]::new);
         Float[] prices = event.getPlaceCategories().stream().map(PlaceCategory::getPrice).toArray(Float[]::new);

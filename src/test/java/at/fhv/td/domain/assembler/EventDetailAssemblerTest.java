@@ -12,7 +12,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.rmi.RemoteException;
@@ -58,7 +57,7 @@ public class EventDetailAssemblerTest {
 
         _placeCats = new HashSet<PlaceCategory>();
         PlaceCategory placeCat = new PlaceCategory();
-        placeCat.setCategoryId(1L);
+        placeCat.setId(1L);
         placeCat.setCategoryname(_cat1);
         placeCat.setPrice(20f);
         _placeCats.add(placeCat);
@@ -70,7 +69,7 @@ public class EventDetailAssemblerTest {
         when(_event.getTour().getCategory()).thenReturn(_category);
         when(_event.getSeatReservationPossible()).thenReturn(true);
         when(_event.getDate()).thenReturn(_date);
-        when(_event.getEventId()).thenReturn(1L);
+        when(_event.getId()).thenReturn(1L);
         when(_event.getPlaceCategories()).thenReturn(_placeCats);
     }
 

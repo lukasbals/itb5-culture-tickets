@@ -1,12 +1,13 @@
 package at.fhv.td.domain;
 
 import at.fhv.td.domain.interfaces.ILocation;
+import at.fhv.td.persistence.broker.IModelId;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "locations")
-public class Location implements ILocation {
+public class Location implements ILocation, IModelId {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "location_id", updatable = false, nullable = false)
@@ -19,8 +20,13 @@ public class Location implements ILocation {
     private String _building;
 
     @Override
-    public Long getLocationId() {
+    public Long getId() {
         return _locationId;
+    }
+
+    @Override
+    public void setId(Long id){
+        _locationId = id;
     }
 
     @Override

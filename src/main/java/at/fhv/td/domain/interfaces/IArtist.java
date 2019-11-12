@@ -11,5 +11,5 @@ public interface IArtist {
 
     Set<Tour> getTours();
 
-    Long getArtistId();
+    Long getId();
 }

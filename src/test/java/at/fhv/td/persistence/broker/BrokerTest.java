@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+import sun.applet.resources.MsgAppletViewer_es;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -119,6 +120,17 @@ public class BrokerTest {
     }
 
     @Test
+    public void saveMultiple() {
+        List<TestModel> mockList = new LinkedList<>();
+        mockList.add(_mockModel);
+
+        mockList = _broker.saveMultiple(mockList);
+
+        verify(_session, times(1)).save(_mockModel);
+        assertEquals(_mockModel.getId(), mockList.get(0).getId());
+    }
+
+    @Test
     public void update() {
         _broker.update(_mockModel);
         verify(_session, times(1)).update(_mockModel);
@@ -169,7 +181,7 @@ public class BrokerTest {
         DBConnection.getSession();
     }
 
-    static class TestModel {
+    static class TestModel implements IModelId {
         private Long _id;
         private String _name;
         private Integer _age;
@@ -180,8 +192,14 @@ public class BrokerTest {
             this._age = age;
         }
 
-        private Long getId() {
+        @Override
+        public Long getId() {
             return _id;
+        }
+
+        @Override
+        public void setId(Long id) {
+            _id = id;
         }
 
         public String getName() {

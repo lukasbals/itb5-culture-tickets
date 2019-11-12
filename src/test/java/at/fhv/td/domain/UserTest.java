@@ -25,6 +25,13 @@ public class UserTest {
     }
 
     @Test
+    public void getAndSetId(){
+        Long id = 10L;
+        _testUser.setId(id);
+        assertEquals(id, _testUser.getId());
+    }
+
+    @Test
     public void getAndSetUsername() {
         String username = "admin";
         _testUser.setUsername(username);

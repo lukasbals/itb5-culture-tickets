@@ -22,7 +22,7 @@ public class TicketTest {
     public void before() {
         _testTicket = new Ticket();
         _testCategory = new PlaceCategory();
-        _testCategory.setCategoryId(1L);
+        _testCategory.setId(1L);
         _testCategory.setCategory("Standingplace 2");
         _testCategory.setCategoryname("Standingplace");
         _testCategory.setPrice(23.6f);
@@ -66,7 +66,7 @@ public class TicketTest {
 
     @Test
     public void equalsAndHashCode(){
-        when(_mockEvent.getEventId()).thenReturn(1L);
+        when(_mockEvent.getId()).thenReturn(1L);
         int ticketNumber = 10;
         _testTicket.setTicketNumber(ticketNumber);
         _testTicket.setEvent(_mockEvent);
@@ -85,8 +85,8 @@ public class TicketTest {
     @Test
     public void getTicketId(){
         Long testId = 5L;
-        _testTicket.setTicketId(testId);
-        assertEquals(testId, _testTicket.getTicketId());
+        _testTicket.setId(testId);
+        assertEquals(testId, _testTicket.getId());
     }
 }
 

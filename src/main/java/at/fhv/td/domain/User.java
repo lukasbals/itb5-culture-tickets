@@ -1,13 +1,17 @@
 package at.fhv.td.domain;
 
 import at.fhv.td.domain.interfaces.IUser;
+import at.fhv.td.persistence.broker.IModelId;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User implements IUser {
+public class User implements IUser, IModelId {
+    @Transient
+    private Long _userId;
+
     @Id
     @Column(name = "username", updatable = false, nullable = false)
     private String _username;
@@ -81,5 +85,17 @@ public class User implements IUser {
 
     public void setRoles(Set<Role> roles) {
         _roles = roles;
+    }
+
+    @Override
+    @Transient
+    public Long getId() {
+        return _userId;
+    }
+
+    @Override
+    @Transient
+    public void setId(Long id) {
+        _userId = id;
     }
 }

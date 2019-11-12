@@ -24,6 +24,12 @@ public class RoleTest {
         _testRole = new Role();
     }
 
+    @Test
+    public void getAndSetId(){
+        Long id = 10L;
+        _testRole.setId(id);
+        assertEquals(id, _testRole.getId());
+    }
 
     @Test
     public void getAndSetRoleName() {

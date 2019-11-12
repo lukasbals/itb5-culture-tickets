@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * @author Lukas Bals
  */
-public abstract class Broker<T> implements BrokerInterface<T> {
+public abstract class Broker<T extends IModelId> implements BrokerInterface<T> {
     protected abstract Class<T> getModelClass();
 
     @Override
@@ -103,6 +103,27 @@ public abstract class Broker<T> implements BrokerInterface<T> {
             System.err.println(e.getMessage());
         }
         return result;
+    }
+
+    @Override
+    public List<T> saveMultiple(List<T> items) {
+        Session session;
+        try {
+            session = DBConnection.getSession();
+            Transaction transaction = session.beginTransaction();
+            items.forEach(item -> {
+                long newId = (Long) session.save(item);
+                item.setId(newId);
+            });
+            session.flush();
+            transaction.commit();
+        } catch (DBConnectionErrorException e) {
+            System.err.println(e.getTitle());
+            System.err.println(e.getMessage());
+            items.clear();
+        }
+
+        return items;
     }
 
     @Override

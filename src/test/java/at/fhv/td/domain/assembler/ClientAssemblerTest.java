@@ -34,7 +34,7 @@ public class ClientAssemblerTest {
         when(_client.getFirstname()).thenReturn(_fname);
         when(_client.getLastname()).thenReturn(_lname);
         when(_client.getAddress()).thenReturn(_address);
-        when(_client.getClientId()).thenReturn(_id);
+        when(_client.getId()).thenReturn(_id);
     }
 
     @Test

@@ -2,7 +2,7 @@ package at.fhv.td.domain.interfaces;
 
 public interface IPlaceCategory {
 
-    Long getCategoryId();
+    Long getId();
 
     String getCategoryName();
 

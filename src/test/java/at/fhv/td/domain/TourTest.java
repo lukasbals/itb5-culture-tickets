@@ -30,6 +30,13 @@ public class TourTest {
     }
 
     @Test
+    public void getAndSetTourId(){
+        Long id = 10L;
+        _testTour.setId(id);
+        assertEquals(id, _testTour.getId());
+    }
+
+    @Test
     public void getAndSetDescription() {
         String description = "it is an amazing play.";
         _testTour.setDescription(description);

@@ -14,6 +14,13 @@ public class LocationTest {
     }
 
     @Test
+    public void getAndSetId(){
+        Long id = 10L;
+        _testLocation.setId(id);
+        assertEquals(id, _testLocation.getId());
+    }
+
+    @Test
     public void getAndSetAddress() {
         String address = "Address 1";
         _testLocation.setAddress(address);
@@ -32,6 +39,13 @@ public class LocationTest {
         String building = "Building A";
         _testLocation.setBuilding(building);
         assertEquals(building, _testLocation.getBuilding());
+    }
+
+    @Test
+    public void getAndSetLocationId() {
+        Long id = 10L;
+        _testLocation.setId(id);
+        assertEquals(id, _testLocation.getId());
     }
 
     @Test

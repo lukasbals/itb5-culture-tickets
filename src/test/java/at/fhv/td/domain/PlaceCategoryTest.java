@@ -33,4 +33,11 @@ public class PlaceCategoryTest {
         _testPlaceCategory.setPrice(price);
         assertEquals(price, _testPlaceCategory.getPrice());
     }
+
+    @Test
+    public void getAndSetAmount() {
+        int amount = 10;
+        _testPlaceCategory.setAmount(amount);
+        assertEquals(amount, _testPlaceCategory.getAmount());
+    }
 }

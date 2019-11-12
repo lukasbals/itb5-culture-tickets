@@ -1,12 +1,13 @@
 package at.fhv.td.domain;
 
 import at.fhv.td.domain.interfaces.IPlaceCategory;
+import at.fhv.td.persistence.broker.IModelId;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "placeCategories")
-public class PlaceCategory implements IPlaceCategory {
+public class PlaceCategory implements IPlaceCategory, IModelId {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id", updatable = false, nullable = false)
@@ -25,11 +26,12 @@ public class PlaceCategory implements IPlaceCategory {
     private int _amount;
 
     @Override
-    public Long getCategoryId() {
+    public Long getId() {
         return _categoryId;
     }
 
-    public void setCategoryId(Long catId) {
+    @Override
+    public void setId(Long catId) {
         _categoryId = catId;
     }
 
