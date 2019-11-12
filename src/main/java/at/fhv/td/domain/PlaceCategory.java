@@ -29,7 +29,7 @@ public class PlaceCategory implements IPlaceCategory {
         return _categoryId;
     }
 
-    void setCategoryId(Long catId) {
+    public void setCategoryId(Long catId) {
         _categoryId = catId;
     }
 

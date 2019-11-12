@@ -106,6 +106,13 @@ public class TicketDTOTest {
     }
 
     @Test
+    public void getAndSetSold() throws RemoteException {
+        int sold = 1;
+        _testTicketDTO.setSold(sold);
+        assertEquals(sold, _testTicketDTO.getSold());
+    }
+
+    @Test
     public void getAndSetCategoryId() throws RemoteException {
         Long catId = 5L;
         _testTicketDTO.setCategoryId(catId);

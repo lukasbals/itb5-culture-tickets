@@ -23,14 +23,17 @@ public class TicketAssembler {
         Client client = null;
 
         try {
-            placeCategory = PlaceCategoryBroker.getInstance().get(ticketDto.getCategoryId());
             event = EventBroker.getInstance().get(ticketDto.getEventId());
 
             if (ticketDto.getClientId() != null) {
                 client = ClientBroker.getInstance().get(ticketDto.getClientId());
             }
 
-            if (placeCategory != null && event != null) {
+            if(ticketDto.getCategoryId() != null){
+                placeCategory = PlaceCategoryBroker.getInstance().get(ticketDto.getCategoryId());
+            }
+
+            if (event != null) {
                 Ticket newTicket = new Ticket();
                 newTicket.setPlaceCategory(placeCategory);
                 newTicket.setSold(ticketDto.getSold());

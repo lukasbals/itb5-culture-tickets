@@ -84,6 +84,13 @@ public class EventDetailedViewDTOTest {
     }
 
     @Test
+    public void getAndSetPlaceCategoriesId() throws RemoteException {
+        Long[] categoriesId = new Long[]{1L, 2L, 3L};
+        _testEventDto.setPlaceCategoriesId(categoriesId);
+        Assert.assertArrayEquals(categoriesId, _testEventDto.getPlaceCategoriesId());
+    }
+
+    @Test
     public void getAndSetCategory() throws RemoteException {
         String category = "Konzert";
         _testEventDto.setCategory(category);

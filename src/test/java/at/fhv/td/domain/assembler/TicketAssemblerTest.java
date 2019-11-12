@@ -86,9 +86,14 @@ public class TicketAssemblerTest {
     public void toTicket() throws RemoteException {
         assertEquals(_expectedTicket, TicketAssembler.toTicket(_ticketDto));
 
+        assertEquals(_expectedTicket, TicketAssembler.toTicket(_ticketDto));
+
         when(_ticketDto.getClientId()).thenReturn(null);
-        when(_ticketDto.getCategoryId()).thenReturn(null);
+        when(_ticketDto.getEventId()).thenReturn(null);
         assertNull(TicketAssembler.toTicket(_ticketDto));
+
+        when(_ticketDto.getCategoryId()).thenReturn(null);
+        assertNotEquals(_expectedTicket, TicketAssembler.toTicket(_ticketDto));
 
         when(_ticketDto.getCategoryId()).thenThrow(RemoteException.class);
         assertNotEquals(_expectedTicket, TicketAssembler.toTicket(_ticketDto));
@@ -96,6 +101,10 @@ public class TicketAssemblerTest {
 
     @Test
     public void toTicketDTO() throws Exception {
+        assertEquals(_expectedTicketDto, TicketAssembler.toTicketDTO(_ticket));
+
+        when(_ticket.getClient()).thenReturn(null);
+        _expectedTicketDto.setClientId(null);
         assertEquals(_expectedTicketDto, TicketAssembler.toTicketDTO(_ticket));
     }
 }
