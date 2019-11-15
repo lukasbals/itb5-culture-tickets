@@ -21,9 +21,9 @@ insert into placecategories (categoryname, category, price, amount) values ('Ste
 
 insert into users (username, email) values ('admin', 'ppo7929@students.fhv.at');
 
-insert into tours (tourname, description, category, username) values ('V-Tour', 'Vorarlberg Tour', 'Musik', 'admin');
-insert into tours (tourname, description, category, username) values ('Ösis', 'Österreich Tour', 'Vortrag', 'admin');
-insert into tours (tourname, description, category, username) values ('PPPPPoetry', 'Einmaliger Auftritt in Vorarlberg', 'Poetry Slam', 'admin');
+insert into tours (tourname, description, category, user_id) values ('V-Tour', 'Vorarlberg Tour', 'Musik', 1);
+insert into tours (tourname, description, category, user_id) values ('Ösis', 'Österreich Tour', 'Vortrag', 1);
+insert into tours (tourname, description, category, user_id) values ('PPPPPoetry', 'Einmaliger Auftritt in Vorarlberg', 'Poetry Slam', 1);
 
 insert into events (date, seat_reservation_possible, tour_id, location_id) values ('2019-12-23', true, 1, 1);
 insert into events (date, seat_reservation_possible, tour_id, location_id) values ('2020-07-15', false , 1, 2);

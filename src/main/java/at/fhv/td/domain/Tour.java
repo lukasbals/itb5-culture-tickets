@@ -25,8 +25,8 @@ public class Tour implements ITour, IModelId {
     private String _category;
 
     @ManyToOne
-    @JoinColumn(name = "username")
-    private User _username;
+    @JoinColumn(name = "user_id")
+    private User _user;
 
     @ManyToMany
     @JoinTable(name = "going_on", joinColumns = {@JoinColumn(name = "tour_id")}, inverseJoinColumns = {
@@ -72,11 +72,11 @@ public class Tour implements ITour, IModelId {
 
     @Override
     public User getUsername() {
-        return _username;
+        return _user;
     }
 
     public void setUsername(User username) {
-        _username = username;
+        _user = username;
     }
 
     @Override
