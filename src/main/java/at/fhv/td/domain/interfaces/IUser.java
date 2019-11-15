@@ -7,12 +7,6 @@ import java.util.Set;
 public interface IUser {
     String getUsername();
 
-    String getPassword();
-
-    String getAddress();
-
-    String getMobile();
-
     String getEmail();
 
     Set<Role> getRoles();

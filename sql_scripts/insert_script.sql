@@ -1,7 +1,7 @@
 insert into clients (firstname, lastname, address) values ('Patrick', 'Poiger', 'Zuhauseweg 1, Bludenz 6700');
 insert into clients (firstname, lastname, address) values ('Lukas', 'Bals', 'Hittisau 3, Wald 6989');
 insert into clients (firstname, lastname, address) values ('Vanessa', 'Durig', 'Gaschurnstraße 14, Gaschurn 6793');
-insert into clients (firstname, lastname, address) values ('Pia-Maria', 'Wei�', 'Dornbirnstraße 3, Dornbirn 6850');
+insert into clients (firstname, lastname, address) values ('Pia-Maria', 'Weiß', 'Dornbirnstraße 3, Dornbirn 6850');
 
 insert into artists (artistname, genre) values ('Baka Boing', 'Heavy Metal');
 insert into artists (artistname, genre) values ('Hofrat Dr.-Med. Dr. DI. BalsiBals', 'Sachvortrag');
@@ -19,10 +19,10 @@ insert into placecategories (categoryname, category, price, amount) values ('Sit
 insert into placecategories (categoryname, category, price, amount) values ('Sitzplatzkategorie B', 'Sitzplatz', 7.50, 50);
 insert into placecategories (categoryname, category, price, amount) values ('Stehplatz', 'Stehplatz', 5.00, 100);
 
-insert into users (username, password, address) values ('admin', 'WS2019+fhv', 'Hauptstraße 1, 6700 Bludenz');
+insert into users (username, email) values ('admin', 'ppo7929@students.fhv.at');
 
 insert into tours (tourname, description, category, username) values ('V-Tour', 'Vorarlberg Tour', 'Musik', 'admin');
-insert into tours (tourname, description, category, username) values ('�sis', '�sterreich Tour', 'Vortrag', 'admin');
+insert into tours (tourname, description, category, username) values ('Ösis', 'Österreich Tour', 'Vortrag', 'admin');
 insert into tours (tourname, description, category, username) values ('PPPPPoetry', 'Einmaliger Auftritt in Vorarlberg', 'Poetry Slam', 'admin');
 
 insert into events (date, seat_reservation_possible, tour_id, location_id) values ('2019-12-23', true, 1, 1);
@@ -76,4 +76,4 @@ insert into going_on (tour_id, artist_id) values (1, 1);
 insert into going_on (tour_id, artist_id) values (2, 3);
 insert into going_on (tour_id, artist_id) values (3, 2);
 
-insert into has_roles (role_id, username) values (1, 'admin');
+insert into has_roles (role_id, user_id) values (1, 1);
