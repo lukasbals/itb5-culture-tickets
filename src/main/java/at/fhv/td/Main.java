@@ -18,12 +18,14 @@ public class Main {
     static {
         if (System.getenv("HOST") != null) {
             IP_ADDRESS = System.getenv("HOST");
-        } ;
+        }
     }
 
     public static void main(String[] args) {
         DBConnection.setupDBConnection();
         setupRmiRegistry();
+
+//        System.out.println(LDAP.callLDAP("lba4683", ""));
     }
 
     static boolean setupRmiRegistry() {
