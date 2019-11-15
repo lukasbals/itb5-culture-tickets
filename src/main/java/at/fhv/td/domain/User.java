@@ -9,29 +9,28 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User implements IUser, IModelId {
-    @Transient
-    private Long _userId;
-
     @Id
-    @Column(name = "username", updatable = false, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id", updatable = false, nullable = false)
+    private Long _userId;
+    @Column(name = "username", nullable = false)
     private String _username;
-
-    @Column(name = "password")
-    private String _password;
-
-    @Column(name = "address")
-    private String _address;
-
-    @Column(name = "mobile")
-    private String _mobile;
-
     @Column(name = "email")
     private String _email;
-
     @ManyToMany
-    @JoinTable(name = "has_roles", joinColumns = {@JoinColumn(name = "username")}, inverseJoinColumns = {
+    @JoinTable(name = "has_roles", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {
             @JoinColumn(name = "role_id")})
     private Set<Role> _roles;
+
+    @Override
+    public Long getId() {
+        return _userId;
+    }
+
+    @Override
+    public void setId(Long id) {
+        _userId = id;
+    }
 
     @Override
     public String getUsername() {
@@ -40,33 +39,6 @@ public class User implements IUser, IModelId {
 
     public void setUsername(String username) {
         _username = username;
-    }
-
-    @Override
-    public String getPassword() {
-        return _password;
-    }
-
-    public void setPassword(String password) {
-        _password = password;
-    }
-
-    @Override
-    public String getAddress() {
-        return _address;
-    }
-
-    public void setAddress(String address) {
-        _address = address;
-    }
-
-    @Override
-    public String getMobile() {
-        return _mobile;
-    }
-
-    public void setMobile(String mobile) {
-        _mobile = mobile;
     }
 
     @Override
@@ -85,17 +57,5 @@ public class User implements IUser, IModelId {
 
     public void setRoles(Set<Role> roles) {
         _roles = roles;
-    }
-
-    @Override
-    @Transient
-    public Long getId() {
-        return _userId;
-    }
-
-    @Override
-    @Transient
-    public void setId(Long id) {
-        _userId = id;
     }
 }

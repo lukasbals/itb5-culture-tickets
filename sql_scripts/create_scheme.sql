@@ -43,12 +43,12 @@ create table if not exists locations (
 );
 
 create table if not exists users (
+                                     user_id serial,
                                      username varchar (255) not null,
-                                     password varchar (255) not null,
-                                     address varchar (255),
-                                     mobile varchar (255),
-                                     email varchar (255),
-                                     primary key (username)
+                                     email varchar (255) not null,
+                                     unique(username),
+								  	 unique(username, email),
+                                     primary key (user_id)
 );
 
 create table if not exists placecategories (
@@ -98,9 +98,9 @@ create table if not exists tickets (
 create table if not exists has_roles (
                                         has_role_id serial,
                                         role_id integer not null,
-                                        username varchar(255) not null,
+                                        user_id integer not null,
                                         foreign key (role_id) references roles(role_id),
-                                        foreign key (username) references users(username),
+                                        foreign key (user_id) references users(user_id),
                                         primary key (has_role_id)
 );
 
