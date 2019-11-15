@@ -65,8 +65,8 @@ create table if not exists tours (
                                     tourname varchar(255) not null,
                                     description varchar (255),
                                     category varchar (255),
-                                    username varchar (255) not null,
-                                    foreign key (username) references users(username),
+                                    user_id integer not null,
+                                    foreign key (user_id) references users(user_id),
                                     primary key (tour_id)
 );
 
