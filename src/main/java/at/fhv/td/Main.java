@@ -13,7 +13,13 @@ import java.rmi.registry.Registry;
  * @author Lukas Bals
  */
 public class Main {
-    private static final String IP_ADDRESS = "localhost";
+    private static String IP_ADDRESS = "10.0.51.93";
+
+    static {
+        if (System.getenv("HOST") != null) {
+            IP_ADDRESS = System.getenv("HOST");
+        } ;
+    }
 
     public static void main(String[] args) {
         DBConnection.setupDBConnection();
