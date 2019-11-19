@@ -1,7 +1,8 @@
 package at.fhv.td.rmi;
 
-import at.fhv.td.dto.TicketDTO;
-import at.fhv.td.rmi.interfaces.*;
+import at.fhv.td.ldap.LDAP;
+import at.fhv.td.rmi.interfaces.IClientSession;
+import at.fhv.td.rmi.interfaces.IClientSessionFactory;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -15,27 +16,13 @@ public class ClientSessionFactoryImpl extends UnicastRemoteObject implements ICl
     }
 
     @Override
-    public ISearchEvent createSearchEvent() throws RemoteException {
-        return new SearchEventImpl();
-    }
+    public IClientSession login(String userName, String password, boolean encrypted) throws RemoteException {
+        ClientSessionImpl session = null;
 
-    @Override
-    public IBuyTicket createBuyTicket() throws RemoteException {
-        return new BuyTicketImpl();
-    }
+        if(LDAP.callLDAP(userName, password)) {
+            session = new ClientSessionImpl(userName);
+        }
 
-    @Override
-    public ILoadClient createClient() throws RemoteException {
-        return new LoadClientImpl();
-    }
-
-    @Override
-    public ITicketDTO createTicketDTO() throws RemoteException {
-        return new TicketDTO();
-    }
-
-    @Override
-    public ILoadTicket createLoadTicket() throws RemoteException {
-        return new LoadTicketImpl();
+        return session;
     }
 }

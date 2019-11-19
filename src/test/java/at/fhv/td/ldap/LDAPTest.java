@@ -27,20 +27,25 @@ public class LDAPTest {
     }
 
     @Test
-    public void callLDAPWithPasswordLoginFails() {
-        assertFalse(LDAP.callLDAP("lukasbals", "password"));
-    }
-
-    @Test
     public void callLDAPException() throws NamingException {
         mockStatic(Utils.class);
         DirContext dirContext1 = mock(DirContext.class);
-        DirContext dirContext2 = mock(DirContext.class);
         SearchResult searchResult = mock(SearchResult.class);
         when(searchResult.getName()).thenReturn("name");
         when(Utils.login(LDAP.SEARCH_USER_DN, LDAP.SEARCH_USER_PASSWORD)).thenReturn(dirContext1);
         when(Utils.login("name" + "," + LDAP.LDAP_BASE, "password")).thenThrow(NamingException.class);
         when(Utils.findAccountByAccountName(dirContext1, "lukasbals")).thenReturn(searchResult);
+        assertFalse(LDAP.callLDAP("lukasbals", "password"));
+    }
+
+    @Test
+    public void callLDAPFindAccountByAccountNameReturnsNull() throws NamingException {
+        mockStatic(Utils.class);
+        DirContext dirContext1 = mock(DirContext.class);
+        DirContext dirContext2 = mock(DirContext.class);
+        when(Utils.login(LDAP.SEARCH_USER_DN, LDAP.SEARCH_USER_PASSWORD)).thenReturn(dirContext1);
+        when(Utils.login("name" + "," + LDAP.LDAP_BASE, "password")).thenReturn(dirContext2);
+        when(Utils.findAccountByAccountName(dirContext1, "lukasbals")).thenReturn(null);
         assertFalse(LDAP.callLDAP("lukasbals", "password"));
     }
 
