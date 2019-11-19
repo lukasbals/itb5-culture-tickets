@@ -24,8 +24,6 @@ public class Main {
     public static void main(String[] args) {
         DBConnection.setupDBConnection();
         setupRmiRegistry();
-
-//        System.out.println(LDAP.callLDAP("lba4683", ""));
     }
 
     static boolean setupRmiRegistry() {
