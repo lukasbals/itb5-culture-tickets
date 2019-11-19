@@ -9,7 +9,7 @@ import java.util.List;
 
 public class UserController {
 
-    private UserController(){
+    private UserController() {
     }
 
     public static User getUser(String userName) {
@@ -24,9 +24,9 @@ public class UserController {
         return null;
     }
 
-    public static boolean hasRole(User executingUser, String roleName){
-        if(executingUser != null) {
-            return executingUser.getRoles().stream().anyMatch(role -> role.getRoleName().toLowerCase().equals(roleName.toLowerCase()));
+    public static boolean hasRole(User executingUser, String roleName) {
+        if (executingUser != null) {
+            return executingUser.getRoles().stream().anyMatch(role -> role.getRoleName().equalsIgnoreCase(roleName));
         }
 
         return false;

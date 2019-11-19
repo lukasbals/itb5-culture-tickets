@@ -19,6 +19,9 @@ class Utils {
     private static final String PROVIDER_URL = "ldaps://dc01.ad.uclv.net:636";
     private static final String INITIAL_CONTEXT_FACTORY = "com.sun.jndi.ldap.LdapCtxFactory";
 
+    private Utils() {
+    }
+
     static SearchResult findAccountByAccountName(DirContext ctx, String accountName) throws NamingException {
 
         String searchFilter = "(&(objectClass=user)(sAMAccountName=" + accountName + "))";
