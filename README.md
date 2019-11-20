@@ -25,15 +25,29 @@ This repository represents the backend of the application.
 * Tested
 * AC's are fulfilled
 
-## Local setup
+## Test
 
-### Setup the app
+Run the unit tests with the following commands:
 
-The app is a maven project (IntelliJ). You can use IntelliJ to open and
-run the maven project, or just run the following commands in the project
-dir:
-
-```bash
-mvn -e clean install
-java -jar target/itb5-culture-tickets.jar
+```shell script
+mvn clean test
 ```
+
+## Build
+
+Build the app with the following commands:
+
+```shell script
+mvn clean -U package
+```
+
+## Run
+
+Run the app with the following commands:
+
+```shell script
+java -jar target/itb5-culture-tickets-1.0-SNAPSHOT.jar 
+```
+
+If you want to run the app on localhost, you have to specify the `HOST`
+environment variable, e.g. `HOST=localhost`.
