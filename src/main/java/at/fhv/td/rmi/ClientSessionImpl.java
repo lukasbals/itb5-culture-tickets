@@ -9,7 +9,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 public class ClientSessionImpl extends UnicastRemoteObject implements IClientSession {
-
+    private static final String SELLER_ROLE_NAME = "seller";
     private User _user;
 
     public ClientSessionImpl(String userName) throws RemoteException {
@@ -19,7 +19,7 @@ public class ClientSessionImpl extends UnicastRemoteObject implements IClientSes
 
     @Override
     public ISearchEvent createSearchEvent() throws RemoteException {
-        if (UserController.hasRole(_user, "seller")) {
+        if (UserController.hasRole(_user, SELLER_ROLE_NAME)) {
             return new SearchEventImpl();
         }
         return null;
@@ -27,7 +27,7 @@ public class ClientSessionImpl extends UnicastRemoteObject implements IClientSes
 
     @Override
     public IBuyTicket createBuyTicket() throws RemoteException {
-        if (UserController.hasRole(_user, "seller")) {
+        if (UserController.hasRole(_user, SELLER_ROLE_NAME)) {
             return new BuyTicketImpl();
         }
         return null;
@@ -35,7 +35,7 @@ public class ClientSessionImpl extends UnicastRemoteObject implements IClientSes
 
     @Override
     public ILoadClient createClient() throws RemoteException {
-        if (UserController.hasRole(_user, "seller")) {
+        if (UserController.hasRole(_user, SELLER_ROLE_NAME)) {
             return new LoadClientImpl();
         }
         return null;
@@ -43,7 +43,7 @@ public class ClientSessionImpl extends UnicastRemoteObject implements IClientSes
 
     @Override
     public ITicketDTO createTicketDTO() throws RemoteException {
-        if (UserController.hasRole(_user, "seller")) {
+        if (UserController.hasRole(_user, SELLER_ROLE_NAME)) {
             return new TicketDTO();
         }
         return null;
@@ -51,7 +51,7 @@ public class ClientSessionImpl extends UnicastRemoteObject implements IClientSes
 
     @Override
     public ILoadTicket createLoadTicket() throws RemoteException {
-        if (UserController.hasRole(_user, "seller")) {
+        if (UserController.hasRole(_user, SELLER_ROLE_NAME)) {
             return new LoadTicketImpl();
         }
         return null;
