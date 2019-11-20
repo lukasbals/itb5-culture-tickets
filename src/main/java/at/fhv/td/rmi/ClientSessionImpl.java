@@ -19,30 +19,41 @@ public class ClientSessionImpl extends UnicastRemoteObject implements IClientSes
 
     @Override
     public ISearchEvent createSearchEvent() throws RemoteException {
-        return new SearchEventImpl();
+        if (UserController.hasRole(_user, "seller")) {
+            return new SearchEventImpl();
+        }
+        return null;
     }
 
     @Override
     public IBuyTicket createBuyTicket() throws RemoteException {
-        if (UserController.hasRole(_user, "admin")) {
+        if (UserController.hasRole(_user, "seller")) {
             return new BuyTicketImpl();
         }
-
         return null;
     }
 
     @Override
     public ILoadClient createClient() throws RemoteException {
-        return new LoadClientImpl();
+        if (UserController.hasRole(_user, "seller")) {
+            return new LoadClientImpl();
+        }
+        return null;
     }
 
     @Override
     public ITicketDTO createTicketDTO() throws RemoteException {
-        return new TicketDTO();
+        if (UserController.hasRole(_user, "seller")) {
+            return new TicketDTO();
+        }
+        return null;
     }
 
     @Override
     public ILoadTicket createLoadTicket() throws RemoteException {
-        return new LoadTicketImpl();
+        if (UserController.hasRole(_user, "seller")) {
+            return new LoadTicketImpl();
+        }
+        return null;
     }
 }

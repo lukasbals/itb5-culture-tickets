@@ -26,7 +26,9 @@ public class UserController {
 
     public static boolean hasRole(User executingUser, String roleName) {
         if (executingUser != null) {
-            return executingUser.getRoles().stream().anyMatch(role -> role.getRoleName().equalsIgnoreCase(roleName));
+            boolean hasGivenRole = executingUser.getRoles().stream().anyMatch(role -> role.getRoleName().equalsIgnoreCase(roleName));
+            boolean hasAdminRole = executingUser.getRoles().stream().anyMatch(role -> role.getRoleName().equalsIgnoreCase("admin"));
+            return hasAdminRole || hasGivenRole;
         }
 
         return false;

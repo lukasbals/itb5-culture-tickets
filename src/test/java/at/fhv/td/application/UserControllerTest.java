@@ -50,16 +50,37 @@ public class UserControllerTest {
     }
 
     @Test
-    public void hasRole() {
+    public void hasRoleNullGivenAdmin() {
         assertFalse(UserController.hasRole(null, "admin"));
+    }
 
+    @Test
+    public void hasRoleUnknownGivenAdmin() {
+        assertFalse(UserController.hasRole(mockUser("unknown"), "admin"));
+    }
+
+    @Test
+    public void hasRoleAdminGivenAdmin() {
+        assertTrue(UserController.hasRole(mockUser("admin"), "admin"));
+    }
+
+    @Test
+    public void hasRoleAdminGivenSeller() {
+        assertTrue(UserController.hasRole(mockUser("admin"), "seller"));
+    }
+
+    @Test
+    public void hasRoleSellerGivenSeller() {
+        assertTrue(UserController.hasRole(mockUser("seller"), "seller"));
+    }
+
+    private static User mockUser(String role) {
         Role newRole = new Role();
-        newRole.setRoleName("admin");
+        newRole.setRoleName(role);
         Set<Role> roles = new HashSet<>();
         roles.add(newRole);
         User newUser = new User();
         newUser.setRoles(roles);
-
-        assertTrue(UserController.hasRole(newUser, "admin"));
+        return newUser;
     }
 }

@@ -36,9 +36,18 @@ public class ClientSessionImplTest {
     }
 
     @Test
+    public void createClientFail() throws RemoteException {
+        when(UserController.hasRole(any(User.class), any(String.class))).thenReturn(false);
+        assertNull(_clientSession.createClient());
+    }
+
+    @Test
     public void createBuyTicket() throws RemoteException {
         assertTrue(_clientSession.createBuyTicket() instanceof BuyTicketImpl);
+    }
 
+    @Test
+    public void createBuyTicketFail() throws RemoteException {
         when(UserController.hasRole(any(User.class), any(String.class))).thenReturn(false);
         assertNull(_clientSession.createBuyTicket());
     }
@@ -49,12 +58,30 @@ public class ClientSessionImplTest {
     }
 
     @Test
+    public void createSearchEventFail() throws RemoteException {
+        when(UserController.hasRole(any(User.class), any(String.class))).thenReturn(false);
+        assertNull(_clientSession.createSearchEvent());
+    }
+
+    @Test
     public void createTicketDTO() throws RemoteException {
         assertTrue(_clientSession.createTicketDTO() instanceof TicketDTO);
     }
 
     @Test
+    public void createTicketDTOFail() throws RemoteException {
+        when(UserController.hasRole(any(User.class), any(String.class))).thenReturn(false);
+        assertNull(_clientSession.createTicketDTO());
+    }
+
+    @Test
     public void CreateLoadTicket() throws RemoteException {
         assertTrue(_clientSession.createLoadTicket() instanceof LoadTicketImpl);
+    }
+
+    @Test
+    public void CreateLoadTicketFail() throws RemoteException {
+        when(UserController.hasRole(any(User.class), any(String.class))).thenReturn(false);
+        assertNull(_clientSession.createLoadTicket());
     }
 }
