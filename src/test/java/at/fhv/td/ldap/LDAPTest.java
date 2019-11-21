@@ -42,6 +42,15 @@ public class LDAPTest {
     }
 
     @Test
+    public void callLDAPSearchException() throws NamingException {
+        mockStatic(Utils.class);
+        SearchResult searchResult = mock(SearchResult.class);
+        when(searchResult.getName()).thenReturn("name");
+        when(Utils.login(LDAP.SEARCH_USER_DN, LDAP.SEARCH_USER_PASSWORD)).thenThrow(NamingException.class);
+        assertFalse(LDAP.callLDAP("lukasbals", "password"));
+    }
+
+    @Test
     public void callLDAPFindAccountByAccountNameReturnsNull() throws NamingException {
         mockStatic(Utils.class);
         DirContext dirContext1 = mock(DirContext.class);
