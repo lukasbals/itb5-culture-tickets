@@ -7,6 +7,8 @@ import at.fhv.td.dto.EventDetailedViewDTO;
 
 import java.rmi.RemoteException;
 import java.time.LocalDate;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class EventDetailAssembler {
@@ -23,10 +25,11 @@ public class EventDetailAssembler {
         boolean isSeatReservationPossible = event.getSeatReservationPossible();
         LocalDate date = event.getDate();
         Long eventId = event.getId();
-        Long[] placeCategoriesId = event.getPlaceCategories().stream().map(PlaceCategory::getId).toArray(Long[]::new);
-        String[] placeCategories = event.getPlaceCategories().stream().map(PlaceCategory::getCategoryName).toArray(String[]::new);
-        Integer[] placeCategoriesAmounts = event.getPlaceCategories().stream().map(PlaceCategory::getAmount).toArray(Integer[]::new);
-        Float[] prices = event.getPlaceCategories().stream().map(PlaceCategory::getPrice).toArray(Float[]::new);
+        List<PlaceCategory> placeCategoriesDomain = event.getPlaceCategories().stream().sorted(Comparator.comparing(PlaceCategory::getCategoryName)).collect(Collectors.toList());
+        Long[] placeCategoriesId = placeCategoriesDomain.stream().map(PlaceCategory::getId).toArray(Long[]::new);
+        String[] placeCategories = placeCategoriesDomain.stream().map(PlaceCategory::getCategoryName).toArray(String[]::new);
+        Integer[] placeCategoriesAmounts = placeCategoriesDomain.stream().map(PlaceCategory::getAmount).toArray(Integer[]::new);
+        Float[] prices = placeCategoriesDomain.stream().map(PlaceCategory::getPrice).toArray(Float[]::new);
 
         EventDetailedViewDTO newDto = null;
         try {
