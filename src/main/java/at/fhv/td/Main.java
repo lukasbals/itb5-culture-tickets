@@ -3,6 +3,8 @@ package at.fhv.td;
 import at.fhv.td.persistence.DBConnection;
 import at.fhv.td.rmi.ClientSessionFactoryImpl;
 
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
@@ -12,16 +14,11 @@ import java.rmi.registry.Registry;
 /**
  * @author Lukas Bals
  */
-public class Main {
-    private static String IP_ADDRESS = "10.0.51.93";
+public class Main implements ServletContextListener {
+    private final static String IP_ADDRESS = "10.0.51.93";
 
-    static {
-        if (System.getenv("HOST") != null) {
-            IP_ADDRESS = System.getenv("HOST");
-        }
-    }
-
-    public static void main(String[] args) {
+    @Override
+    public void contextInitialized(ServletContextEvent servletContextEvent) {
         DBConnection.setupDBConnection();
         setupRmiRegistry();
     }

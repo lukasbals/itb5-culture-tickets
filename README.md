@@ -43,11 +43,10 @@ mvn clean -U package
 
 ## Run
 
-Run the app with the following commands:
+Run the app on payara with the following commands:
 
 ```shell script
-java -jar target/itb5-culture-tickets-1.0-SNAPSHOT.jar 
+mvn clean -U package -DskipTests payara-micro:start
 ```
 
-If you want to run the app on localhost, you have to specify the `HOST`
-environment variable, e.g. `HOST=localhost`.
+You can access the app on `http://localhost:8080/itb5-culture-tickets-web-1.0-SNAPSHOT`.
