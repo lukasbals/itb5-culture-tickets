@@ -1,24 +1,21 @@
 package at.fhv.td;
 
+import at.fhv.td.jms.JMSBroker;
 import at.fhv.td.persistence.DBConnection;
-import at.fhv.td.rmi.ClientSessionFactoryImpl;
 import at.fhv.td.rmi.Setup;
-
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 
 /**
  * @author Lukas Bals
  */
-public class Main implements ServletContextListener {
-    @Override
-    public void contextInitialized(ServletContextEvent servletContextEvent) {
+public class Main {
+    private static String IP_ADDRESS = "10.0.51.93";
+
+    public static void main(String[] args) {
+        if (args.length == 1) {
+            IP_ADDRESS = args[0];
+        }
         DBConnection.setupDBConnection();
-        Setup.setupRmiRegistry();
+        Setup.setupRmiRegistry(IP_ADDRESS);
+        JMSBroker.startBrokerService(IP_ADDRESS);
     }
 }
