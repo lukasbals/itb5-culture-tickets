@@ -1,11 +1,12 @@
 package at.fhv.td.rss;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author Lukas Bals
  */
-public class FeedMessage {
+public class FeedMessage implements Serializable {
     private String _title;
     private String _description;
     private String _link;

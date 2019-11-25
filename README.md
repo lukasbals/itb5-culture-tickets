@@ -51,7 +51,8 @@ and running the following commands inside the payara5 directory:
 ./bin/asadmin start-domain
 
 # Register resources
-./bin/asadmin create-jms-resource --restype javax.jms.Topic --property Name=STOCKS jms/stocks
+./bin/asadmin create-jms-resource --restype javax.jms.Topic --property Name=FESTIVALS jms/festivals
+./bin/asadmin create-jms-resource --restype javax.jms.TopicConnectionFactory --property Name=CF jms/connectionFactory
 
 # Deploy the .war file
 ./bin/asadmin deploy path-to-war/itb5-culture-tickets-1.0-SNAPSHOT.war

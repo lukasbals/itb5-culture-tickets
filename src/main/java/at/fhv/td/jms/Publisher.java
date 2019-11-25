@@ -1,47 +1,31 @@
 package at.fhv.td.jms;
 
+import at.fhv.td.rss.FeedMessage;
+
 import javax.annotation.Resource;
-import javax.ejb.Schedule;
 import javax.ejb.Singleton;
 import javax.jms.*;
-import javax.json.Json;
-import javax.json.JsonObject;
-import java.time.Instant;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @author Lukas Bals
  */
 @Singleton
 public class Publisher {
+    @Resource(lookup = "jms/connectionFactory")
+    private ConnectionFactory _factory;
+    @Resource(lookup = "jms/festivals")
+    private Topic _topic;
 
-    @Resource(lookup = "jms/__defaultConnectionFactory")
-    private ConnectionFactory jmsFactory;
+    public void publishMessage(FeedMessage feedMessage) {
+        ObjectMessage message;
+        try (
 
-    @Resource(lookup = "jms/stocks")
-    private Topic jmsTopic;
-
-    private String[] stockCodes = {"MSFT", "GOOGL", "AAPL", "AMZN"};
-
-    @Schedule(second = "*/2", minute = "*", hour = "*", persistent = false)
-    public void sendStockInformation() {
-
-        TextMessage message;
-
-        try (Connection connection = jmsFactory.createConnection();
-             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-             MessageProducer producer = session.createProducer(jmsTopic)) {
-
-            JsonObject stockInformation = Json.createObjectBuilder()
-                    .add("stockCode", stockCodes[ThreadLocalRandom.current().nextInt(stockCodes.length)])
-                    .add("price", ThreadLocalRandom.current().nextDouble(1.0, 150.0))
-                    .add("timestamp", Instant.now().toEpochMilli()).build();
-
-            message = session.createTextMessage();
-            message.setText(stockInformation.toString());
-
+                Connection connection = _factory.createConnection();
+                Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+                MessageProducer producer = session.createProducer(_topic)
+        ) {
+            message = session.createObjectMessage(feedMessage);
             producer.send(message);
-
         } catch (JMSException e) {
             e.printStackTrace();
         }
