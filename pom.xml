@@ -19,6 +19,7 @@
     </properties>
 
     <dependencies>
+        <!-- JavaEE dependencies -->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -30,12 +31,8 @@
             <artifactId>javaee-api</artifactId>
             <version>8.0.1</version>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
+
+        <!-- DB connection and ORM dependencies -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -50,6 +47,21 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.2.5</version>
+        </dependency>
+
+        <!-- RSS feed parser -->
+        <dependency>
+            <groupId>com.rometools</groupId>
+            <artifactId>rome</artifactId>
+            <version>1.12.2</version>
+        </dependency>
+
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
@@ -73,7 +85,7 @@
 
     <build>
         <plugins>
-            <!--            Plugin for build-->
+            <!-- Plugin for build-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -92,7 +104,7 @@
                 <version>2.3</version>
             </plugin>
 
-            <!--            Plugins for testing-->
+            <!-- Plugins for testing-->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
