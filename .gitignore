@@ -7,3 +7,5 @@ classes
 .settings
 .classpath
 .project
+activemq-data
+dependency-reduced-pom.xml
