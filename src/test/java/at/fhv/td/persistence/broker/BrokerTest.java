@@ -12,7 +12,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-import sun.applet.resources.MsgAppletViewer_es;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -175,9 +174,10 @@ public class BrokerTest {
         _broker.get(_mockModel.getId());
         _broker.getAll(new LinkedList<>());
         _broker.save(_mockModel);
+        _broker.saveMultiple(new LinkedList<>());
         _broker.update(_mockModel);
         _broker.delete(_mockModel);
-        verifyStatic(DBConnection.class, times(5));
+        verifyStatic(DBConnection.class, times(6));
         DBConnection.getSession();
     }
 

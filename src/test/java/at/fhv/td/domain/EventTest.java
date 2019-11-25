@@ -111,6 +111,10 @@ public class EventTest {
         testEvent.setId(testId);
         assertEquals(testEvent, _testEvent);
         assertEquals(testEvent.hashCode(), _testEvent.hashCode());
-        assertNotEquals("", _testEvent);
+    }
+
+    @Test
+    public void equalsDifferentType() {
+        assertNotEquals(new Client(), _testEvent);
     }
 }

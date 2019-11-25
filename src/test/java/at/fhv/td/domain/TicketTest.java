@@ -6,7 +6,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(PowerMockRunner.class)
@@ -59,13 +60,13 @@ public class TicketTest {
     }
 
     @Test
-    public void getAndSetEvent(){
+    public void getAndSetEvent() {
         _testTicket.setEvent(_mockEvent);
         assertEquals(_mockEvent, _testTicket.getEvent());
     }
 
     @Test
-    public void equalsAndHashCode(){
+    public void equalsAndHashCode() {
         when(_mockEvent.getId()).thenReturn(1L);
         int ticketNumber = 10;
         _testTicket.setTicketNumber(ticketNumber);
@@ -78,12 +79,34 @@ public class TicketTest {
         testTicket.setPlaceCategory(_testCategory);
 
         assertEquals(testTicket, _testTicket);
-        assertNotEquals("", _testTicket);
         assertEquals(testTicket.hashCode(), _testTicket.hashCode());
     }
 
     @Test
-    public void getTicketId(){
+    public void equalsDifferentType() {
+        assertNotEquals(new Client(), _testTicket);
+    }
+
+    @Test
+    public void equalsFalse() {
+        Ticket testTicket = new Ticket();
+
+        int ticketNumber = 10;
+        when(_mockEvent.getId()).thenReturn(1L);
+        _testCategory.setId(1L);
+        _testTicket.setTicketNumber(ticketNumber);
+        _testTicket.setEvent(_mockEvent);
+        _testTicket.setPlaceCategory(_testCategory);
+
+        testTicket.setTicketNumber(20);
+        testTicket.setEvent(_mockEvent);
+        testTicket.setPlaceCategory(_testCategory);
+
+        assertNotEquals(testTicket, _testTicket);
+    }
+
+    @Test
+    public void getTicketId() {
         Long testId = 5L;
         _testTicket.setId(testId);
         assertEquals(testId, _testTicket.getId());
