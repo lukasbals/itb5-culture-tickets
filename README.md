@@ -43,10 +43,20 @@ mvn clean -U package
 
 ## Run
 
-Run the app on payara with the following commands:
+Run the app by downloading [payara](https://www.payara.fish/software/downloads/)
+and running the following commands inside the payara5 directory:
 
 ```shell script
-mvn clean -U package -DskipTests payara-micro:start
+# Start the server
+./bin/asadmin start-domain
+# Register resources
+./bin/asadmin create-jms-resource --restype javax.jms.Topic --property Name=STOCKS jms/stocks
+# Deploy the .war file
+./bin/asadmin deploy path-to-war/itb5-culture-tickets-1.0-SNAPSHOT.war
+# List deployments
+./bin/asadmin list-applications
 ```
 
-You can access the app on `http://localhost:8080/itb5-culture-tickets-web-1.0-SNAPSHOT`.
+You can access the payara admin console on `http://localhost:4848/`.
+You can access the app app on `http://localhost:8080/itb5-culture-tickets-1.0-SNAPSHOT/`.
+
