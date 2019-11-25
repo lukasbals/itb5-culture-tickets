@@ -49,14 +49,19 @@ and running the following commands inside the payara5 directory:
 ```shell script
 # Start the server
 ./bin/asadmin start-domain
+
 # Register resources
 ./bin/asadmin create-jms-resource --restype javax.jms.Topic --property Name=STOCKS jms/stocks
+
 # Deploy the .war file
 ./bin/asadmin deploy path-to-war/itb5-culture-tickets-1.0-SNAPSHOT.war
+
 # List deployments
 ./bin/asadmin list-applications
+
+# Stop the server
+./bin/asadmin stop-domain
 ```
 
 You can access the payara admin console on `http://localhost:4848/`.
 You can access the app app on `http://localhost:8080/itb5-culture-tickets-1.0-SNAPSHOT/`.
-
