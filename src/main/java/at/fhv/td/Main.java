@@ -23,12 +23,12 @@ public class Main implements ServletContextListener {
         DBConnection.setupDBConnection();
         Setup.setupRmiRegistry();
 
-        List<FeedMessage> feedMessages = FeedReader.readFeed("https://www.festivalticker.de/rss-festivalfeed/festivalkalender.xml");
-
-        // This publishes the messages to the broker
-        for (FeedMessage feedMessage : feedMessages) {
-            _publisher.publishMessage(feedMessage);
-            System.out.println("PUBLISH: " + feedMessage.getTitle());
-        }
+//        List<FeedMessage> feedMessages = FeedReader.readFeed("https://www.festivalticker.de/rss-festivalfeed/festivalkalender.xml");
+//
+//        // This publishes the messages to the broker
+//        for (FeedMessage feedMessage : feedMessages) {
+//            _publisher.publishMessage(feedMessage);
+//            System.out.println("PUBLISH: " + feedMessage.getTitle());
+//        }
     }
 }

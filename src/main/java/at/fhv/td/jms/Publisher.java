@@ -19,7 +19,6 @@ public class Publisher {
     public void publishMessage(FeedMessage feedMessage) {
         ObjectMessage message;
         try (
-
                 Connection connection = _factory.createConnection();
                 Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
                 MessageProducer producer = session.createProducer(_topic)
@@ -27,7 +26,15 @@ public class Publisher {
             message = session.createObjectMessage(feedMessage);
             producer.send(message);
         } catch (JMSException e) {
-            e.printStackTrace();
+            System.err.println("Error while publishing message.");
         }
+    }
+
+    void setFactory(ConnectionFactory factory) {
+        _factory = factory;
+    }
+
+    void setTopic(Topic topic) {
+        _topic = topic;
     }
 }
