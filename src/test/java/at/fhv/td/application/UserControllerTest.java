@@ -1,6 +1,7 @@
 package at.fhv.td.application;
 
 import at.fhv.td.domain.Role;
+import at.fhv.td.domain.Topic;
 import at.fhv.td.domain.User;
 import at.fhv.td.persistence.broker.UserBroker;
 import org.junit.Before;
@@ -23,16 +24,22 @@ import static org.powermock.api.mockito.PowerMockito.when;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(UserBroker.class)
 public class UserControllerTest {
+    Set<Topic> _topics = new HashSet<>();
 
     @Mock
     UserBroker _broker;
+    @Mock
+    User _user;
 
     @Before
     public void before() {
         mockStatic(UserBroker.class);
-
+        Topic topic = new Topic();
+        topic.setName("name");
+        _topics.add(topic);
+        when(_user.getTopics()).thenReturn(_topics);
         List<User> users = new LinkedList<>();
-        users.add(new User());
+        users.add(_user);
 
         when(UserBroker.getInstance()).thenReturn(_broker);
         when(_broker.getAll(any(List.class))).thenReturn(users);
@@ -44,9 +51,20 @@ public class UserControllerTest {
     }
 
     @Test
+    public void getTopics() {
+        assertEquals("name", UserController.getTopics("test").get(0).getName());
+    }
+
+    @Test
     public void getUserFail() {
         when(_broker.getAll(any(List.class))).thenReturn(new LinkedList());
         assertNull(UserController.getUser("test"));
+    }
+
+    @Test
+    public void getTopicsFail() {
+        when(_broker.getAll(any(List.class))).thenReturn(new LinkedList());
+        assertNull(UserController.getTopics("test"));
     }
 
     @Test

@@ -50,7 +50,7 @@ public class RoleTest {
         Set<User> users = new HashSet<>();
         users.add(_user);
         _testRole.setUsers(users);
-        assertTrue(_testRole.getUsers().size() == 1);
+        assertEquals(1, _testRole.getUsers().size());
     }
 }
 

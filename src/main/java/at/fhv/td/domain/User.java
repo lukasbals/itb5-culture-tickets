@@ -18,9 +18,20 @@ public class User implements IUser, IModelId {
     @Column(name = "email")
     private String _email;
     @ManyToMany
-    @JoinTable(name = "has_roles", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {
-            @JoinColumn(name = "role_id")})
+    @JoinTable(
+            name = "has_roles",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")}
+    )
     private Set<Role> _roles;
+
+    @ManyToMany
+    @JoinTable(
+            name = "users_topics",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "topic_id")}
+    )
+    private Set<Topic> _topics;
 
     @Override
     public Long getId() {
@@ -55,7 +66,16 @@ public class User implements IUser, IModelId {
         return _roles;
     }
 
+    @Override
+    public Set<Topic> getTopics() {
+        return _topics;
+    }
+
     public void setRoles(Set<Role> roles) {
         _roles = roles;
+    }
+
+    public void setTopics(Set<Topic> topics) {
+        _topics = topics;
     }
 }

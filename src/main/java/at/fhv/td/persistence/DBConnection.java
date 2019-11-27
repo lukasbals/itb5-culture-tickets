@@ -22,6 +22,7 @@ public class DBConnection extends Thread {
             "at.fhv.td.domain.User",
             "at.fhv.td.domain.Role",
             "at.fhv.td.domain.Ticket",
+            "at.fhv.td.domain.Topic",
             "at.fhv.td.domain.PlaceCategory",
     };
 

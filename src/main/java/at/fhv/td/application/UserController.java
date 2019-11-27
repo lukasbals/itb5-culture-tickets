@@ -1,5 +1,6 @@
 package at.fhv.td.application;
 
+import at.fhv.td.domain.Topic;
 import at.fhv.td.domain.User;
 import at.fhv.td.persistence.PersistenceFilter;
 import at.fhv.td.persistence.broker.UserBroker;
@@ -32,5 +33,13 @@ public class UserController {
         }
 
         return false;
+    }
+
+    public static List<Topic> getTopics(String username) {
+        User user = getUser(username);
+        if (user != null) {
+            return new LinkedList<>(user.getTopics());
+        }
+        return null;
     }
 }

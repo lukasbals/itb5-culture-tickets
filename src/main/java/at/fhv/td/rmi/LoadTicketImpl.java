@@ -11,6 +11,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 public class LoadTicketImpl extends UnicastRemoteObject implements ILoadTicket {
+    private static final long serialVersionUID = 998329308129098297L;
 
     protected LoadTicketImpl() throws RemoteException {
         super();

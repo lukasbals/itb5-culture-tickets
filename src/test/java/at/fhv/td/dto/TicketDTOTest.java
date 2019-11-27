@@ -8,7 +8,8 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.rmi.RemoteException;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(PowerMockRunner.class)
@@ -127,7 +128,7 @@ public class TicketDTOTest {
         compareDto.setId(_id);
         compareDto.setTicketNumber(_ticketNumber);
 
-        assertTrue(_testTicketDTO.equals(compareDto));
+        assertEquals(_testTicketDTO, compareDto);
         assertEquals(compareDto.hashCode(), _testTicketDTO.hashCode());
     }
 
@@ -138,7 +139,7 @@ public class TicketDTOTest {
 
         when(_anotherTestTicketDTO.getId()).thenThrow(RemoteException.class);
 
-        assertFalse(_testTicketDTO.equals(new String("")));
-        assertFalse(_testTicketDTO.equals(_anotherTestTicketDTO));
+        assertNotEquals(_testTicketDTO, "");
+        assertNotEquals(_testTicketDTO, _anotherTestTicketDTO);
     }
 }

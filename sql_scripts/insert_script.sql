@@ -9,6 +9,8 @@ insert into artists (artistname, genre) values ('VaniHase', 'Alternative Pop');
 insert into artists (artistname, genre) values ('Pia-Maria', 'Poetry Slam');
 
 insert into roles (role_name, rights) values ('admin', 'fullcontroll');
+insert into roles (role_name, rights) values ('seller', 'Seller');
+insert into roles (role_name, rights) values ('message-feed', 'Message feed client');
 
 insert into locations (address, room, building) values ('Spielboden 2, Dornbirn 6850', 'Kantine', 'A');
 insert into locations (address, room, building) values ('Festspielhaus, Bregenz 6900', 'Festsaal', 'Hauptgebäude');
@@ -19,7 +21,11 @@ insert into placecategories (categoryname, category, price, amount) values ('Sit
 insert into placecategories (categoryname, category, price, amount) values ('Sitzplatzkategorie B', 'Sitzplatz', 7.50, 50);
 insert into placecategories (categoryname, category, price, amount) values ('Stehplatz', 'Stehplatz', 5.00, 100);
 
-insert into users (username, email) values ('admin', 'ppo7929@students.fhv.at');
+insert into users (username, email) values ('ppo7929', 'ppo7929@students.fhv.at');
+insert into users (username, email) values ('lba4683', 'lba4683@students.fhv.at');
+insert into users (username, email) values ('pwe9098', 'pia@students.fhv.at');
+insert into users (username, email) values ('vdu2437', 'vanessa@students.fhv.at');
+insert into users (username, email) values ('tf-test', 'tf-test@fhv.at');
 
 insert into tours (tourname, description, category, user_id) values ('V-Tour', 'Vorarlberg Tour', 'Musik', 1);
 insert into tours (tourname, description, category, user_id) values ('Ösis', 'Österreich Tour', 'Vortrag', 1);
@@ -77,3 +83,13 @@ insert into going_on (tour_id, artist_id) values (2, 3);
 insert into going_on (tour_id, artist_id) values (3, 2);
 
 insert into has_roles (role_id, user_id) values (1, 1);
+insert into has_roles (role_id, user_id) values (1, 2);
+insert into has_roles (role_id, user_id) values (1, 3);
+insert into has_roles (role_id, user_id) values (1, 4);
+insert into has_roles (role_id, user_id) values (1, 5);
+
+insert into topics (topic_id, topic_name) values (1, 'festivals');
+insert into topics (topic_id, topic_name) values (2, 'concerts');
+
+insert into users_topics (topic_id, user_id) values (1, 1);
+insert into users_topics (topic_id, user_id) values (1, 2);

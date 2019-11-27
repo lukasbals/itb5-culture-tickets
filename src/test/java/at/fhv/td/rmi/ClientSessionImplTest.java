@@ -75,12 +75,23 @@ public class ClientSessionImplTest {
     }
 
     @Test
-    public void CreateLoadTicket() throws RemoteException {
+    public void createLoadTicket() throws RemoteException {
         assertTrue(_clientSession.createLoadTicket() instanceof LoadTicketImpl);
     }
 
     @Test
-    public void CreateLoadTicketFail() throws RemoteException {
+    public void createLoadTicketFail() throws RemoteException {
+        when(UserController.hasRole(any(User.class), any(String.class))).thenReturn(false);
+        assertNull(_clientSession.createLoadTicket());
+    }
+
+    @Test
+    public void createMessageFeed() throws RemoteException {
+        assertTrue(_clientSession.createMessageFeed() instanceof MessageFeedImpl);
+    }
+
+    @Test
+    public void createMessageFeedFail() throws RemoteException {
         when(UserController.hasRole(any(User.class), any(String.class))).thenReturn(false);
         assertNull(_clientSession.createLoadTicket());
     }

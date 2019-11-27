@@ -10,6 +10,9 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class ClientSessionImpl extends UnicastRemoteObject implements IClientSession {
     private static final String SELLER_ROLE_NAME = "seller";
+    private static final String MESSAGE_FEED_ROLE_NAME = "message-feed";
+    private static final long serialVersionUID = -8635265718445391597L;
+
     private User _user;
 
     public ClientSessionImpl(String userName) throws RemoteException {
@@ -53,6 +56,14 @@ public class ClientSessionImpl extends UnicastRemoteObject implements IClientSes
     public ILoadTicket createLoadTicket() throws RemoteException {
         if (UserController.hasRole(_user, SELLER_ROLE_NAME)) {
             return new LoadTicketImpl();
+        }
+        return null;
+    }
+
+    @Override
+    public IMessageFeed createMessageFeed() throws RemoteException {
+        if (UserController.hasRole(_user, MESSAGE_FEED_ROLE_NAME)) {
+            return new MessageFeedImpl();
         }
         return null;
     }

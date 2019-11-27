@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class BuyTicketImpl extends UnicastRemoteObject implements IBuyTicket {
+    private static final long serialVersionUID = -8441397028955328501L;
     private TicketAnswer _answer;
 
     public BuyTicketImpl() throws RemoteException {
@@ -47,7 +48,7 @@ public class BuyTicketImpl extends UnicastRemoteObject implements IBuyTicket {
         return _answer.getMessage();
     }
 
-    void setTicketAnswer(TicketAnswer answer){
+    void setTicketAnswer(TicketAnswer answer) {
         _answer = answer;
     }
 }

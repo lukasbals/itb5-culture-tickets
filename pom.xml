@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>at.fhv.td</groupId>
@@ -16,8 +17,9 @@
         <version.payara.micro>5.182</version.payara.micro>
         <project.hibernate.version>5.4.2.Final</project.hibernate.version>
     </properties>
-    
+
     <dependencies>
+        <!-- JavaEE dependencies -->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -25,11 +27,12 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0.1</version>
         </dependency>
+
+        <!-- DB connection and ORM dependencies -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -44,6 +47,21 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.2.5</version>
+        </dependency>
+
+        <!-- RSS feed parser -->
+        <dependency>
+            <groupId>com.rometools</groupId>
+            <artifactId>rome</artifactId>
+            <version>1.12.2</version>
+        </dependency>
+
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
@@ -67,7 +85,7 @@
 
     <build>
         <plugins>
-<!--            Plugin for build-->
+            <!-- Plugin for build-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -85,22 +103,8 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.3</version>
             </plugin>
-            <plugin>
-                <groupId>fish.payara.maven.plugins</groupId>
-                <artifactId>payara-micro-maven-plugin</artifactId>
-                <version>1.0.1</version>
-                <configuration>
-                    <payaraVersion>${version.payara.micro}</payaraVersion>
-                    <deployWar>true</deployWar>
-                    <commandLineOptions>
-                        <option>
-                            <key>--autoBindHttp</key>
-                        </option>
-                    </commandLineOptions>
-                </configuration>
-            </plugin>
 
-<!--            Plugins for testing-->
+            <!-- Plugins for testing-->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -144,5 +148,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
