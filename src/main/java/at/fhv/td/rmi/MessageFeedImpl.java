@@ -1,5 +1,6 @@
 package at.fhv.td.rmi;
 
+import at.fhv.td.application.TopicController;
 import at.fhv.td.application.UserController;
 import at.fhv.td.domain.assembler.TopicAssembler;
 import at.fhv.td.rmi.interfaces.IMessageFeed;
@@ -23,5 +24,10 @@ public class MessageFeedImpl extends UnicastRemoteObject implements IMessageFeed
     @Override
     public List<ITopicDTO> getTopics(String username) throws RemoteException {
         return UserController.getTopics(username).stream().map(TopicAssembler::toTopicDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ITopicDTO> getAllTopics() throws RemoteException {
+        return TopicController.getTopics().stream().map(TopicAssembler::toTopicDTO).collect(Collectors.toList());
     }
 }
