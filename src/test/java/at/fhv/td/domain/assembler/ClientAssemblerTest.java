@@ -1,7 +1,7 @@
 package at.fhv.td.domain.assembler;
 
 import at.fhv.td.domain.Client;
-import at.fhv.td.dto.ClientDTO;
+import at.fhv.td.communication.dto.ClientDTO;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

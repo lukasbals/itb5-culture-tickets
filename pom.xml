@@ -14,7 +14,6 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.javaee>8.0</version.javaee>
-        <version.payara.micro>5.182</version.payara.micro>
         <project.hibernate.version>5.4.2.Final</project.hibernate.version>
     </properties>
 
@@ -31,6 +30,24 @@
             <artifactId>javaee-api</artifactId>
             <version>8.0.1</version>
         </dependency>
+
+        <!-- REST service dependencies -->
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>2.29.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>2.29.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>2.29.1</version>
+        </dependency>
+
 
         <!-- DB connection and ORM dependencies -->
         <dependency>

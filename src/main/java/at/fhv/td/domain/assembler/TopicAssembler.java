@@ -1,7 +1,7 @@
 package at.fhv.td.domain.assembler;
 
 import at.fhv.td.domain.interfaces.ITopic;
-import at.fhv.td.dto.TopicDTO;
+import at.fhv.td.communication.dto.TopicDTO;
 
 import java.rmi.RemoteException;
 
