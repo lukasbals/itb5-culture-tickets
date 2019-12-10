@@ -5,11 +5,11 @@ import at.fhv.td.domain.Event;
 import at.fhv.td.domain.PlaceCategory;
 import at.fhv.td.domain.Ticket;
 import at.fhv.td.domain.interfaces.ITicket;
-import at.fhv.td.dto.TicketDTO;
+import at.fhv.td.communication.dto.TicketDTO;
 import at.fhv.td.persistence.broker.ClientBroker;
 import at.fhv.td.persistence.broker.EventBroker;
 import at.fhv.td.persistence.broker.PlaceCategoryBroker;
-import at.fhv.td.rmi.interfaces.ITicketDTO;
+import at.fhv.td.communication.rmi.interfaces.ITicketDTO;
 
 import java.rmi.RemoteException;
 

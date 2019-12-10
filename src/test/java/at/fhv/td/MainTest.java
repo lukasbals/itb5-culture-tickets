@@ -1,7 +1,7 @@
 package at.fhv.td;
 
 import at.fhv.td.persistence.DBConnection;
-import at.fhv.td.rmi.Setup;
+import at.fhv.td.communication.rmi.SetupRMI;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +16,7 @@ import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.verifyStatic;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({DBConnection.class, Setup.class})
+@PrepareForTest({DBConnection.class, SetupRMI.class})
 public class MainTest {
     @Mock
     ServletContextEvent _servletContextEvent;
@@ -24,7 +24,7 @@ public class MainTest {
     @Before
     public void before() {
         mockStatic(DBConnection.class);
-        mockStatic(Setup.class);
+        mockStatic(SetupRMI.class);
     }
 
     @Test
@@ -33,7 +33,7 @@ public class MainTest {
         main.contextInitialized(_servletContextEvent);
         verifyStatic(DBConnection.class, times(1));
         DBConnection.setupDBConnection();
-        verifyStatic(Setup.class, times(1));
-        Setup.setupRmiRegistry();
+        verifyStatic(SetupRMI.class, times(1));
+        SetupRMI.setupRmiRegistry();
     }
 }

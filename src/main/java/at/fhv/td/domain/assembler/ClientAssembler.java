@@ -1,7 +1,7 @@
 package at.fhv.td.domain.assembler;
 
 import at.fhv.td.domain.interfaces.IClient;
-import at.fhv.td.dto.ClientDTO;
+import at.fhv.td.communication.dto.ClientDTO;
 
 import java.rmi.RemoteException;
 

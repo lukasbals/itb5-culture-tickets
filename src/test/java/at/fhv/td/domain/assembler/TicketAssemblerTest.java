@@ -4,7 +4,7 @@ import at.fhv.td.domain.Client;
 import at.fhv.td.domain.Event;
 import at.fhv.td.domain.PlaceCategory;
 import at.fhv.td.domain.Ticket;
-import at.fhv.td.dto.TicketDTO;
+import at.fhv.td.communication.dto.TicketDTO;
 import at.fhv.td.persistence.broker.ClientBroker;
 import at.fhv.td.persistence.broker.EventBroker;
 import at.fhv.td.persistence.broker.PlaceCategoryBroker;

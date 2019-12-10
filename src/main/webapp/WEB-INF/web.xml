@@ -6,4 +6,18 @@
     <listener>
         <listener-class>at.fhv.td.Main</listener-class>
     </listener>
+    <servlet>
+        <servlet-name>CultureTickets REST Service</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>at.fhv.td.communication.rest</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CultureTickets REST Service</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+        <!-- call with:     http://localhost:8080/itb5-culture-tickets-1.0-SNAPSHOT/rest/[endpoint]-->
+    </servlet-mapping>
 </web-app>

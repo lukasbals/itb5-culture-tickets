@@ -3,7 +3,7 @@ package at.fhv.td.domain.assembler;
 import at.fhv.td.domain.Artist;
 import at.fhv.td.domain.PlaceCategory;
 import at.fhv.td.domain.interfaces.IEvent;
-import at.fhv.td.dto.EventDetailedViewDTO;
+import at.fhv.td.communication.dto.EventDetailedViewDTO;
 
 import java.rmi.RemoteException;
 import java.time.LocalDate;
