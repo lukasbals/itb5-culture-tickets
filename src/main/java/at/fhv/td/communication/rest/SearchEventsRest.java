@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Path("/searchEvents")
+@Produces(MediaType.APPLICATION_JSON)
 public class SearchEventsRest {
     /**
      * Searches for events with params: /searchEvents?artist=boing&eventName=blubb
@@ -25,7 +26,6 @@ public class SearchEventsRest {
      * @return
      */
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     public Response searchForEvents(
             @QueryParam("y") @DefaultValue("0") int year,
             @QueryParam("m") @DefaultValue("0") int month,

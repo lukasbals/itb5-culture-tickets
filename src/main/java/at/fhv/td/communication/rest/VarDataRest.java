@@ -17,9 +17,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Path("/data")
+@Produces(MediaType.APPLICATION_JSON)
 public class VarDataRest {
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     @Path("/clients")
     public Response getAllClients() {
         try {
@@ -34,7 +34,6 @@ public class VarDataRest {
     }
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     @Path("/tickets/{eventId}")
     public Response getTicketsOfEvent(@PathParam("eventId") int eventId) {
         try {
