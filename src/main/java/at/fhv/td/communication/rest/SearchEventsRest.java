@@ -49,7 +49,7 @@ public class SearchEventsRest {
                     .stream()
                     .map(EventDetailAssembler::toEventDetailedViewDTO)
                     .collect(Collectors.toList());
-            return Response.status(200).entity(events).build();
+            return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(events).build();
         } catch (Exception ignored) {
             return Response.status(500).build();
         }
