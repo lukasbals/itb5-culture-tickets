@@ -26,6 +26,10 @@ public class EventController {
                 .collect(Collectors.toList());
     }
 
+    public static Event getEvent(Long eventId) {
+        return EventBroker.getInstance().get(eventId);
+    }
+
     static boolean checkEvent(
             IEvent actualEvent,
             String searchingEventname,

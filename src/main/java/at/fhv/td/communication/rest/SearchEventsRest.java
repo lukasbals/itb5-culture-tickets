@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Path("/searchEvents")
+@Path("/events")
 @Produces(MediaType.APPLICATION_JSON)
 public class SearchEventsRest {
     /**
@@ -50,6 +50,17 @@ public class SearchEventsRest {
                     .map(EventDetailAssembler::toEventDetailedViewDTO)
                     .collect(Collectors.toList());
             return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(events).build();
+        } catch (Exception ignored) {
+            return Response.status(500).build();
+        }
+    }
+
+    @GET
+    @Path("/{eventId}")
+    public Response getTicketsOfEvent(@PathParam("eventId") int eventId) {
+        try {
+            EventDetailedViewDTO event = EventDetailAssembler.toEventDetailedViewDTO(EventController.getEvent(Integer.toUnsignedLong(eventId)));
+            return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(event).build();
         } catch (Exception ignored) {
             return Response.status(500).build();
         }

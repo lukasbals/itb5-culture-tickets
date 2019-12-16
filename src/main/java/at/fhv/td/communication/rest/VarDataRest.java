@@ -42,7 +42,7 @@ public class VarDataRest {
                         .stream()
                         .map(TicketAssembler::toTicketDTO)
                         .collect(Collectors.toList());
-                return Response.status(200).entity(tickets).build();
+                return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(tickets).build();
             }
             throw new Exception();
         } catch (Exception ignored) {

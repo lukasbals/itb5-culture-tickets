@@ -31,7 +31,7 @@ public class BuyTicketRest {
 
                 if (answer.getTickets().size() == ticketAmount.get()) {
                     ITicketDTO[] tickets = answer.getTickets().stream().map(TicketAssembler::toTicketDTO).toArray(ITicketDTO[]::new);
-                    return Response.status(200).entity(tickets).build();
+                    return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(tickets).build();
                 }
 
                 // TODO test this!
