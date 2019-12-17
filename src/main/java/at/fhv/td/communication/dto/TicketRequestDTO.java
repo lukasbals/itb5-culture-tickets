@@ -1,27 +1,25 @@
 package at.fhv.td.communication.dto;
 
-import at.fhv.td.communication.rmi.interfaces.ITicketDTO;
-
 import java.io.Serializable;
 import java.util.Map;
 
 public class TicketRequestDTO implements Serializable {
-    private ITicketDTO _ticketDto;
-    private Map<Long, Integer[]> _seatPlaceReservations;
+    private TicketDTO _ticketDto;
+    private Map<String, Integer[]> _seatPlaceReservations;
 
-    public ITicketDTO getTicketDto() {
+    public TicketDTO getTicketDto() {
         return _ticketDto;
     }
 
-    public void setTicketDto(ITicketDTO ticketDto) {
+    public void setTicketDto(TicketDTO ticketDto) {
         _ticketDto = ticketDto;
     }
 
-    public Map<Long, Integer[]> getSeatPlaceReservations() {
+    public Map<String, Integer[]> getSeatPlaceReservations() {
         return _seatPlaceReservations;
     }
 
-    public void setSeatPlaceReservations(Map<Long, Integer[]> seatPlaceReservations) {
+    public void setSeatPlaceReservations(Map<String, Integer[]> seatPlaceReservations) {
         _seatPlaceReservations = seatPlaceReservations;
     }
 }
