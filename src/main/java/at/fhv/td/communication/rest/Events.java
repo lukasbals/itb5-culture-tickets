@@ -1,8 +1,11 @@
 package at.fhv.td.communication.rest;
 
 import at.fhv.td.application.EventController;
+import at.fhv.td.application.TicketController;
 import at.fhv.td.communication.dto.EventDetailedViewDTO;
+import at.fhv.td.communication.dto.TicketDTO;
 import at.fhv.td.domain.assembler.EventDetailAssembler;
+import at.fhv.td.domain.assembler.TicketAssembler;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -13,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Path("/events")
 @Produces(MediaType.APPLICATION_JSON)
-public class SearchEventsRest {
+public class Events {
     /**
      * Searches for events with params: /searchEvents?artist=boing&eventName=blubb
      *
@@ -26,7 +29,7 @@ public class SearchEventsRest {
      * @return
      */
     @GET
-    public Response searchForEvents(
+    public Response getEvents(
             @QueryParam("y") @DefaultValue("0") int year,
             @QueryParam("m") @DefaultValue("0") int month,
             @QueryParam("d") @DefaultValue("0") int day,
@@ -49,7 +52,7 @@ public class SearchEventsRest {
                     .stream()
                     .map(EventDetailAssembler::toEventDetailedViewDTO)
                     .collect(Collectors.toList());
-            return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(events).build();
+            return Response.status(200).entity(events).build();
         } catch (Exception ignored) {
             return Response.status(500).build();
         }
@@ -57,10 +60,27 @@ public class SearchEventsRest {
 
     @GET
     @Path("/{eventId}")
-    public Response getTicketsOfEvent(@PathParam("eventId") int eventId) {
+    public Response getEventById(@PathParam("eventId") int eventId) {
         try {
             EventDetailedViewDTO event = EventDetailAssembler.toEventDetailedViewDTO(EventController.getEvent(Integer.toUnsignedLong(eventId)));
-            return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(event).build();
+            return Response.status(200).entity(event).build();
+        } catch (Exception ignored) {
+            return Response.status(500).build();
+        }
+    }
+
+    @GET
+    @Path("/{eventId}/tickets")
+    public Response getTickets(@PathParam("eventId") int eventId) {
+        try {
+            if (eventId != 0) {
+                List<TicketDTO> tickets = TicketController.getUnavailableTickets(eventId)
+                        .stream()
+                        .map(TicketAssembler::toTicketDTO)
+                        .collect(Collectors.toList());
+                return Response.status(200).entity(tickets).build();
+            }
+            throw new Exception();
         } catch (Exception ignored) {
             return Response.status(500).build();
         }

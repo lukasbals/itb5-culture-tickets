@@ -25,10 +25,6 @@ public class BuyTicketRest {
     public Response buyTicket(TicketRequestDTO ticketRequest) {
         if (ticketRequest != null) {
             try {
-                System.out.println(ticketRequest.getTicketDto().getCategoryName());
-                System.out.println(ticketRequest.getSeatPlaceReservations().get("1").length);
-                System.out.println(ticketRequest.getSeatPlaceReservations().get("1")[0]);
-
                 Ticket basicTicket = TicketAssembler.toTicket(ticketRequest.getTicketDto());
                 Map<Long, Integer[]> ticketsToBuy = new HashMap<>();
                 for (Map.Entry<String, Integer[]> entry : ticketRequest.getSeatPlaceReservations().entrySet()) {
@@ -38,10 +34,9 @@ public class BuyTicketRest {
                 AtomicInteger ticketAmount = new AtomicInteger();
                 ticketRequest.getSeatPlaceReservations().forEach((cat, seats) -> ticketAmount.addAndGet(seats.length));
 
-                System.out.println(answer.getTickets().size() + " - " + ticketAmount.get());
                 if (answer.getTickets().size() == ticketAmount.get()) {
                     ITicketDTO[] tickets = answer.getTickets().stream().map(TicketAssembler::toTicketDTO).toArray(ITicketDTO[]::new);
-                    return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(tickets).build();
+                    return Response.status(200).entity(tickets).build();
                 }
 
                 // TODO test this!
