@@ -6,18 +6,15 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.mockito.Mockito.when;
 
 @RunWith(PowerMockRunner.class)
 public class TicketRequestDTOTest {
     private TicketRequestDTO _testTicketRequestDTO;
-    private Map<Long, Integer[]> _seatPlaceReservations;
+    private Map<String, Integer[]> _seatPlaceReservations;
 
     @Mock
     private TicketDTO _testTicketDTO;
@@ -25,7 +22,7 @@ public class TicketRequestDTOTest {
     @Before
     public void before() {
         _seatPlaceReservations = new HashMap<>();
-        _seatPlaceReservations.put(1L, new Integer[]{1, 2});
+        _seatPlaceReservations.put("1", new Integer[]{1, 2});
         _testTicketRequestDTO = new TicketRequestDTO();
     }
 
@@ -36,7 +33,7 @@ public class TicketRequestDTOTest {
     }
 
     @Test
-    public void getAndSetTicketDTO(){
+    public void getAndSetTicketDTO() {
         _testTicketRequestDTO.setTicketDto(_testTicketDTO);
         assertEquals(_testTicketDTO, _testTicketRequestDTO.getTicketDto());
     }
