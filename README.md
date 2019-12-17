@@ -51,10 +51,10 @@ and running the following commands inside the payara5 directory:
 ./bin/asadmin start-domain
 
 # Deploy the .war file
-./bin/asadmin deploy path-to-war/itb5-culture-tickets-1.0-SNAPSHOT.war
+./bin/asadmin deploy path-to-war/itb5-culture-tickets-backend-1.0-SNAPSHOT.war
 
 # Undeploy the .war file
-./bin/asadmin undeploy path-to-war/itb5-culture-tickets-1.0-SNAPSHOT
+./bin/asadmin undeploy path-to-war/itb5-culture-tickets-backend-1.0-SNAPSHOT
 
 # List deployments
 ./bin/asadmin list-applications
@@ -64,4 +64,4 @@ and running the following commands inside the payara5 directory:
 ```
 
 You can access the payara admin console on `http://localhost:4848/`.
-You can access the app app on `http://localhost:8080/itb5-culture-tickets-1.0-SNAPSHOT/`.
+You can access the app app on `http://localhost:8080/itb5-culture-tickets-backend-1.0-SNAPSHOT/`.
