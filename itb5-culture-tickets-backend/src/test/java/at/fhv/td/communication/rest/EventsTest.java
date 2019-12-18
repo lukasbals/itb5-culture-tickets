@@ -115,4 +115,13 @@ public class EventsTest {
         Response res = events.getTickets(0);
         assertTrue(res.getStatus() == 500 && res.getEntity() == null);
     }
+
+    @Test
+    public void getEventById(){
+        Events events = new Events();
+
+        when(EventController.getEvent(any(long.class))).thenReturn(_event1);
+        Response res = events.getEventById(0);
+        assertTrue(res.getStatus() == 200 && res.getEntity() != null);
+    }
 }
