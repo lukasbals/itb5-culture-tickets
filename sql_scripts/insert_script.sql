@@ -90,6 +90,19 @@ insert into has_roles (role_id, user_id) values (1, 5);
 
 insert into topics (topic_id, topic_name) values (1, 'festivals');
 insert into topics (topic_id, topic_name) values (2, 'concerts');
+insert into topics (topic_id, topic_name) values (3, 'system');
 
+insert into users_topics (topic_id, user_id) values (1, 3);
+insert into users_topics (topic_id, user_id) values (1, 4);
 insert into users_topics (topic_id, user_id) values (1, 1);
+insert into users_topics (topic_id, user_id) values (2, 1);
+insert into users_topics (topic_id, user_id) values (3, 1);
 insert into users_topics (topic_id, user_id) values (1, 2);
+insert into users_topics (topic_id, user_id) values (2, 2);
+insert into users_topics (topic_id, user_id) values (3, 2);
+insert into users_topics (topic_id, user_id) values (3, 1);
+insert into users_topics (topic_id, user_id) values (3, 2);
+insert into users_topics (topic_id, user_id) values (3, 3);
+insert into users_topics (topic_id, user_id) values (3, 4);
+insert into users_topics (topic_id, user_id) values (3, 5);
+insert into users_topics (topic_id, user_id) values (1, 5);

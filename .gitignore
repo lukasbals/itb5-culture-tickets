@@ -7,3 +7,5 @@ classes
 .settings
 .classpath
 .project
+itb5-culture-tickets-backend/dependency-reduced-pom.xml
+itb5-culture-tickets-shared/dependency-reduced-pom.xml
