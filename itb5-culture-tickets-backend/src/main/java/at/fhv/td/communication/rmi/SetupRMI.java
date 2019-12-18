@@ -1,5 +1,7 @@
 package at.fhv.td.communication.rmi;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -8,11 +10,19 @@ import java.rmi.registry.Registry;
  * @author Lukas Bals
  */
 public class SetupRMI {
-        private final static String IP_ADDRESS = "10.0.51.93";
-//    private final static String IP_ADDRESS = "localhost";
     private final static int PORT = 25565;
+    private static String IP_ADDRESS;
 
     private SetupRMI() {
+    }
+
+    static {
+        try {
+            String host = InetAddress.getLocalHost().toString();
+            IP_ADDRESS = host.split("/")[1];
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void setupRmiRegistry() {
