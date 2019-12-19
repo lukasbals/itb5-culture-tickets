@@ -65,3 +65,12 @@ and running the following commands inside the payara5 directory:
 
 You can access the payara admin console on `http://localhost:4848/`.
 You can access the app app on `http://localhost:8080/itb5-culture-tickets-backend-1.0-SNAPSHOT/`.
+
+## RESTful Test Client
+You can access the Python Script
+[here](https://gist.github.com/Pia-Maria/28dc4feaa5d44c0f6fb25e61613a9023)
+
+```shell script
+# Help from script
+python getSearchEventScript.py -h
+```
