@@ -6,7 +6,6 @@ import at.fhv.td.domain.Ticket;
 import at.fhv.td.domain.TicketAnswer;
 import at.fhv.td.domain.assembler.TicketAssembler;
 
-import javax.persistence.Transient;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Map;

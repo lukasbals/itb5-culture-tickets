@@ -7,7 +7,6 @@ import at.fhv.td.communication.IMessageFeed;
 import at.fhv.td.communication.ISearchEvent;
 import at.fhv.td.domain.User;
 
-import javax.persistence.Transient;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
