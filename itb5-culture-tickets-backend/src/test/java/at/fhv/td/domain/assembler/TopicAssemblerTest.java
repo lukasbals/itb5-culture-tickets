@@ -6,8 +6,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import java.rmi.RemoteException;
-
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -17,7 +15,7 @@ public class TopicAssemblerTest {
     Topic _topic;
 
     @Test
-    public void toTopicDTO() throws RemoteException {
+    public void toTopicDTO() {
         String topicName = "name";
         when(_topic.getName()).thenReturn(topicName);
         assertEquals(topicName, TopicAssembler.toTopicDTO(_topic).getName());

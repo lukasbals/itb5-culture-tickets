@@ -97,7 +97,7 @@ public class TicketAssemblerTest {
     }
 
     @Test
-    public void toTicketDTO() throws Exception {
+    public void toTicketDTO() {
         assertEquals(_expectedTicketDto, TicketAssembler.toTicketDTO(_ticket));
 
         when(_ticket.getClient()).thenReturn(null);

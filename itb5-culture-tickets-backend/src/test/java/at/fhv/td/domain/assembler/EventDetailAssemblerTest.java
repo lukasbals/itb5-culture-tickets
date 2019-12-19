@@ -13,7 +13,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -42,7 +41,7 @@ public class EventDetailAssemblerTest {
 
     @Before
     public void setup() {
-        _artists = new HashSet<Artist>();
+        _artists = new HashSet<>();
         Artist artist1 = new Artist();
         artist1.setArtistName(_artist1);
         artist1.setGenre(_genre1);
@@ -52,7 +51,7 @@ public class EventDetailAssemblerTest {
         location.setAddress(_address);
         location.setBuilding(_building);
 
-        _placeCats = new HashSet<PlaceCategory>();
+        _placeCats = new HashSet<>();
         PlaceCategory placeCat = new PlaceCategory();
         placeCat.setId(1L);
         placeCat.setCategoryname(_cat1);
@@ -71,9 +70,9 @@ public class EventDetailAssemblerTest {
     }
 
     @Test
-    public void toEventDetailedViewDTOTest() throws RemoteException {
+    public void toEventDetailedViewDTOTest() {
         EventDetailedViewDTO expected = new EventDetailedViewDTO();
-        expected.setArtists(_artists.stream().map(artist -> artist.getArtistname()).collect(Collectors.joining(", ")));
+        expected.setArtists(_artists.stream().map(Artist::getArtistname).collect(Collectors.joining(", ")));
         expected.setCategory(_category);
         expected.setDate(_date);
         expected.setDescription(_desc);

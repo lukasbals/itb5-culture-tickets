@@ -8,8 +8,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import java.rmi.RemoteException;
-
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -24,7 +22,7 @@ public class ClientAssemblerTest {
     private Long _id = 1l;
 
     @Before
-    public void before() throws RemoteException {
+    public void before() {
         _expected = new ClientDTO();
         _expected.setFirstName(_fname);
         _expected.setLastName(_lname);
