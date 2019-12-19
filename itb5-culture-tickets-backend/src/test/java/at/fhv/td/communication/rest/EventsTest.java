@@ -102,17 +102,14 @@ public class EventsTest {
         when(TicketController.getUnavailableTickets(any(long.class))).thenReturn(_tickets);
         Response res = events.getTickets(1);
         assertTrue(res.getStatus() == 200 && res.getEntity() != null);
-
-        res = events.getTickets(0);
-        assertTrue(res.getStatus() == 500 && res.getEntity() == null);
     }
 
     @Test
     public void getTicketsFail() {
         Events events = new Events();
 
-        when(TicketController.getUnavailableTickets(any(long.class))).thenReturn(_tickets);
-        Response res = events.getTickets(0);
+        when(TicketController.getUnavailableTickets(any(long.class))).thenThrow(NullPointerException.class);
+        Response res = events.getTickets(1);
         assertTrue(res.getStatus() == 500 && res.getEntity() == null);
     }
 

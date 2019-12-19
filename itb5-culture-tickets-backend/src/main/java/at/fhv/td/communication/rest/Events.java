@@ -73,14 +73,11 @@ public class Events {
     @Path("/{eventId}/tickets")
     public Response getTickets(@PathParam("eventId") int eventId) {
         try {
-            if (eventId != 0) {
-                List<TicketDTO> tickets = TicketController.getUnavailableTickets(eventId)
-                        .stream()
-                        .map(TicketAssembler::toTicketDTO)
-                        .collect(Collectors.toList());
-                return Response.status(200).entity(tickets).build();
-            }
-            throw new Exception();
+            List<TicketDTO> tickets = TicketController.getUnavailableTickets(eventId)
+                    .stream()
+                    .map(TicketAssembler::toTicketDTO)
+                    .collect(Collectors.toList());
+            return Response.status(200).entity(tickets).build();
         } catch (Exception ignored) {
             return Response.status(500).build();
         }

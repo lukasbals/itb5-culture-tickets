@@ -10,7 +10,7 @@ import java.rmi.registry.Registry;
  * @author Lukas Bals
  */
 public class SetupRMI {
-    private final static int PORT = 25565;
+    private static final int PORT = 25565;
     private static String IP_ADDRESS;
 
     private SetupRMI() {

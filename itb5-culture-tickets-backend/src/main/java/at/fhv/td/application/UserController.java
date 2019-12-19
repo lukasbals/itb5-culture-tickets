@@ -30,7 +30,7 @@ public class UserController {
         if (user != null) {
             return new LinkedList<>(user.getTopics());
         }
-        return null;
+        return new LinkedList<>();
     }
 
     public static boolean hasRole(User executingUser, String roleName) {

@@ -13,10 +13,8 @@ public class ClientSessionFactoryRemoteImpl implements IClientSessionFactoryRemo
 
     @Override
     public IClientSessionRemote login(String userName, String password, boolean encrypted) {
-        if (LDAP.callLDAP(userName, password)) {
-            if (_session.login(userName)) {
-                return _session;
-            }
+        if (LDAP.callLDAP(userName, password) && _session.login(userName)) {
+            return _session;
         }
         return null;
     }
