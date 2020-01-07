@@ -10,7 +10,8 @@ insert into artists (artistname, genre) values ('Pia-Maria', 'Poetry Slam');
 
 insert into roles (role_name, rights) values ('admin', 'fullcontroll');
 insert into roles (role_name, rights) values ('seller', 'Seller');
-insert into roles (role_name, rights) values ('message-feed', 'Message feed client');
+insert into roles (role_name, rights) values ('news-reader', 'Message feed reader');
+insert into roles (role_name, rights) values ('news-writer', 'Message feed writer');
 
 insert into locations (address, room, building) values ('Spielboden 2, Dornbirn 6850', 'Kantine', 'A');
 insert into locations (address, room, building) values ('Festspielhaus, Bregenz 6900', 'Festsaal', 'Hauptgebäude');
@@ -26,6 +27,7 @@ insert into users (username, email) values ('lba4683', 'lba4683@students.fhv.at'
 insert into users (username, email) values ('pwe9098', 'pia@students.fhv.at');
 insert into users (username, email) values ('vdu2437', 'vanessa@students.fhv.at');
 insert into users (username, email) values ('tf-test', 'tf-test@fhv.at');
+insert into users (username, email) values ('tf-test2', 'tf-test2@fhv.at');
 
 insert into tours (tourname, description, category, user_id) values ('V-Tour', 'Vorarlberg Tour', 'Musik', 1);
 insert into tours (tourname, description, category, user_id) values ('Ösis', 'Österreich Tour', 'Vortrag', 1);
@@ -87,22 +89,24 @@ insert into has_roles (role_id, user_id) values (1, 2);
 insert into has_roles (role_id, user_id) values (1, 3);
 insert into has_roles (role_id, user_id) values (1, 4);
 insert into has_roles (role_id, user_id) values (1, 5);
+insert into has_roles (role_id, user_id) values (2, 6);
+insert into has_roles (role_id, user_id) values (3, 6);
 
 insert into topics (topic_id, topic_name) values (1, 'festivals');
 insert into topics (topic_id, topic_name) values (2, 'concerts');
 insert into topics (topic_id, topic_name) values (3, 'system');
 
+insert into users_topics (topic_id, user_id) values (1, 1);
+insert into users_topics (topic_id, user_id) values (1, 2);
 insert into users_topics (topic_id, user_id) values (1, 3);
 insert into users_topics (topic_id, user_id) values (1, 4);
-insert into users_topics (topic_id, user_id) values (1, 1);
+insert into users_topics (topic_id, user_id) values (1, 5);
 insert into users_topics (topic_id, user_id) values (2, 1);
-insert into users_topics (topic_id, user_id) values (3, 1);
-insert into users_topics (topic_id, user_id) values (1, 2);
 insert into users_topics (topic_id, user_id) values (2, 2);
-insert into users_topics (topic_id, user_id) values (3, 2);
+insert into users_topics (topic_id, user_id) values (2, 6);
 insert into users_topics (topic_id, user_id) values (3, 1);
 insert into users_topics (topic_id, user_id) values (3, 2);
 insert into users_topics (topic_id, user_id) values (3, 3);
 insert into users_topics (topic_id, user_id) values (3, 4);
 insert into users_topics (topic_id, user_id) values (3, 5);
-insert into users_topics (topic_id, user_id) values (1, 5);
+insert into users_topics (topic_id, user_id) values (3, 6);
