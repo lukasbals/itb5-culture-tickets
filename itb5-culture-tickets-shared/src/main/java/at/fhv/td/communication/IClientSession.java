@@ -13,4 +13,6 @@ public interface IClientSession extends Serializable {
     ILoadTicket createLoadTicket() throws RemoteException;
 
     IMessageFeed createMessageFeed() throws RemoteException;
+
+    boolean isFeedWriter() throws RemoteException;
 }

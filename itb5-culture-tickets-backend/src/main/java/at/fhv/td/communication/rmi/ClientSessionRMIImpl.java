@@ -12,7 +12,8 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class ClientSessionRMIImpl extends UnicastRemoteObject implements IClientSessionRMI {
     private static final String SELLER_ROLE_NAME = "seller";
-    private static final String MESSAGE_FEED_ROLE_NAME = "message-feed";
+    private static final String NEWS_READER_ROLE_NAME = "news-reader";
+    private static final String NEWS_WRITER_ROLE_NAME = "news-writer";
     private static final long serialVersionUID = -8635265718445391597L;
 
     private User _user;
@@ -72,7 +73,7 @@ public class ClientSessionRMIImpl extends UnicastRemoteObject implements IClient
 
     @Override
     public IMessageFeed createMessageFeed() throws RemoteException {
-        if (UserController.hasRole(_user, MESSAGE_FEED_ROLE_NAME)) {
+        if (UserController.hasRole(_user, NEWS_READER_ROLE_NAME)) {
             try {
                 return new MessageFeedRMIImpl();
             } catch (RemoteException e) {
@@ -80,5 +81,10 @@ public class ClientSessionRMIImpl extends UnicastRemoteObject implements IClient
             }
         }
         return null;
+    }
+
+    @Override
+    public boolean isFeedWriter() throws RemoteException {
+        return UserController.hasRole(_user, NEWS_WRITER_ROLE_NAME);
     }
 }

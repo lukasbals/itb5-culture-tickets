@@ -9,7 +9,8 @@ import javax.ejb.Stateful;
 @Stateful
 public class ClientSessionRemoteImpl implements IClientSessionRemote {
     private static final String SELLER_ROLE_NAME = "seller";
-    private static final String MESSAGE_FEED_ROLE_NAME = "message-feed";
+    private static final String NEWS_READER_ROLE_NAME = "news-reader";
+    private static final String NEWS_WRITER_ROLE_NAME = "news-writer";
 
     @EJB
     private ISearchEventRemote _searchEventRemote;
@@ -63,9 +64,14 @@ public class ClientSessionRemoteImpl implements IClientSessionRemote {
 
     @Override
     public IMessageFeedRemote createMessageFeed() {
-        if (UserController.hasRole(_user, MESSAGE_FEED_ROLE_NAME)) {
+        if (UserController.hasRole(_user, NEWS_READER_ROLE_NAME)) {
             return _messageFeedRemote;
         }
         return null;
+    }
+
+    @Override
+    public boolean isFeedWriter() {
+        return UserController.hasRole(_user, NEWS_WRITER_ROLE_NAME);
     }
 }
