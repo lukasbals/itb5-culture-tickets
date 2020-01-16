@@ -50,6 +50,7 @@ and running the following commands inside the payara5 directory:
 # Start the server
 ./bin/asadmin start-domain
 
+# Set the system environment variable "CultureTicketsRmiIP" to whatever IP (or localhost) the RMI should use. Default is 10.0.51.93
 # Deploy the .war file
 ./bin/asadmin deploy path-to-war/itb5-culture-tickets-backend-1.0-SNAPSHOT.war
 
@@ -64,7 +65,7 @@ and running the following commands inside the payara5 directory:
 ```
 
 You can access the payara admin console on `http://localhost:4848/`.
-You can access the app app on `http://localhost:8080/itb5-culture-tickets-backend-1.0-SNAPSHOT/`.
+You can access the app on `http://localhost:8080/itb5-culture-tickets-backend-1.0-SNAPSHOT/`.
 
 ## RESTful Test Client
 You can access the Python Script

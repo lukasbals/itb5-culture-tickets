@@ -1,7 +1,5 @@
 package at.fhv.td.communication.rmi;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -11,18 +9,17 @@ import java.rmi.registry.Registry;
  */
 public class SetupRMI {
     private static final int PORT = 25565;
-    private static String IP_ADDRESS;
-
-    private SetupRMI() {
-    }
+    private static String IP_ADDRESS = "10.0.51.93";
 
     static {
-        try {
-            String host = InetAddress.getLocalHost().toString();
-            IP_ADDRESS = host.split("/")[1];
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
+        String ipAddress = System.getenv("CultureTicketsRmiIP");
+
+        if(ipAddress != null && !ipAddress.equals("")){
+            IP_ADDRESS = ipAddress;
         }
+    }
+
+    private SetupRMI() {
     }
 
     public static void setupRmiRegistry() {
